@@ -1,0 +1,47 @@
+#contactButton{
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    max-height:100%;
+    width:350px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index:1000;
+}
+#contactButton .panel{
+    margin-bottom:0;
+    width:100%;
+    color:#333;
+    display:none
+}
+#contactButton .ctb{
+    position: fixed;
+    bottom: 0;
+    right:15px;
+    z-index:1000;
+    text-align:center;
+}
+#contactButton .ctb, #contactButton .panel{
+    border-radius: 5px 5px 0 0;
+}
+#contactButton .ctb em{
+    margin-right:3px;
+    font-size: 1.6em;
+    vertical-align:middle
+}
+@media (max-width:1199px) {
+    #contactButton .ctb{
+        right:70px;
+    }
+}
+@media (max-width:499px) {
+    #contactButton{
+        right:auto;
+        left:0;
+        width:90%
+    }
+}
+.form_search .form-group {    display: inline-block;    width: 100%;}form.form_search {    margin-top: 35px;}.catalogy_bn ul {    padding-left: 0px;}.catalogy_bn img {    height: 40px;	padding-right:10px;}.icon_calender{	    padding-left: 10px;    font-size: 14px;    font-weight: 600;    float: left;}.calender_bn li {    border-top: 1px solid #ccc;       padding: 10px;}.calender_bn ul {    padding-left: 0px;}.calender_bn a{color:black;}.calender_bn li:hover{background:#f8f8f8;}.gio_calender { margin-top: 2px;}.title_calender_bn {    text-transform: uppercase;    font-weight: 700;    border-bottom: 1px solid #ccc;    font-size: 17px;    padding-bottom: 20px;}.title_catalogy_bn {    text-transform: uppercase;    font-weight: 700;    font-size: 17px;    margin-top: 20px;    margin-bottom: 20px;}.thongtin_malankham ul li i{margin-right:10px;}.thongtin_malankham ul li {    text-transform: uppercase;    font-weight: 500;    margin-bottom: 10px;	cursor:pointer}.thongtin_malankham ul {    padding-left: 0px;}.title_thongtin_malankham {    font-size: 17px;    font-weight: 700;    text-transform: uppercase;    margin-top: 20px;    margin-bottom: 20px;}.ngay_kham {    font-weight: 700;    margin-bottom: 20px;	text-align: center;	margin-top: 10px;}.thongtin_benhnhan {    padding: 10px;    margin-bottom: 10px;	padding-bottom: 1px;}.thongtin_benhnhan .title_thongtinhanhchinh.title_catalogy_bn {    margin-top: 0px;	text-align: center;}.bacsi_kyten .basi {    font-weight: 700;}.bacsi_kyten {    text-align: right;    margin-bottom: 20px;}.donthuoc_cdha_tdcn table td {    vertical-align: middle !important;}.ketqua_chupphim_content ul li {    border-top: 1px solid #ccc;    padding-top: 20px;    padding-bottom: 20px;}.ketqua_chupphim_content ul {    padding-left: 0px;}.content_logout {    margin-top: 20px;}.tms_box {    border-radius: 5px;	margin-bottom: 10px;    background-color: rgba(255, 255, 255, 0.53);    border: 1px solid #ddd;    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05);    box-shadow: 0 1px 1px rgba(0,0,0,0.05);	}.tms_box_body{    padding: 10px;    margin: 0;    display: block;    position: relative;}.tms_box_heading { 	border-radius: 5px 5px 0 0;    color: #fff;    background-color: #0091cf;    border-color: #ddd;    text-align: center;    text-transform: uppercase;    font-weight: 600;	font-size:18px;	padding: 8px 8px 5px 8px;}.tms_box ul {margin:0; padding:0;}.tms_box ul li{width:100%;    display: inline-block;}.tms_box ul li span{padding-top: 10px;padding-left:10px; font-size: 16px;display: inline-block;font-weight: 600;}.tms_info{    background: #0091cf;color: #fff;}.tms_box_botom{       color: #FFFFFF;    background-color: #0091cf;    display: inline-block;    padding: 8px 16px;    vertical-align: middle;    overflow: hidden;    text-decoration: none;    text-align: center;    cursor: pointer;    white-space: nowrap;	}
+.tms_box_thoat{float:right;	    color: #FFFFFF;    background-color: #cf0000;    display: inline-block;    padding: 8px 16px;    vertical-align: middle;    overflow: hidden;    text-decoration: none;    text-align: center;    cursor: pointer;    white-space: nowrap;}
+.tms_box_change{float:right;	margin-right:10px;    color: #FFFFFF;    background-color: #ff6600;    display: inline-block;    padding: 8px 16px;    vertical-align: middle;    overflow: hidden;    text-decoration: none;    text-align: center;    cursor: pointer;    white-space: nowrap;}
+.tms_box_change a {color: #FFFFFF;}

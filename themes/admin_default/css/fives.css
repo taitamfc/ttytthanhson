@@ -1,0 +1,53 @@
+/**
+ * @Project TMS HOLDINGS
+ * @Author Tập Đoàn TMS Holdings <contact@tms.vn>
+ * @Copyright (C) 2022 Tập Đoàn TMS Holdings. All rights reserved
+ * @License GNU/GPL version 2 or any later version
+ * @Createdate Tue, 19 Jul 2022 05:40:28 GMT
+ */
+.tms_body{padding: 10px;}
+.tmswell {
+    padding: 19px 19px 0px 19px;
+    margin-bottom: 20px;
+    background: #F2F2F2;    display: inline-block;
+    width: 100%;
+    border: 1px solid #f2f2f2;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 5%);
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 5%);
+}
+.tmswell ul{
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20px;
+    display: inline-block;
+    width: 100%;}
+.tmswell ul li {
+    display: inline;
+    float: left;
+    width: 100%;
+    border-bottom: 1px dashed #CCC;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+#tms {
+    background: #fff;
+    width: 100%;
+    padding: 10px 10px 0px 5px;
+    position: relative;
+    display: inline-block; 
+}
+#tms h2 {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-size:16px;
+    color: #0d4e96;
+    font-weight: 600;
+}
+.tms_list {display: inline-block;width: 100%;}
+.tms_list ul{margin:0; padding:0;width: 100%;}
+.tms_list ul li {display: inline;float: left;width: 100%;border-bottom: 1px dashed #CCC;padding-bottom: 6px;margin-bottom: 6px;}
+.tms_list ul li:last-child {border-bottom:none;}
+.tms_list ul li a {font-size: 14px;font-weight: 500;}

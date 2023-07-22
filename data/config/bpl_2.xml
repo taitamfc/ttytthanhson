@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plan>
+  <id>2</id>
+  <lang></lang>
+  <title>Quang cao trai</title>
+  <form>sequential</form>
+  <width>212</width>
+  <height>800</height>
+  <banners>
+    <banners_item>
+      <id>13</id>
+      <title>CỔNG THÔNG TIN ĐIỆN TỬ HUYỆN THANH SƠN</title>
+      <clid>0</clid>
+      <file_name>12.png</file_name>
+      <imageforswf></imageforswf>
+      <file_ext>png</file_ext>
+      <file_mime>image/png</file_mime>
+      <file_width>430</file_width>
+      <file_height>138</file_height>
+      <file_alt>ABC</file_alt>
+      <file_click>http://thanhson.phutho.gov.vn/</file_click>
+      <target>_blank</target>
+      <bannerhtml></bannerhtml>
+      <publ_time>1590373186</publ_time>
+      <exp_time>0</exp_time>
+    </banners_item>
+    <banners_item>
+      <id>5</id>
+      <title>Website bộ Y tế</title>
+      <clid>0</clid>
+      <file_name>1bo-y-te_1.jpg</file_name>
+      <imageforswf></imageforswf>
+      <file_ext>jpg</file_ext>
+      <file_mime>image/jpeg</file_mime>
+      <file_width>210</file_width>
+      <file_height>80</file_height>
+      <file_alt>Website bộ Y tế</file_alt>
+      <file_click>http://moh.gov.vn/</file_click>
+      <target>_blank</target>
+      <bannerhtml></bannerhtml>
+      <publ_time>1538639088</publ_time>
+      <exp_time>0</exp_time>
+    </banners_item>
+    <banners_item>
+      <id>6</id>
+      <title>Website Sở YT</title>
+      <clid>0</clid>
+      <file_name>2soytephtho.jpg</file_name>
+      <imageforswf></imageforswf>
+      <file_ext>jpg</file_ext>
+      <file_mime>image/jpeg</file_mime>
+      <file_width>210</file_width>
+      <file_height>80</file_height>
+      <file_alt>Website STY Phú Thọ</file_alt>
+      <file_click>http://soyte.phutho.gov.vn/</file_click>
+      <target>_blank</target>
+      <bannerhtml></bannerhtml>
+      <publ_time>1538639667</publ_time>
+      <exp_time>0</exp_time>
+    </banners_item>
+    <banners_item>
+      <id>7</id>
+      <title>Cổng Thông tin Điện tử tỉnh Phú Thọ</title>
+      <clid>0</clid>
+      <file_name>3phuthottdt.jpg</file_name>
+      <imageforswf></imageforswf>
+      <file_ext>jpg</file_ext>
+      <file_mime>image/jpeg</file_mime>
+      <file_width>210</file_width>
+      <file_height>80</file_height>
+      <file_alt>Cổng Thông tin Điện tử tỉnh Phú Thọ</file_alt>
+      <file_click>http://phutho.gov.vn/</file_click>
+      <target>_blank</target>
+      <bannerhtml></bannerhtml>
+      <publ_time>1538639773</publ_time>
+      <exp_time>0</exp_time>
+    </banners_item>
+    <banners_item>
+      <id>9</id>
+      <title>Hệ thống Quản lý Văn bản &amp;amp; Điều hành tỉnh PT</title>
+      <clid>0</clid>
+      <file_name>5vanban.jpg</file_name>
+      <imageforswf></imageforswf>
+      <file_ext>jpg</file_ext>
+      <file_mime>image/jpeg</file_mime>
+      <file_width>210</file_width>
+      <file_height>80</file_height>
+      <file_alt>Hệ thống Quản lý Văn bản &amp;amp; Điều hành tỉnh PT</file_alt>
+      <file_click>http://sytphutho.qlvbdh.vnpt.vn/Login.aspx</file_click>
+      <target>_blank</target>
+      <bannerhtml></bannerhtml>
+      <publ_time>1538639878</publ_time>
+      <exp_time>0</exp_time>
+    </banners_item>
+    <banners_item>
+      <id>10</id>
+      <title>Trang tra cứu tải liệu Y học</title>
+      <clid>0</clid>
+      <file_name>7right_tracuutailieu.jpg</file_name>
+      <imageforswf></imageforswf>
+      <file_ext>jpg</file_ext>
+      <file_mime>image/jpeg</file_mime>
+      <file_width>170</file_width>
+      <file_height>65</file_height>
+      <file_alt>Trang tra cứu tải liệu Y học</file_alt>
+      <file_click>http://yte.gov.vn/</file_click>
+      <target>_blank</target>
+      <bannerhtml></bannerhtml>
+      <publ_time>1538639911</publ_time>
+      <exp_time>0</exp_time>
+    </banners_item>
+    <banners_item>
+      <id>11</id>
+      <title>TIN TỨC VỀ TTYT THANH SƠN</title>
+      <clid>0</clid>
+      <file_name>xx_1.png</file_name>
+      <imageforswf></imageforswf>
+      <file_ext>png</file_ext>
+      <file_mime>image/png</file_mime>
+      <file_width>530</file_width>
+      <file_height>216</file_height>
+      <file_alt></file_alt>
+      <file_click>http://ttythuyenthanhson.com/vi/news/tin-tuc-ve-trung-tam-y-te-thanh-son/</file_click>
+      <target>_blank</target>
+      <bannerhtml></bannerhtml>
+      <publ_time>1589433211</publ_time>
+      <exp_time>0</exp_time>
+    </banners_item>
+  </banners>
+</plan>

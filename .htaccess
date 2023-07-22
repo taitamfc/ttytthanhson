@@ -1,0 +1,27 @@
+
+
+##################################################################################
+#nukeviet_rewrite_start //Please do not change the contents of the following lines
+##################################################################################
+
+#Options +FollowSymLinks
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+#RewriteBase /
+RewriteCond %{REQUEST_FILENAME} /robots.txt$ [NC]
+RewriteRule ^ robots.php?action=%{HTTP_HOST} [L]
+RewriteRule ^(.*?)sitemap\.xml$ index.php?nv=SitemapIndex [L]
+RewriteRule ^(.*?)sitemap\-([a-z]{2})\.xml$ index.php?language=$2&nv=SitemapIndex [L]
+RewriteRule ^(.*?)sitemap\-([a-z]{2})\.([a-zA-Z0-9-]+)\.xml$ index.php?language=$2&nv=$3&op=sitemap [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule (.*)(\/|\.html)$ index.php
+RewriteRule (.*)tag\/([^?]+)$ index.php
+RewriteRule ^([a-zA-Z0-9-\/]+)\/([a-zA-Z0-9-]+)$ /$1/$2/ [L,R=301]
+RewriteRule ^([a-zA-Z0-9-]+)$ /$1/ [L,R=301]
+</IfModule>
+
+#nukeviet_rewrite_end
+##################################################################################
+

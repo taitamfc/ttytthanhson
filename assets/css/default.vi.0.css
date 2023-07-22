@@ -1,0 +1,57 @@
+body{background-image:url('/uploads/photos/images/2020/04/anh-tu-lieu/58b8acf972c04-tong-hop-bo-hinh-nen-powerpoint-ve-chu-de-trong-dong-1484806477-12.jpg');}#header{background-image:url('/uploads/photos/images/2020/04/anh-tu-lieu/58b8acf972c04-tong-hop-bo-hinh-nen-powerpoint-ve-chu-de-trong-dong-1484806477-12.jpg');}#footer{background-color:#2bd931;}#header {
+    background: url(http://ttythuyenthanhson.com/uploads/photos/images/2020/04/anh-tu-lieu/bn%20chu%20chay.gif?1586879616) no-repeat center center;
+	height: 250px;
+}
+.panel-default>.panel-heading {
+    color: #ffffff;
+    background-color: #31c12f;
+    border-color: #428bca;
+}
+#menusite .navbar-default {
+    background-color: #22ad27;
+    border-bottom-color: #22ad27;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+#menusite .navbar-default .navbar-nav > li > a:hover, #menusite .navbar-default .navbar-nav > li > a:focus, #menusite .navbar-default .navbar-nav > .active > a, #menusite .navbar-default .navbar-nav > .active > a:hover, #menusite .navbar-default .navbar-nav > .active > a:focus, #menusite .navbar-default .navbar-nav > .open > a, #menusite .navbar-default .navbar-nav > .open > a:hover, #menusite .navbar-default .navbar-nav > .open > a:focus {
+    background: linear-gradient(to bottom,#82b2dc 0%,#04b709 100%) !important;
+    color: #ffffff !important;
+}
+#menusite .navbar-default .navbar-nav > li > a {
+    color: #fff !important;
+}
+.panel-primary>.panel-heading {
+    color: #fff;
+    background-color: #44ca42;
+    border-color: #31c12f;
+}
+.body-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    background: url(http://ttythuyenthanhson.com/uploads/photos/images/2020/04/anh-tu-lieu/bn%20chu%20chay.gif?1586879616) ;
+	height: 1000px;
+    background-image: url(../images/header.png);
+
+    background-position: left 51px,left top;
+    background-size: 100%,auto;
+}
+
+.sidebar-nav {
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    background: #205FA0;
+    background-image: linear-gradient(to right,#22ad27 4px,#22ad27 4px);
+    background-repeat: repeat-x;
+    margin: 0;
+}
+#header .logo {
+    position: relative;
+    margin: 0;
+    padding: 20px 0px;
+}

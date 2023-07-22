@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cms>
+	<name><![CDATA[NukeViet CMS 4.1 Official]]></name>
+	<version><![CDATA[4.1.02]]></version>
+	<date><![CDATA[Sat, 22 Apr 2017 17:00:00 GMT]]></date>
+	<message><![CDATA[Sau hai biên bản thử nghiệm, NukeViet 4.1 Official là phiên bản ổn định chính thức đầu tiên của dòng NukeViet 4.1. So với NukeViet 4.0 Official, phiên bản này có rất nhiều cải tiến hệ thống giúp gia tăng khả năng bảo mật, nhiều tối ưu giúp hệ thống hoạt động ổn định hơn và luôn cập nhật các công nghệ thiết kế web mới nhất.]]></message>
+	<link><![CDATA[https&#x3A;&#x002F;&#x002F;nukeviet.vn&#x002F;]]></link>
+	<updateable><![CDATA[]]></updateable>
+	<updatepackage><![CDATA[]]></updatepackage>
+</cms>
