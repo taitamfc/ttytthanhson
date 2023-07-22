@@ -5,7 +5,7 @@
  * @Author VINADES.,JSC (contact@vinades.vn)
  * @Copyright (C) 2023 VINADES.,JSC. All rights reserved
  * @License GNU/GPL version 2 or any later version
- * @Createdate Sat, 15 Jul 2023 15:51:34 GMT
+ * @Createdate Sat, 22 Jul 2023 04:40:05 GMT
  */
 
 if ( ! defined( 'NV_MAINFILE' ) ) die( 'Stop!!!' );
@@ -25,7 +25,7 @@ define('NV_LIVE_COOKIE_TIME', 31104000);
 define('NV_LIVE_SESSION_TIME', 0);
 define('NV_MAX_HEIGHT', 1500);
 define('NV_MAX_WIDTH', 1500);
-define('NV_EOL', "\n");
+define('NV_EOL', "\r\n");
 define('NV_UPLOAD_MAX_FILESIZE', 2097152);
 $global_config['admfirewall']=0;
 $global_config['admin_check_pass_time']=1800;
@@ -70,7 +70,7 @@ $global_config['login_time_ban']=0;
 $global_config['login_time_tracking']=100;
 $global_config['max_requests_300']=150;
 $global_config['max_requests_60']=40;
-$global_config['my_domains']='ttythuyenthanhson.com,localhost,ttytthanhson.test';
+$global_config['my_domains']='ttytthanhson.test,ttythuyenthanhson.com,localhost';
 $global_config['notification_active']=1;
 $global_config['notification_autodel']=15;
 $global_config['nv_auto_resize']=1;
@@ -81,7 +81,7 @@ $global_config['read_type']=0;
 $global_config['recaptcha_secretkey']='';
 $global_config['recaptcha_sitekey']='';
 $global_config['recaptcha_type']='image';
-$global_config['rewrite_enable']=1;
+$global_config['rewrite_enable']=0;
 $global_config['rewrite_endurl']='/';
 $global_config['rewrite_exturl']='.html';
 $global_config['rewrite_op_mod']='';
