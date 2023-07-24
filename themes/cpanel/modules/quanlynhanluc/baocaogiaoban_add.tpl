@@ -432,12 +432,12 @@
                                         </th>
                                     </tr>
 
-                                    {FILE "baocaogiaoban/khoa-hscc.tpl"}
-                                    {FILE "baocaogiaoban/khoa-ngoai.tpl"}
-                                    {FILE "baocaogiaoban/khoa-phu-san.tpl"}
-                                    {FILE "baocaogiaoban/khoa-noi.tpl"}
-                                    {FILE "baocaogiaoban/khoa-nhi.tpl"}
-                                    {FILE "baocaogiaoban/khoa-yhct.tpl"}
+                                    {FILE "baocaogiaoban/benh_nhan_theo_doi/khoa-hscc.tpl"}
+                                    {FILE "baocaogiaoban/benh_nhan_theo_doi/khoa-ngoai.tpl"}
+                                    {FILE "baocaogiaoban/benh_nhan_theo_doi/khoa-phu-san.tpl"}
+                                    {FILE "baocaogiaoban/benh_nhan_theo_doi/khoa-noi.tpl"}
+                                    {FILE "baocaogiaoban/benh_nhan_theo_doi/khoa-nhi.tpl"}
+                                    {FILE "baocaogiaoban/benh_nhan_theo_doi/khoa-yhct.tpl"}
                                     
                                     <tr>
                                         <td class="align-middle" colspan="2">
@@ -460,7 +460,19 @@
 <script type="text/javascript">
     $(function() {
        $('.clone-btn').on('click',function(){
-            alert(123);
+            var parent = $(this).closest('.clone-container');
+            var cloned = parent.find('.clone-item').clone();
+            cloned.removeClass('first-clone')
+            cloned.find('input, textarea').val('')
+            parent.find('.clone-wrapper').append(cloned);
+       });
+
+       $('body').on('click','.clone-remove',function(e){
+        e.preventDefault();
+        var parent = $(this).closest('.clone-wrapper').find('.clone-item');
+        if( !$(this).closest('.clone-item').hasClass('first-clone') ){
+            $(this).closest('.clone-item').remove();
+        }
        });
     });
 </script>
