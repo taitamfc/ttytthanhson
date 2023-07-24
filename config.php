@@ -24,7 +24,7 @@ $db_config['dbpass'] = 'Abcd1234@';
 $db_config['dbname'] = 'ttytthanhson';
 $db_config['dbsystem'] = 'ttytthanhson';
 $db_config['dbuname'] = 'root';
-$db_config['dbpass'] = '123456';
+$db_config['dbpass'] = '';
 
 $db_config['dbtype'] = 'mysql';
 $db_config['collation'] = 'utf8mb4_unicode_ci';

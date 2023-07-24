@@ -17,7 +17,7 @@ $module_version = array(
     'modfuncs' => 'lichnghidieuduong,thongke_chiso,thongke_dshientai,baocao_kcb,chitiet_kcb,usersetting,notification,login,
 	register,main,viewcat,detail,hanhchinh,baocaocongtac,caitienchatluong,
 	khamchuabenh,quanlynhanluc,setting,tailieudieuduong,adddocument,
-	chitietdieuduong,thongtindieuduong,tochuc,getthongtin,execute',
+	chitietdieuduong,thongtindieuduong,tochuc,getthongtin,execute,baocaogiaoban,baocaogiaoban_add,baocaodieuduong,chamcong',
     'is_sysmod' => 0,
     'virtual' => 1,
     'version' => '4.1.02',

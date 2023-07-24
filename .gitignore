@@ -1,7 +1,7 @@
 /admin
 /assets
 /cgi-bin
-/data
+/data/*
 /includes
 /install
 /photos

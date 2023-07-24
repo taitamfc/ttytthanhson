@@ -126,11 +126,7 @@ if (! defined('NV_IS_MOD_QLNL')) {
 	nv_jsonOutput($kq);
 	exit;
 	}
-/*
- $sql = "SELECT khoa.account as label, count(cb.id) as value 
-		FROM " . TABLE . '_canbo cb inner join '  . TABLE . '_khoaphong khoa on cb.id_khoaphong=khoa.id
-		group by khoa.tenkhoa ';
- var_dump($sql);*/
+
 
 if (empty($user_info)){	$url = MODULE_LINK . '&' . NV_OP_VARIABLE . '=login';nv_redirect_location($url); exit();}
 

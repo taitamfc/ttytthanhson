@@ -45,3 +45,15 @@ foreach ($list as $l) {
     $weblinks_config[$l['name']] = $l['value'];
 }
 unset($sql, $list);
+
+
+function dd($data){
+	pr($data);
+	die();
+}
+
+function pr($data){
+	echo '<pre>';
+	print_r($data);
+	echo '</pre>';
+}
