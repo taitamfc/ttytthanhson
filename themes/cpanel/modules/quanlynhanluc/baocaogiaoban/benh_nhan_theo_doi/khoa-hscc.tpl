@@ -25,6 +25,5 @@
             </div>
             <a class="clone-btn" href="#">Thêm nội dung báo cáo</a>
         </div>
-        
     </td>
 </tr>

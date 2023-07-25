@@ -47,13 +47,28 @@ foreach ($list as $l) {
 unset($sql, $list);
 
 
-function dd($data){
-	pr($data);
-	die();
+// Khái báo các hàm phục vụ chung
+if( !function_exists('oa_load_model') ){
+    function oa_load_model($modelName){
+        // return 123;
+        global $module_info   ;
+        include_once NV_ROOTDIR . '/modules/' . $module_info['module_file'].'/models/OAModel.php';
+        include_once NV_ROOTDIR . '/modules/' . $module_info['module_file'].'/models/'.$modelName.'.php';
+        $model = new $modelName;
+        return $model;
+    }
+}
+if( !function_exists('pr') ){
+    function pr($data){
+        echo '<pre>';
+        print_r($data);
+        echo '</pre>';
+    }
 }
 
-function pr($data){
-	echo '<pre>';
-	print_r($data);
-	echo '</pre>';
+if( !function_exists('dd') ){
+    function dd($data){
+        pr($data);
+        die();
+    }
 }

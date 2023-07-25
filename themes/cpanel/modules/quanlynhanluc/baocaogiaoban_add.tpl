@@ -18,7 +18,7 @@
                 </div>
                 <div class="card-block">
                     <div class="table-responsive" style="padding-bottom: 100px;">
-                        <form name="myform" id="myform" method="post" action="{link_frm}"
+                        <form name="myform" id="myform" method="post" action="{NV_BASE_ADMINURL}index.php?{NV_LANG_VARIABLE}={NV_LANG_DATA}&amp;{NV_NAME_VARIABLE}={MODULE_NAME}&amp;{NV_OP_VARIABLE}={OP}"
                             onsubmit="return nv_execute_update(this);">
                             <input type="hidden" name="token" value="{token}" />
                             <table class="table table-hover table-border" width="100%">
@@ -27,8 +27,8 @@
                                         <th class="align-middle" colspan="2">Tên báo cáo:</th>
                                     </tr>
                                     <tr>
-                                        <td class='align-middle' colspan="2"><input name='title' value='{DATA.title}'
-                                                type='text' class='form-control'></td>
+                                        <td class='align-middle' colspan="2">
+                                        <input name='title' value='{DATA.title}' type='text' class='form-control'></td>
                                     </tr>
                                     <tr>
                                         <th colspan="2" class="align-middle">I – THÀNH PHẦN TRỰC</th>
@@ -60,339 +60,21 @@
                                     </tr>
                                     <tr>
                                         <td class='align-top'>
-                                            <table border="1" width="100%">
-                                                <tr>
-                                                    <td colspan="2">TỔNG SỐ </td>
-                                                    <td>
-                                                        <span class="II-tong_so"></span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td rowspan="2">Bệnh nhân BHYT246</td>
-                                                    <td>Ngoại tỉnh</td>
-                                                    <td>62</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Nội tỉnh</td>
-                                                    <td>184</td>
-                                                </tr>
-                                            </table>
+                                            {FILE "baocaogiaoban/tinh_hinh_benh_nhan/khoa-kham-benh.tpl"}
+                                            
                                         </td>
                                         <td class='align-top'>
-                                            <table border="1" width="100%">
-                                                <tr>
-                                                    <td>Phòng Khám ĐK Phú Thứ</td>
-                                                    <td>BH</td>
-                                                    <td>VP</td>
-                                                    <td>Tổng</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Phòng khám Chung</td>
-                                                    <td>0</td>
-                                                    <td>0</td>
-                                                    <td>0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Phòng khám Sản</td>
-                                                    <td>0</td>
-                                                    <td>0</td>
-                                                    <td>0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Phòng khám Cấp Cứu</td>
-                                                    <td>0</td>
-                                                    <td>0</td>
-                                                    <td>0</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>0 số BN</td>
-                                                    <td>0</td>
-                                                    <td>0</td>
-                                                    <td>0</td>
-                                                </tr>
-                                            </table>
+                                            {FILE "baocaogiaoban/tinh_hinh_benh_nhan/phong-kham-da-khoa.tpl"}
                                         </td>
                                     </tr>
-
                                     <tr>
                                         <td class="align-middle" colspan="2">
-                                            <table border="1" width="100%">
-                                                <tbody>
-                                                    <tr>
-                                                        <td><b>STT</b></td>
-                                                        <td><b>Phòng khám</b></td>
-                                                        <td><b>Tổng số khám</b></td>
-                                                        <td><b>Vào viện</b></td>
-                                                        <td><b>% vào viện</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span style="font-weight: 400;">1</span></td>
-                                                        <td><span style="font-weight: 400;">PK Mắt</span></td>
-                                                        <td><b>29</b></td>
-                                                        <td><b>2</b></td>
-                                                        <td><b>6.8</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span style="font-weight: 400;">2</span></td>
-                                                        <td><span style="font-weight: 400;">PK Số 7</span></td>
-                                                        <td><b>17</b></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span style="font-weight: 400;">3</span></td>
-                                                        <td><span style="font-weight: 400;">PK RHM</span></td>
-                                                        <td><b>12</b></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span style="font-weight: 400;">4</span></td>
-                                                        <td><span style="font-weight: 400;">PK Cấp cứu 101</span></td>
-                                                        <td><b>32</b></td>
-                                                        <td><b>19</b></td>
-                                                        <td><b>59.3</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span style="font-weight: 400;">5</span></td>
-                                                        <td><span style="font-weight: 400;">PK nội 106</span></td>
-                                                        <td><b>24</b></td>
-                                                        <td><b>1</b></td>
-                                                        <td><b>4.1</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span style="font-weight: 400;">6</span></td>
-                                                        <td><span style="font-weight: 400;">PK nội 107</span></td>
-                                                        <td><b>44</b></td>
-                                                        <td><b>7</b></td>
-                                                        <td><b>15.9</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span style="font-weight: 400;">7</span></td>
-                                                        <td><span style="font-weight: 400;">PK nội 108</span></td>
-                                                        <td><b>40</b></td>
-                                                        <td><b>2</b></td>
-                                                        <td><b>5</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span style="font-weight: 400;">8</span></td>
-                                                        <td><span style="font-weight: 400;">PK Sản 105</span></td>
-                                                        <td><b>25</b></td>
-                                                        <td><b>6</b></td>
-                                                        <td><b>24</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span style="font-weight: 400;">9</span></td>
-                                                        <td><span style="font-weight: 400;">PK Nhi 104</span></td>
-                                                        <td><b>21</b></td>
-                                                        <td><b>8</b></td>
-                                                        <td><b>38</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span style="font-weight: 400;">10</span></td>
-                                                        <td><span style="font-weight: 400;">PK Ngoại 103</span></td>
-                                                        <td><b>19</b></td>
-                                                        <td><b>2</b></td>
-                                                        <td><b>10.5</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span style="font-weight: 400;">11</span></td>
-                                                        <td><span style="font-weight: 400;">PK Yêu cầu</span></td>
-                                                        <td><b>10</b></td>
-                                                        <td><b>2</b></td>
-                                                        <td><b>20</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span style="font-weight: 400;">12</span></td>
-                                                        <td><span style="font-weight: 400;">PK Đông Y</span></td>
-                                                        <td><b>4</b></td>
-                                                        <td><b>4</b></td>
-                                                        <td><b>100</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b> </b><span style="font-weight: 400;">13</span></td>
-                                                        <td><span style="font-weight: 400;">PK TMH 210</span></td>
-                                                        <td><b>5</b></td>
-                                                        <td><b>1</b></td>
-                                                        <td><b>2</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td><b>Tổng số</b></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                            {FILE "baocaogiaoban/tong-so-benh-nhan-kham.tpl"}
                                         </td>
                                     </tr>
-
-
-                                    <tr>
-                                        <th colspan="2">
-                                        2. HOẠT ĐỘNG ĐIỀU TRỊ
-                                        </th>
-                                    </tr>
-
-                                    <tr>
-                                        <td class='align-middle' colspan="2">
-                                            &nbsp;
-                                            <table border="1" width="100%">
-                                                <tbody>
-                                                    <tr>
-                                                        <td rowspan="2"><b>KHOA PHÒNG </b></td>
-                                                        <td rowspan="2"><b>BN</b>
-
-                                                            <b>Cũ </b>
-                                                        </td>
-                                                        <td rowspan="2"><b>BN</b>
-
-                                                            <b>Vào viện</b>
-                                                        </td>
-                                                        <td rowspan="2"><b>BN</b>
-
-                                                            <b>Ra Viện</b>
-                                                        </td>
-                                                        <td rowspan="2"><b>BN </b>
-
-                                                            <b>Chuyển</b>
-
-                                                            <b>Khoa</b>
-                                                        </td>
-                                                        <td rowspan="2"><b>BN</b>
-
-                                                            <b>Chuyển</b>
-
-                                                            <b>Viện</b>
-                                                        </td>
-                                                        <td rowspan="2"><b>BN</b>
-
-                                                            <b>Xin Về</b>
-                                                        </td>
-                                                        <td colspan="3"><b>BN HIỆN CÓ </b></td>
-                                                        <td rowspan="2"><b>Chi tiết BN</b>
-
-                                                            <b>Yêu cầu</b>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b>BN Nội Trú</b></td>
-                                                        <td><b>BN </b>
-
-                                                            <b>Ngoại trú</b>
-                                                        </td>
-                                                        <td><b>Tổng số BN</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b>Khoa CC-HSTC-CĐ</b></td>
-                                                        <td><b>44</b></td>
-                                                        <td><b>7</b></td>
-                                                        <td><b>7</b></td>
-                                                        <td></td>
-                                                        <td><b>2</b></td>
-                                                        <td><b>1</b></td>
-                                                        <td><b>27</b></td>
-                                                        <td><b>14</b></td>
-                                                        <td><b>41</b></td>
-                                                        <td><b>17</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b>Khoa Ngoại-TH</b></td>
-                                                        <td><b>53</b></td>
-                                                        <td><b>12</b></td>
-                                                        <td><b>9</b></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td><b>2</b></td>
-                                                        <td><b>54</b></td>
-                                                        <td></td>
-                                                        <td><b>54</b></td>
-                                                        <td><b>28</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b>Khoa Phụ Sản</b></td>
-                                                        <td><b>55</b></td>
-                                                        <td><b>8</b></td>
-                                                        <td><b>7</b></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td><b>56</b></td>
-                                                        <td></td>
-                                                        <td><b>56</b></td>
-                                                        <td><b>43</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b>Khoa Nhi</b></td>
-                                                        <td><b>42</b></td>
-                                                        <td><b>9</b></td>
-                                                        <td><b>6</b></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td><b>45</b></td>
-                                                        <td></td>
-                                                        <td><b>45</b></td>
-                                                        <td><b>25</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b>Khoa Nội-Tn</b></td>
-                                                        <td><b>51</b></td>
-                                                        <td><b>18</b></td>
-                                                        <td><b>10</b></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td><b>59</b></td>
-                                                        <td></td>
-                                                        <td><b>59</b></td>
-                                                        <td><b>10</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b>Khoa Covid 19</b></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b>Khu YHCT&amp;PHCN</b></td>
-                                                        <td><b>57</b></td>
-                                                        <td><b>4</b></td>
-                                                        <td><b>5</b></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td><b>26</b></td>
-                                                        <td><b>30</b></td>
-                                                        <td><b>56</b></td>
-                                                        <td><b>4</b></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b>TỔNG CỘNG</b></td>
-                                                        <td><b>302</b></td>
-                                                        <td><b>58</b></td>
-                                                        <td><b>44</b></td>
-                                                        <td></td>
-                                                        <td><b>2</b></td>
-                                                        <td><b>3</b></td>
-                                                        <td><b>267</b></td>
-                                                        <td><b>44</b></td>
-                                                        <td><b>311</b></td>
-                                                        <td><b>127</b></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                    </tr>
-
+                                    
+                                    {FILE "baocaogiaoban/hoat-dong-dieu-tri.tpl"}
+                                    
                                     <tr>
                                         <th colspan="2">
                                         3. BỆNH NHÂN MỔ CẤP CỨU: 05
@@ -431,7 +113,6 @@
                                         6. BỆNH NHÂN THEO DÕI
                                         </th>
                                     </tr>
-
                                     {FILE "baocaogiaoban/benh_nhan_theo_doi/khoa-hscc.tpl"}
                                     {FILE "baocaogiaoban/benh_nhan_theo_doi/khoa-ngoai.tpl"}
                                     {FILE "baocaogiaoban/benh_nhan_theo_doi/khoa-phu-san.tpl"}
@@ -468,11 +149,12 @@
        });
 
        $('body').on('click','.clone-remove',function(e){
-        e.preventDefault();
-        var parent = $(this).closest('.clone-wrapper').find('.clone-item');
-        if( !$(this).closest('.clone-item').hasClass('first-clone') ){
-            $(this).closest('.clone-item').remove();
-        }
+            e.preventDefault();
+            var parent = $(this).closest('.clone-wrapper').find('.clone-item');
+            // if( !$(this).closest('.clone-item').hasClass('first-clone') ){
+            if( parent.length > 1 ){
+                $(this).closest('.clone-item').remove();
+            }
        });
     });
 </script>
