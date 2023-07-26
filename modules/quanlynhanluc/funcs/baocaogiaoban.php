@@ -11,9 +11,28 @@
 if (! defined('NV_IS_MOD_QLNL')) {
     die('Stop!!!');
 }
+$OAThemeHelper = oa_load_model('OAThemeHelper');
+$OABaoCaoGiaoBan = oa_load_model('OABaoCaoGiaoBan');
 $page_title = 'Báo cáo giao ban';
+$data = $OABaoCaoGiaoBan->paginate(10,[
+    'layout' => 'admin_index',
+    'request' => $_REQUEST
+]);
+$items = $data['items'];
+$items = $OABaoCaoGiaoBan->format_items($items);
 // VIEW
-$xtpl = new XTemplate($op.'.tpl', NV_ROOTDIR . '/themes/' . $module_info['template'] . '/modules/' . $module_info['module_theme']);
+$xtpl = $OAThemeHelper->setView($op. '.tpl');
+
+// Phan trang
+$page = $nv_Request->get_int('page', 'post,get', 1);
+$generate_page = nv_generate_page($OAThemeHelper->home_url, $data['totalCount'], $data['pageLimit'], $page);
+if (! empty($generate_page)) {
+    $xtpl->assign('NV_GENERATE_PAGE', $generate_page);
+    $xtpl->parse('main.generate_page');
+}
+$OAThemeHelper->renderItemsFromArray($xtpl,$items,'item','main.items');
+
+
 $xtpl->parse('main');
 $contents = $xtpl->text('main');
 include NV_ROOTDIR . '/includes/header.php';

@@ -18,8 +18,8 @@
                 </div>
                 <div class="card-block">
                     <div class="table-responsive" style="padding-bottom: 100px;">
-                        <form name="myform" id="myform" method="post" action="{NV_BASE_ADMINURL}index.php?{NV_LANG_VARIABLE}={NV_LANG_DATA}&amp;{NV_NAME_VARIABLE}={MODULE_NAME}&amp;{NV_OP_VARIABLE}={OP}"
-                            onsubmit="return nv_execute_update(this);">
+                        <form name="myform" id="myform" method="post" action="index.php?{NV_LANG_VARIABLE}={NV_LANG_DATA}&amp;{NV_NAME_VARIABLE}={MODULE_NAME}&amp;{NV_OP_VARIABLE}={OP}"
+                            >
                             <input type="hidden" name="token" value="{token}" />
                             <table class="table table-hover table-border" width="100%">
                                 <thead>

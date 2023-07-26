@@ -1,11 +1,10 @@
 <tr>
     <th colspan="2">
-    2. HOẠT ĐỘNG ĐIỀU TRỊ
+        2. HOẠT ĐỘNG ĐIỀU TRỊ
     </th>
 </tr>
 <tr>
     <td class='align-middle' colspan="2">
-        &nbsp;
         <table border="1" width="100%">
             <tbody>
                 <tr>
@@ -23,9 +22,7 @@
                         <b>Ra Viện</b>
                     </td>
                     <td rowspan="2"><b>BN </b>
-
                         <b>Chuyển</b>
-
                         <b>Khoa</b>
                     </td>
                     <td rowspan="2"><b>BN</b>
@@ -54,107 +51,107 @@
                 </tr>
                 <tr>
                     <td><b>Khoa CC-HSTC-CĐ</b></td>
-                    <td><b>44</b></td>
-                    <td><b>7</b></td>
-                    <td><b>7</b></td>
-                    <td></td>
-                    <td><b>2</b></td>
-                    <td><b>1</b></td>
-                    <td><b>27</b></td>
-                    <td><b>14</b></td>
-                    <td><b>41</b></td>
-                    <td><b>17</b></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_cc_hstc][bn_cu]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_cc_hstc][bn_vaovien]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_cc_hstc][bn_ravien]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_cc_hstc][bn_chuyenkhoa]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_cc_hstc][bn_chuyenvien]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_cc_hstc][bn_xinve]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_cc_hstc][bn_hienco][bn_noitru]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_cc_hstc][bn_hienco][bn_ngoaitru]"></td>
+                    <td class="hoat_dong_dieu_tri_tongso_bn_ngoaitru_noitru"><b>0</b></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_cc_hstc][chitiet_bn_yeucau]"></td>
                 </tr>
                 <tr>
                     <td><b>Khoa Ngoại-TH</b></td>
-                    <td><b>53</b></td>
-                    <td><b>12</b></td>
-                    <td><b>9</b></td>
-                    <td></td>
-                    <td></td>
-                    <td><b>2</b></td>
-                    <td><b>54</b></td>
-                    <td></td>
-                    <td><b>54</b></td>
-                    <td><b>28</b></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_ngoai_th][bn_cu]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_ngoai_th][bn_vaovien]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_ngoai_th][bn_ravien]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_ngoai_th][bn_chuyenkhoa]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_ngoai_th][bn_chuyenvien]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_ngoai_th][bn_xinve]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_ngoai_th][bn_hienco][bn_noitru]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_ngoai_th][bn_hienco][bn_ngoaitru]"></td>
+                    <td class="hoat_dong_dieu_tri_tongso_bn_ngoaitru_noitru"><b>0</b></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_ngoai_th][chitiet_bn_yeucau]"></td>
                 </tr>
                 <tr>
                     <td><b>Khoa Phụ Sản</b></td>
-                    <td><b>55</b></td>
-                    <td><b>8</b></td>
-                    <td><b>7</b></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><b>56</b></td>
-                    <td></td>
-                    <td><b>56</b></td>
-                    <td><b>43</b></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_phu_san][bn_cu]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_phu_san][bn_vaovien]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_phu_san][bn_ravien]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_phu_san][bn_chuyenkhoa]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_phu_san][bn_chuyenvien]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_phu_san][bn_xinve]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_phu_san][bn_hienco][bn_noitru]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_phu_san][bn_hienco][bn_ngoaitru]"></td>
+                    <td class="hoat_dong_dieu_tri_tongso_bn_ngoaitru_noitru"><b>0</b></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_phu_san][chitiet_bn_yeucau]"></td>
                 </tr>
                 <tr>
                     <td><b>Khoa Nhi</b></td>
-                    <td><b>42</b></td>
-                    <td><b>9</b></td>
-                    <td><b>6</b></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><b>45</b></td>
-                    <td></td>
-                    <td><b>45</b></td>
-                    <td><b>25</b></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_nhi][bn_cu]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_nhi][bn_vaovien]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_nhi][bn_ravien]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_nhi][bn_chuyenkhoa]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_nhi][bn_chuyenvien]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_nhi][bn_xinve]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_nhi][bn_hienco][bn_noitru]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_nhi][bn_hienco][bn_ngoaitru]"></td>
+                    <td class="hoat_dong_dieu_tri_tongso_bn_ngoaitru_noitru"><b>0</b></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_nhi][chitiet_bn_yeucau]"></td>
                 </tr>
                 <tr>
                     <td><b>Khoa Nội-Tn</b></td>
-                    <td><b>51</b></td>
-                    <td><b>18</b></td>
-                    <td><b>10</b></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><b>59</b></td>
-                    <td></td>
-                    <td><b>59</b></td>
-                    <td><b>10</b></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_noi_tn][bn_cu]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_noi_tn][bn_vaovien]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_noi_tn][bn_ravien]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_noi_tn][bn_chuyenkhoa]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_noi_tn][bn_chuyenvien]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_noi_tn][bn_xinve]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_noi_tn][bn_hienco][bn_noitru]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_noi_tn][bn_hienco][bn_ngoaitru]"></td>
+                    <td class="hoat_dong_dieu_tri_tongso_bn_ngoaitru_noitru"><b>0</b></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_noi_tn][chitiet_bn_yeucau]"></td>
                 </tr>
                 <tr>
                     <td><b>Khoa Covid 19</b></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_covid19][bn_cu]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_covid19][bn_vaovien]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_covid19][bn_ravien]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_covid19][bn_chuyenkhoa]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_covid19][bn_chuyenvien]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_covid19][bn_xinve]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_covid19][bn_hienco][bn_noitru]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_covid19][bn_hienco][bn_ngoaitru]"></td>
+                    <td class="hoat_dong_dieu_tri_tongso_bn_ngoaitru_noitru"><b>0</b></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khoa_covid19][chitiet_bn_yeucau]"></td>
                 </tr>
                 <tr>
                     <td><b>Khu YHCT&amp;PHCN</b></td>
-                    <td><b>57</b></td>
-                    <td><b>4</b></td>
-                    <td><b>5</b></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><b>26</b></td>
-                    <td><b>30</b></td>
-                    <td><b>56</b></td>
-                    <td><b>4</b></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khu_yhct][bn_cu]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khu_yhct][bn_vaovien]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khu_yhct][bn_ravien]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khu_yhct][bn_chuyenkhoa]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khu_yhct][bn_chuyenvien]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khu_yhct][bn_xinve]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khu_yhct][bn_hienco][bn_noitru]"></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khu_yhct][bn_hienco][bn_ngoaitru]"></td>
+                    <td class="hoat_dong_dieu_tri_tongso_bn_ngoaitru_noitru"><b>0</b></td>
+                    <td><input type="number" name="hoat_dong_dieu_tri[khu_yhct][chitiet_bn_yeucau]"></td>
                 </tr>
                 <tr>
                     <td><b>TỔNG CỘNG</b></td>
-                    <td><b>302</b></td>
-                    <td><b>58</b></td>
-                    <td><b>44</b></td>
-                    <td></td>
-                    <td><b>2</b></td>
-                    <td><b>3</b></td>
-                    <td><b>267</b></td>
-                    <td><b>44</b></td>
-                    <td><b>311</b></td>
-                    <td><b>127</b></td>
+                    <td><b>0</b></td>
+                    <td><b>0</b></td>
+                    <td><b>0</b></td>
+                    <td><b>0</b></td>
+                    <td><b>0</b></td>
+                    <td><b>0</b></td>
+                    <td><b>0</b></td>
+                    <td><b>0</b></td>
+                    <td><b>0</b></td>
+                    <td><b>0</b></td>
                 </tr>
             </tbody>
         </table>

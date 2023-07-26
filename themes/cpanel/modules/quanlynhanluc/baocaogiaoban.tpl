@@ -74,44 +74,27 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Mã BV</th>
-                                    <th>Họ tên</th>
-                                    <th>Nam/Nữ</th>
-                                    <th>Ngày sinh</th>
-                                    <th>Điện thoại</th>
-                                    <th>Địa chỉ</th>
-                                    <th>Chức vụ</th>
-                                    <th>Số hiệu</th>
-                                    <th>Công tác</th>
-                                    <th>Điều động đến</th>
-                                    <th>Ghi chú</th>
+                                    <th>Tiêu đề</th>
+                                    <th>Ngày lập</th>
+                                    <th>Ngày cập nhật</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- BEGIN: row -->
-                                <tr class="{ROW.color}">
-                                    <th scope="row">{ROW.stt}</th>
-                                    <td>{ROW.maso_bv}</td>
-                                    <td>{ROW.hovaten}</td>
-                                    <td>{ROW.gioitinh}</td>
-                                    <td>{ROW.ngaysinh}</td>
-                                    <td>{ROW.dienthoai}</td>
-                                    <td>{ROW.diachi}</td>
-                                    <td>{ROW.chucvu}</td>
-                                    <td>{ROW.sohieu_vc}</td>
-                                    <td>{ROW.tenkhoa}</td>
-                                    <td>{ROW.tangcuong_khoaphong}</td>
-                                    <td>{ROW.ghichu}</td>
+                                <!-- BEGIN: items -->
+                                <tr>
+                                    <th scope="row"><a href="{item.link_view}"> {item.id}</a></th>
+                                    <td><a href="{item.link_view}">{item.title}</a></td>
+                                    <td>{item.created_date}</td>
+                                    <td>{item.updated_date}</td>
                                 </tr>
-                                <!-- END: row -->
+                                <!-- END: items -->
                                 <!-- BEGIN: generate_page -->
-                                <tr class="{ROW.color}">
-                                    <td colspan="12" class="text-center">{GENERATE_PAGE}</td>
-                                </tr>
+                                <tfoot>
+                                    <tr>
+                                        <td class="text-center js-page-links" colspan="6" >{NV_GENERATE_PAGE}</td>
+                                    </tr>
+                                </tfoot>
                                 <!-- END: generate_page -->
-
-
-
                             </tbody>
                         </table>
                     </div>

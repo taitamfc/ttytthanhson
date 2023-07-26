@@ -17,9 +17,9 @@ class OAModel {
         
         global $db, $db_config, $module_data,$module_name,$op;
         $this->db = $db;
-        $this->table_prefix = $db_config['prefix'] . '_onlineadministration';
+        $this->table_prefix = $db_config['prefix'] . '_vi_quanlynhanluc_';
         $this->db_prefix    = $db_config['prefix'];
-        $this->home_url     = 'index.php?' . NV_NAME_VARIABLE . '=' . $module_name . '&amp;' . NV_OP_VARIABLE . '=' . $op;
+        $this->home_url     = 'index.php?' . NV_NAME_VARIABLE . '=' . $module_name . '&' . NV_OP_VARIABLE . '=' . $op;
         $this->admin_url    = NV_BASE_ADMINURL . $this->home_url;
         
         // $mysqli = new mysqli ($db_config['dbhost'], $db_config['dbuname'], $db_config['dbpass'], $db_config['dbname']);

@@ -57,6 +57,9 @@ class OAThemeHelper extends OAModel{
         $xtpl->assign('ADMIN_URL', $this->admin_url);
         $xtpl->assign('HOME_URL', $this->home_url);
         $xtpl->assign('BASE_URL', $this->home_url);
+
+        
+
         return $xtpl;
     }
 
@@ -228,6 +231,12 @@ class OAThemeHelper extends OAModel{
     public function sendEmail($email, $subject, $message){
         global $global_config;
         return nv_sendmail([$global_config['site_name'], $global_config['site_email']], $email, $subject, $message);
+    }
+
+    public function redirectOp( $op ){
+        global $module_name;
+        nv_redirect_location('index.php?' . NV_NAME_VARIABLE . '=' . $module_name . '&' . NV_OP_VARIABLE . '=' . $op);
+        exit;
     }
     
 }
