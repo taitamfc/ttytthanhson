@@ -7,6 +7,12 @@
 <script type="text/javascript" src="{BASE_URL}{NV_ASSETS_DIR}/js/language/jquery.ui.datepicker-{NV_LANG_INTERFACE}.js">
 </script>
 
+<style>
+.has_f {
+    border-color: red !important;
+}
+</style>
+
 <div class="page-body">
     <div class="row">
         <div class="col-sm-12">
@@ -18,17 +24,18 @@
                 </div>
                 <div class="card-block">
                     <div class="table-responsive" style="padding-bottom: 100px;">
-                        <form name="myform" id="myform" method="post" action="index.php?{NV_LANG_VARIABLE}={NV_LANG_DATA}&amp;{NV_NAME_VARIABLE}={MODULE_NAME}&amp;{NV_OP_VARIABLE}={OP}"
+                        <form name="myform" id="myform" method="post" action="index.php?{NV_LANG_VARIABLE}={NV_LANG_DATA}&{NV_NAME_VARIABLE}={MODULE_NAME}&{NV_OP_VARIABLE}={OP}&id={item.id}"
                             >
                             <input type="hidden" name="token" value="{token}" />
                             <table class="table table-hover table-border" width="100%">
                                 <thead>
+                                    
                                     <tr>
                                         <th class="align-middle" colspan="2">Tên báo cáo:</th>
                                     </tr>
                                     <tr>
                                         <td class='align-middle' colspan="2">
-                                        <input name='title' value='{item.title}' type='text' class='form-control'></td>
+                                        <input name='title' value='{item.title}' type='text' class='has_f f_title form-control'></td>
                                     </tr>
                                     <tr>
                                         <th colspan="2" class="align-middle">I – THÀNH PHẦN TRỰC</th>
@@ -40,11 +47,11 @@
                                     <tr>
                                         <td class='align-middle'>
                                             <input name='truc_lanh_dao' value='{item.truc_lanh_dao}' type='text'
-                                                class='form-control'>
+                                                class='form-control has_f f_truc_lanh_dao'>
                                         </td>
                                         <td class='align-middle'>
                                             <input name='truc_bac_sy' value='{item.truc_bac_sy}' type='text'
-                                                class='form-control'>
+                                                class='form-control has_f f_truc_bac_sy'>
                                         </td>
                                     </tr>
 

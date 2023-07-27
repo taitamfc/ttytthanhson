@@ -10,16 +10,16 @@
         <tr>
             <td><span style="font-weight: 400;">1</span></td>
             <td><span style="font-weight: 400;">PK Mắt</span></td>
-            <td><input type="number" name="tinh_hinh_benh_nhan[tsbn][phong_kham_mat][tong_so_kham]" value="{item.tinh_hinh_benh_nhan.tsbn.phong_kham_mat.tong_so_kham}"></td>
-            <td><input type="number" name="tinh_hinh_benh_nhan[tsbn][phong_kham_mat][vao_vien]" value="{item.tinh_hinh_benh_nhan.tsbn.phong_kham_mat.vao_vien}"></td>
-            <td><input type="number" name="tinh_hinh_benh_nhan[tsbn][phong_kham_mat][phantram_vao_vien]" value="{item.tinh_hinh_benh_nhan.tsbn.phong_kham_mat.phantram_vao_vien}"></td>
+            <td><input type="number" name="tinh_hinh_benh_nhan[tsbn][phong_kham_mat][tong_so_kham]" class="has_f f_tinh_hinh_benh_nhan_tsbn_phong_kham_mat_tong_so_kham" value="{item.tinh_hinh_benh_nhan.tsbn.phong_kham_mat.tong_so_kham}"></td>
+            <td><input type="number" name="tinh_hinh_benh_nhan[tsbn][phong_kham_mat][vao_vien]" class="has_f f_tinh_hinh_benh_nhan_tsbn_phong_kham_mat_vao_vien" value="{item.tinh_hinh_benh_nhan.tsbn.phong_kham_mat.vao_vien}"></td>
+            <td><input type="number" name="tinh_hinh_benh_nhan[tsbn][phong_kham_mat][phantram_vao_vien]" class="has_f f_tinh_hinh_benh_nhan_tsbn_phong_kham_mat_phantram_vao_vien" value="{item.tinh_hinh_benh_nhan.tsbn.phong_kham_mat.phantram_vao_vien}"></td>
         </tr>
         <tr>
             <td><span style="font-weight: 400;">2</span></td>
             <td><span style="font-weight: 400;">PK Số 7</span></td>
-            <td><input type="number" name="tinh_hinh_benh_nhan[tsbn][phong_kham_so7][tong_so_kham]" value="{item.tinh_hinh_benh_nhan.tsbn.phong_kham_so7.tong_so_kham}"></td>
-            <td><input type="number" name="tinh_hinh_benh_nhan[tsbn][phong_kham_so7][vao_vien]" value="{item.tinh_hinh_benh_nhan.tsbn.phong_kham_so7.vao_vien}"></td>
-            <td><input type="number" name="tinh_hinh_benh_nhan[tsbn][phong_kham_so7][phantram_vao_vien]" value="{item.tinh_hinh_benh_nhan.tsbn.phong_kham_so7.phantram_vao_vien}"></td>
+            <td><input type="number" name="tinh_hinh_benh_nhan[tsbn][phong_kham_so7][tong_so_kham]" class="has_f f_tinh_hinh_benh_nhan_tsbn_phong_kham_so7_tong_so_kham" value="{item.tinh_hinh_benh_nhan.tsbn.phong_kham_so7.tong_so_kham}"></td>
+            <td><input type="number" name="tinh_hinh_benh_nhan[tsbn][phong_kham_so7][vao_vien]" class="has_f f_tinh_hinh_benh_nhan_tsbn_phong_kham_so7_vao_vien" value="{item.tinh_hinh_benh_nhan.tsbn.phong_kham_so7.vao_vien}"></td>
+            <td><input type="number" name="tinh_hinh_benh_nhan[tsbn][phong_kham_so7][phantram_vao_vien]" class="has_f f_tinh_hinh_benh_nhan_tsbn_phong_kham_so7_phantram_vao_vien" value="{item.tinh_hinh_benh_nhan.tsbn.phong_kham_so7.phantram_vao_vien}"></td>
         </tr>
         <tr>
             <td><span style="font-weight: 400;">3</span></td>

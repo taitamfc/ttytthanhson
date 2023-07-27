@@ -11,7 +11,7 @@
 if (! defined('NV_IS_MOD_QLNL')) {
     die('Stop!!!');
 }
-$id = $nv_Request->get_int('id', 'post,get', 1);
+$id = $nv_Request->get_int('id', 'post,get', 0);
 $OAThemeHelper = oa_load_model('OAThemeHelper');
 $OABaoCaoGiaoBan = oa_load_model('OABaoCaoGiaoBan');
 // CONTROLLER
@@ -27,20 +27,31 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ){
         'benh_nhan_mo_phien' => $_REQUEST['benh_nhan_mo_phien'],
         'benh_nhan_chuyen_tuyen' => $_REQUEST['benh_nhan_chuyen_tuyen'],
     ];
-    $OABaoCaoGiaoBan->save($data);
+    if($id){
+        $OABaoCaoGiaoBan->update($id,$data);
+    }else{
+        $OABaoCaoGiaoBan->save($data);
+    }
     $OAThemeHelper->redirectOp('baocaogiaoban');
 }
 
-$item = $OABaoCaoGiaoBan->find($id);
-$item = $OABaoCaoGiaoBan->format_item($item);
-
-dd($item);
-
+if($id){
+    $item = $OABaoCaoGiaoBan->find($id);
+    $item = $OABaoCaoGiaoBan->format_item($item);
+}
 
 $page_title = 'Thêm báo cáo giao ban';
 // VIEW
 $xtpl = $OAThemeHelper->setView($op.'.tpl');
-$xtpl->assign('item', $item);
+
+if( isset($item['benh_nhan_theo_doi']) && count($item['benh_nhan_theo_doi']) ){
+    foreach( $item['benh_nhan_theo_doi'] as $khoa => $value ){
+        $OAThemeHelper->renderItemsFromArray($xtpl,$item['benh_nhan_theo_doi'][$khoa],$khoa.'_item','main.'.$khoa);
+    }
+}
+
+
+$item ? $xtpl->assign('item', $item) : null;
 $xtpl->parse('main');
 $contents = $xtpl->text('main');
 include NV_ROOTDIR . '/includes/header.php';
