@@ -11,6 +11,7 @@
 if (! defined('NV_IS_MOD_QLNL')) {
     die('Stop!!!');
 }
+$id = $nv_Request->get_int('id', 'post,get', 1);
 $OAThemeHelper = oa_load_model('OAThemeHelper');
 $OABaoCaoGiaoBan = oa_load_model('OABaoCaoGiaoBan');
 // CONTROLLER
@@ -22,15 +23,24 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ){
         'tinh_hinh_benh_nhan' => json_encode($_REQUEST['tinh_hinh_benh_nhan']),
         'hoat_dong_dieu_tri' => json_encode($_REQUEST['hoat_dong_dieu_tri']),
         'benh_nhan_theo_doi' => json_encode($_REQUEST['benh_nhan_theo_doi']),
+        'benh_nhan_mo_cap_cuu' => $_REQUEST['benh_nhan_mo_cap_cuu'],
+        'benh_nhan_mo_phien' => $_REQUEST['benh_nhan_mo_phien'],
+        'benh_nhan_chuyen_tuyen' => $_REQUEST['benh_nhan_chuyen_tuyen'],
     ];
     $OABaoCaoGiaoBan->save($data);
     $OAThemeHelper->redirectOp('baocaogiaoban');
 }
 
+$item = $OABaoCaoGiaoBan->find($id);
+$item = $OABaoCaoGiaoBan->format_item($item);
+
+dd($item);
+
 
 $page_title = 'Thêm báo cáo giao ban';
 // VIEW
 $xtpl = $OAThemeHelper->setView($op.'.tpl');
+$xtpl->assign('item', $item);
 $xtpl->parse('main');
 $contents = $xtpl->text('main');
 include NV_ROOTDIR . '/includes/header.php';

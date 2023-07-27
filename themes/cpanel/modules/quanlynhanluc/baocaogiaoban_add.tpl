@@ -28,7 +28,7 @@
                                     </tr>
                                     <tr>
                                         <td class='align-middle' colspan="2">
-                                        <input name='title' value='{DATA.title}' type='text' class='form-control'></td>
+                                        <input name='title' value='{item.title}' type='text' class='form-control'></td>
                                     </tr>
                                     <tr>
                                         <th colspan="2" class="align-middle">I – THÀNH PHẦN TRỰC</th>
@@ -39,11 +39,11 @@
                                     </tr>
                                     <tr>
                                         <td class='align-middle'>
-                                            <input name='truc_lanh_dao' value='{DATA.truc_lanh_dao}' type='text'
+                                            <input name='truc_lanh_dao' value='{item.truc_lanh_dao}' type='text'
                                                 class='form-control'>
                                         </td>
                                         <td class='align-middle'>
-                                            <input name='truc_bac_sy' value='{DATA.truc_bac_sy}' type='text'
+                                            <input name='truc_bac_sy' value='{item.truc_bac_sy}' type='text'
                                                 class='form-control'>
                                         </td>
                                     </tr>
@@ -82,7 +82,9 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">
-                                        <textarea style="width:100%"></textarea>
+                                        <textarea style="width:100%" name="benh_nhan_mo_cap_cuu">
+                                            {item.benh_nhan_mo_cap_cuu}
+                                        </textarea>
                                         </td>
                                     </tr>
 
@@ -93,7 +95,9 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">
-                                        <textarea style="width:100%"></textarea>
+                                        <textarea style="width:100%" name="benh_nhan_mo_phien">
+                                            {item.benh_nhan_mo_phien}
+                                        </textarea>
                                         </td>
                                     </tr>
 
@@ -104,7 +108,9 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2">
-                                        <textarea style="width:100%"></textarea>
+                                        <textarea style="width:100%" name="benh_nhan_chuyen_tuyen">
+                                            {item.benh_nhan_chuyen_tuyen}
+                                        </textarea>
                                         </td>
                                     </tr>
 
@@ -151,7 +157,6 @@
        $('body').on('click','.clone-remove',function(e){
             e.preventDefault();
             var parent = $(this).closest('.clone-wrapper').find('.clone-item');
-            // if( !$(this).closest('.clone-item').hasClass('first-clone') ){
             if( parent.length > 1 ){
                 $(this).closest('.clone-item').remove();
             }
