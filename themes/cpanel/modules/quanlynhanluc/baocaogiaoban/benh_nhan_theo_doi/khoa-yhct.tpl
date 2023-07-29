@@ -1,10 +1,10 @@
-<tr>
+<tr class="has_fd fd_yhct">
     <th colspan="2">
     6.7. KHOA YHCT
     </th>
 </tr>
 
-<tr>
+<tr class="has_fd fd_yhct">
     <td colspan="2">
         <div class="clone-container">
             <div class="clone-wrapper">

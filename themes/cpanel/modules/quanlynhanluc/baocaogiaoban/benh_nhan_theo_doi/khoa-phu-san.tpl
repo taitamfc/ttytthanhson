@@ -1,10 +1,10 @@
-<tr>
+<tr class="has_fd fd_khoaphusan">
     <th colspan="2">
     6.3. KHOA PHỤ SẢN
     </th>
 </tr>
 
-<tr>
+<tr class="has_fd fd_khoaphusan">
     <td colspan="2">
         <div class="clone-container">
             <div class="clone-wrapper">

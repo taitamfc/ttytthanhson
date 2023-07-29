@@ -8,8 +8,10 @@
 </script>
 
 <style>
-.has_f {
-    border-color: red !important;
+.has_f:disabled, .has_fd input:disabled, .has_fd textarea:disabled {
+    border: none !important;
+    cursor: not-allowed;
+    background: none;
 }
 </style>
 
@@ -35,7 +37,7 @@
                                     </tr>
                                     <tr>
                                         <td class='align-middle' colspan="2">
-                                        <input name='title' value='{item.title}' type='text' class='has_f f_title form-control'></td>
+                                        <input name='title' value='{item.title}' type='text' class='has_f f_khoakb form-control'></td>
                                     </tr>
                                     <tr>
                                         <th colspan="2" class="align-middle">I – THÀNH PHẦN TRỰC</th>
@@ -47,11 +49,11 @@
                                     <tr>
                                         <td class='align-middle'>
                                             <input name='truc_lanh_dao' value='{item.truc_lanh_dao}' type='text'
-                                                class='form-control has_f f_truc_lanh_dao'>
+                                                class='form-control has_f f_khoakb'>
                                         </td>
                                         <td class='align-middle'>
                                             <input name='truc_bac_sy' value='{item.truc_bac_sy}' type='text'
-                                                class='form-control has_f f_truc_bac_sy'>
+                                                class='form-control has_f f_khoakb'>
                                         </td>
                                     </tr>
 
@@ -152,6 +154,18 @@
     </div>
 </div>
 <script type="text/javascript">
+    var currentKhoa = '{currentKhoa}';
+    var currentGroupId = '{currentGroupId}';
+    console.log(currentKhoa);
+    // if( currentGroupId > 1 ){
+        jQuery('input.has_f').prop('disabled',true);
+        jQuery('input.f_'+currentKhoa).prop('disabled',false);
+
+        jQuery('.has_fd').find('input, textarea').prop('disabled',true);
+        jQuery('.has_fd').find('.clone-remove').remove();
+        jQuery('.has_fd').find('.clone-remove, .clone-btn').remove();
+    // }
+    
     $(function() {
        $('.clone-btn').on('click',function(){
             var parent = $(this).closest('.clone-container');

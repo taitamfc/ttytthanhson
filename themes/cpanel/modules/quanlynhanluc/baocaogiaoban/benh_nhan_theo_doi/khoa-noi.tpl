@@ -1,9 +1,9 @@
-<tr>
+<tr class="has_fd fd_khoanoi">
     <th colspan="2">
     6.4. KHOA NỘI 
     </th>
 </tr>
-<tr>
+<tr class="has_fd fd_khoanoi">
     <td colspan="2">
         <div class="clone-container">
             <div class="clone-wrapper">

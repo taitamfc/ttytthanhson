@@ -11,22 +11,42 @@
 if (! defined('NV_IS_MOD_QLNL')) {
     die('Stop!!!');
 }
+global $admin_info;
 $id = $nv_Request->get_int('id', 'post,get', 0);
 $OAThemeHelper = oa_load_model('OAThemeHelper');
 $OABaoCaoGiaoBan = oa_load_model('OABaoCaoGiaoBan');
 // CONTROLLER
 if( $_SERVER['REQUEST_METHOD'] == 'POST' ){
-    $data = [
-        'title' => trim($_REQUEST['title']), 
-        'truc_lanh_dao' => trim($_REQUEST['truc_lanh_dao']),
-        'truc_bac_sy' => trim($_REQUEST['truc_bac_sy']),
-        'tinh_hinh_benh_nhan' => json_encode($_REQUEST['tinh_hinh_benh_nhan']),
-        'hoat_dong_dieu_tri' => json_encode($_REQUEST['hoat_dong_dieu_tri']),
-        'benh_nhan_theo_doi' => json_encode($_REQUEST['benh_nhan_theo_doi']),
-        'benh_nhan_mo_cap_cuu' => $_REQUEST['benh_nhan_mo_cap_cuu'],
-        'benh_nhan_mo_phien' => $_REQUEST['benh_nhan_mo_phien'],
-        'benh_nhan_chuyen_tuyen' => $_REQUEST['benh_nhan_chuyen_tuyen'],
-    ];
+    $data = [];
+    
+    if( isset($_REQUEST['title']) ){
+        $data['title'] = trim($_REQUEST['title']);
+    }
+    if( isset($_REQUEST['truc_lanh_dao']) ){
+        $data['truc_lanh_dao'] = trim($_REQUEST['truc_lanh_dao']);
+    }
+    if( isset($_REQUEST['truc_bac_sy']) ){
+        $data['truc_bac_sy'] = trim($_REQUEST['truc_bac_sy']);
+    }
+    if( isset($_REQUEST['tinh_hinh_benh_nhan']) ){
+        $data['tinh_hinh_benh_nhan'] = json_encode($_REQUEST['tinh_hinh_benh_nhan']);
+    }
+    if( isset($_REQUEST['hoat_dong_dieu_tri']) ){
+        $data['hoat_dong_dieu_tri'] = json_encode($_REQUEST['hoat_dong_dieu_tri']);
+    }
+    if( isset($_REQUEST['benh_nhan_theo_doi']) ){
+        $data['benh_nhan_theo_doi'] = json_encode($_REQUEST['benh_nhan_theo_doi']);
+    }
+    if( isset($_REQUEST['benh_nhan_mo_cap_cuu']) ){
+        $data['benh_nhan_mo_cap_cuu'] = trim($_REQUEST['benh_nhan_mo_cap_cuu']);
+    }
+    if( isset($_REQUEST['benh_nhan_mo_phien']) ){
+        $data['benh_nhan_mo_phien'] = trim($_REQUEST['benh_nhan_mo_phien']);
+    }
+    if( isset($_REQUEST['benh_nhan_chuyen_tuyen']) ){
+        $data['benh_nhan_chuyen_tuyen'] = trim($_REQUEST['benh_nhan_chuyen_tuyen']);
+    }
+
     if($id){
         $OABaoCaoGiaoBan->update($id,$data);
     }else{
@@ -49,7 +69,9 @@ if( isset($item['benh_nhan_theo_doi']) && count($item['benh_nhan_theo_doi']) ){
         $OAThemeHelper->renderItemsFromArray($xtpl,$item['benh_nhan_theo_doi'][$khoa],$khoa.'_item','main.'.$khoa);
     }
 }
-
+$xtpl->assign('currentGroupId', $admin_info['group_id']);
+$xtpl->assign('currentKhoa', $admin_info['username']);
+$xtpl->assign('currentKhoa', 'khoakb');
 
 $item ? $xtpl->assign('item', $item) : null;
 $xtpl->parse('main');
