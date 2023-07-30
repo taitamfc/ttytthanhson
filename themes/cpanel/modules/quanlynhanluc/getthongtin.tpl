@@ -119,7 +119,7 @@ tr td input,textarea {height: 30px;width: 98%;}
         <input type="hidden" name="sta" id="sta" value="save_taichinh" />
         <input type="hidden" name="table" value="{table}" />
         <input type="hidden" name="token" value="{token}" />
-        <table id="tbl_danhsach" style="width: 99%;" class="table table-bordered table-hover">
+        <table id="tbl_danhsach" style="width: 99%;" class="table table-hover table-bordered table-hover">
             <thead>
                 <tr>
                     <th class="align-middle text-center " rowspan="2">STT</th>

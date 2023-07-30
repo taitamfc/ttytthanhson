@@ -133,7 +133,7 @@
         <div class="accordion-desc">
 		<div class="card-block table-border-style">
             <div class="table-responsive">
-                <table class="table table-bordered">
+                <table class="table table-hover table-bordered">
                     <thead>
 						<tr>
                             <th class="text-center">#</th>
@@ -179,7 +179,7 @@
         <div class="accordion-desc">
 		<div class="card-block table-border-style">
             <div class="table-responsive">
-                <table class="table table-bordered">
+                <table class="table table-hover table-bordered">
                     <thead>
 						<tr>
                             <th colspan="6"><h6> 1.Nội dung được phê duyệt</h6></th>

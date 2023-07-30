@@ -43,7 +43,7 @@
 		</form>
         <!-- Tooltips on textbox card end -->
 		<!-- BEGIN: data -->
-			<table class="table table-striped table-bordered table-hover" >
+			<table class="table table-striped table-hover table-bordered table-hover" >
 			<tbody>
 			<!-- BEGIN: row -->
 				<tr {color}>
@@ -78,7 +78,7 @@
 		</form>
         <!-- Tooltips on textbox card end -->
 		<!-- BEGIN: phong -->
-			<table class="table table-striped table-bordered table-hover" >
+			<table class="table table-striped table-hover table-bordered table-hover" >
 			<tbody>
 			<!-- BEGIN: row -->
 				<tr {color}>
@@ -111,7 +111,7 @@
 		</form>
         <!-- Tooltips on textbox card end -->
 		<!-- BEGIN: phong -->
-			<table class="table table-striped table-bordered table-hover" >
+			<table class="table table-striped table-hover table-bordered table-hover" >
 			<tbody>
 			<!-- BEGIN: row -->
 				<tr {color}>

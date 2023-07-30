@@ -13,6 +13,7 @@ if (! defined('NV_IS_MOD_QLNL')) {
 }
 global $admin_info;
 $id = $nv_Request->get_int('id', 'post,get', 0);
+$layout = $nv_Request->get_title('layout', 'post,get', 'add');
 $OAThemeHelper = oa_load_model('OAThemeHelper');
 $OABaoCaoGiaoBan = oa_load_model('OABaoCaoGiaoBan');
 // CONTROLLER
@@ -38,19 +39,20 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ){
         $data['benh_nhan_theo_doi'] = json_encode($_REQUEST['benh_nhan_theo_doi']);
     }
     if( isset($_REQUEST['benh_nhan_mo_cap_cuu']) ){
-        $data['benh_nhan_mo_cap_cuu'] = trim($_REQUEST['benh_nhan_mo_cap_cuu']);
+        $data['benh_nhan_mo_cap_cuu'] = json_encode($_REQUEST['benh_nhan_mo_cap_cuu']);
     }
     if( isset($_REQUEST['benh_nhan_mo_phien']) ){
-        $data['benh_nhan_mo_phien'] = trim($_REQUEST['benh_nhan_mo_phien']);
+        $data['benh_nhan_mo_phien'] = json_encode($_REQUEST['benh_nhan_mo_phien']);
     }
     if( isset($_REQUEST['benh_nhan_chuyen_tuyen']) ){
-        $data['benh_nhan_chuyen_tuyen'] = trim($_REQUEST['benh_nhan_chuyen_tuyen']);
+        $data['benh_nhan_chuyen_tuyen'] = json_encode($_REQUEST['benh_nhan_chuyen_tuyen']);
     }
 
+
     if($id){
-        $OABaoCaoGiaoBan->update($id,$data);
+        $saved = $OABaoCaoGiaoBan->update($id,$data);
     }else{
-        $OABaoCaoGiaoBan->save($data);
+        $saved = $OABaoCaoGiaoBan->save($data);
     }
     $OAThemeHelper->redirectOp('baocaogiaoban');
 }
@@ -60,9 +62,18 @@ if($id){
     $item = $OABaoCaoGiaoBan->format_item($item);
 }
 
-$page_title = 'Thêm báo cáo giao ban';
+
+$page_title = !$id ? 'THÊM BÁO CÁO GIAO BAN' : 'CẬP NHẬT BÁO CÁO GIAO BAN';
 // VIEW
-$xtpl = $OAThemeHelper->setView($op.'.tpl');
+if( $layout == 'add' ){
+    $xtpl = $OAThemeHelper->setView($op.'.tpl');
+}else{
+    $xtpl = $OAThemeHelper->setView('baocaogiaoban_show.tpl');
+}
+
+$OAThemeHelper->renderItemsFromArray($xtpl,$item['benh_nhan_mo_cap_cuu'],'benh_nhan_mo_cap_cuu_item','main.benh_nhan_mo_cap_cuu');
+$OAThemeHelper->renderItemsFromArray($xtpl,$item['benh_nhan_mo_phien'],'benh_nhan_mo_phien_item','main.benh_nhan_mo_phien');
+$OAThemeHelper->renderItemsFromArray($xtpl,$item['benh_nhan_chuyen_tuyen'],'benh_nhan_chuyen_tuyen_item','main.benh_nhan_chuyen_tuyen');
 
 if( isset($item['benh_nhan_theo_doi']) && count($item['benh_nhan_theo_doi']) ){
     foreach( $item['benh_nhan_theo_doi'] as $khoa => $value ){
@@ -71,8 +82,9 @@ if( isset($item['benh_nhan_theo_doi']) && count($item['benh_nhan_theo_doi']) ){
 }
 $xtpl->assign('currentGroupId', $admin_info['group_id']);
 $xtpl->assign('currentKhoa', $admin_info['username']);
-$xtpl->assign('currentKhoa', 'khoakb');
+// $xtpl->assign('currentKhoa', 'khoakb');
 
+$xtpl->assign('page_title', $page_title);
 $item ? $xtpl->assign('item', $item) : null;
 $xtpl->parse('main');
 $contents = $xtpl->text('main');

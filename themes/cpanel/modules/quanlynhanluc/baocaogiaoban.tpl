@@ -46,7 +46,7 @@
                                             <div class="input-group">
                                                 <span class="input-group-addon" id="tg_tungay"
                                                     style="width: auto;min-width:120px;">Từ ngày:</span>
-                                                <input id="startDate" name="tg_tungay" value="{F.tg_tungay}" type="text"
+                                                <input name="tg_tungay" value="{F.tg_tungay}" type="date"
                                                     class="form-control">
                                             </div>
                                         </th>
@@ -54,7 +54,7 @@
                                             <div class="input-group">
                                                 <span class="input-group-addon" id="tg_denngay"
                                                     style="width: auto;min-width:120px;">Đến ngày:</span>
-                                                <input id="endDate" name="tg_denngay" value="{F.tg_denngay}" type="text"
+                                                <input name="tg_denngay" value="{F.tg_denngay}" type="date"
                                                     class="form-control">
                                             </div>
                                         </th>
@@ -70,22 +70,28 @@
                                 </thead>
                             </table>
                         </form>
-                        <table id="tbl_danhsach" class="table table-hover">
+                        <table id="tbl_danhsach" class="table table-hover table-bordered">
                             <thead>
                                 <tr>
                                     <th>#</th>
                                     <th>Tiêu đề</th>
                                     <th>Ngày lập</th>
+                                    <th>Người lập</th>
                                     <th>Ngày cập nhật</th>
+                                    <th>Người cập nhật</th>
+                                    <th>Hành động</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <!-- BEGIN: items -->
                                 <tr>
-                                    <th scope="row"><a href="{item.link_view}"> {item.id}</a></th>
-                                    <td><a href="{item.link_view}">{item.title}</a></td>
+                                    <th scope="row"><a href="{item.link_edit}"> {item.id}</a></th>
+                                    <td><a href="{item.link_edit}">{item.title}</a></td>
                                     <td>{item.created_date}</td>
                                     <td>{item.updated_date}</td>
+                                    <td>{item.updated_date}</td>
+                                    <td>{item.updated_date}</td>
+                                    <td><a href="{item.link_view}">Xem</a></td>
                                 </tr>
                                 <!-- END: items -->
                                 <!-- BEGIN: generate_page -->

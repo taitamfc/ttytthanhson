@@ -14,9 +14,10 @@ if (! defined('NV_IS_MOD_QLNL')) {
 $OAThemeHelper = oa_load_model('OAThemeHelper');
 $OABaoCaoGiaoBan = oa_load_model('OABaoCaoGiaoBan');
 $page_title = 'Báo cáo giao ban';
+
+
 $data = $OABaoCaoGiaoBan->paginate(10,[
     'layout' => 'admin_index',
-    'request' => $_REQUEST
 ]);
 $items = $data['items'];
 $items = $OABaoCaoGiaoBan->format_items($items);
@@ -31,6 +32,7 @@ if (! empty($generate_page)) {
     $xtpl->parse('main.generate_page');
 }
 $OAThemeHelper->renderItemsFromArray($xtpl,$items,'item','main.items');
+$xtpl->assign('F', $_REQUEST);
 
 
 $xtpl->parse('main');
