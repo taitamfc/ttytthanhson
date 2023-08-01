@@ -16,6 +16,8 @@ $id = $nv_Request->get_int('id', 'post,get', 0);
 $layout = $nv_Request->get_title('layout', 'post,get', 'add');
 $OAThemeHelper = oa_load_model('OAThemeHelper');
 $OABaoCaoGiaoBan = oa_load_model('OABaoCaoGiaoBan');
+$OABaoCaoKhamChuaBenh = oa_load_model('OABaoCaoKhamChuaBenh');
+
 // CONTROLLER
 if( $_SERVER['REQUEST_METHOD'] == 'POST' ){
     $data = [];
@@ -60,6 +62,21 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ){
 if($id){
     $item = $OABaoCaoGiaoBan->find($id);
     $item = $OABaoCaoGiaoBan->format_item($item);
+}
+
+$OABaoCaoKhamChuaBenhHomNay = $OABaoCaoKhamChuaBenh->all([
+    'limit' => 1,
+    'search' => [
+        'DATE(ngaygio)' => date('Y-m-d'),
+        'DATE(ngaygio)' => '2023-04-03'
+    ]
+]);
+
+if($OABaoCaoKhamChuaBenhHomNay){
+    $item['tinh_hinh_benh_nhan']['bhyt']['ngoaitinh']   = $OABaoCaoKhamChuaBenhHomNay['bn_ngoaitinh'];
+    $item['tinh_hinh_benh_nhan']['bhyt']['noitinh']     = $OABaoCaoKhamChuaBenhHomNay['bn_noitinh'];
+    $item['tinh_hinh_benh_nhan']['bn_vienphi']          = $OABaoCaoKhamChuaBenhHomNay['bnkham'];
+    $item['tinh_hinh_benh_nhan']['bhyt']['tong']          = $OABaoCaoKhamChuaBenhHomNay['sobn_bhyt'];
 }
 
 
