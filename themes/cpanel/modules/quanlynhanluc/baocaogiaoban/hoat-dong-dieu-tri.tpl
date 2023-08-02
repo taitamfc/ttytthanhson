@@ -256,7 +256,7 @@
                         value="{item.hoat_dong_dieu_tri.tong_bn_cu}"></td>
                 <td><input type="number" name="hoat_dong_dieu_tri[tong_vaovien]" class="form-control w80 has_f f_auto f_auto_col hoat_dong_dieu_tri_tong_bn_vaovien"  data-col="3"
                         value="{item.hoat_dong_dieu_tri.tong_vaovien}"></td>
-                <td><input type="number" name="hoat_dong_dieu_tri[tong_ravien]" class="form-control w80 has_f f_auto f_auto_col" data-col="4"
+                <td><input type="number" name="hoat_dong_dieu_tri[tong_ravien]" class="form-control w80 has_f f_auto f_auto_col hoat_dong_dieu_tri_tong_bn_ravien" data-col="4"
                         value="{item.hoat_dong_dieu_tri.tong_ravien}"></td>
                 <td><input type="number" name="hoat_dong_dieu_tri[tong_chuyenkhoa]" class="form-control w80 has_f f_auto f_auto_col" data-col="5"
                         value="{item.hoat_dong_dieu_tri.tong_chuyenkhoa}"></td>

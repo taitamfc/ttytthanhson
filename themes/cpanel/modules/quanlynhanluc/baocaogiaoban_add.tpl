@@ -47,6 +47,11 @@
         margin-bottom: 5px;
         padding-bottom: 5px;
     }
+    td.flex-center {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
 </style>
 
 <div class="page-body">
@@ -204,20 +209,22 @@
                 let col_auto_colum = col_auto.data('col');
                 let col_need_autos = col_auto.closest('table').find('tr td:nth-of-type('+col_auto_colum+') input');
                 col_need_autos.addClass('col_need_autos')
-                //col_need_autos.each( function(key,val){
-                    col_need_autos.on('keyup change',function(){
-                        let total_value = 0;
-                        col_need_autos.each( function(key,val){
-                            if( $(val).val() && !$(val).hasClass('col_need_autos') ){
-                                total_value += parseInt($(val).val())
-                            }
-                        })
-                        col_auto.val(total_value)
+                col_need_autos.on('keyup change',function(){
+                    let total_value = 0;
+                    col_need_autos.each( function(key,val){
+                        if( $(val).val() && !$(val).hasClass('f_auto_col') ){
+                            total_value += parseInt($(val).val())
+                        }
                     })
-                    
-                //})
+                    col_auto.val(total_value)
 
-                
+                    if( col_auto.hasClass('hoat_dong_dieu_tri_tong_bn_vaovien') ){
+                        $('[name="tinh_hinh_benh_nhan[bn_vaovien]"]').val(total_value)
+                    }
+                    if( col_auto.hasClass('hoat_dong_dieu_tri_tong_bn_ravien') ){
+                        $('.tinh_hinh_benh_nhan_tong_bn_chuyenvien').text(total_value)
+                    }
+                })
             })
         }
     });
