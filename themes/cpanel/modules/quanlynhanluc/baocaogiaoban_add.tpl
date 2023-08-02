@@ -185,6 +185,41 @@
                 $(this).closest('.clone-item').remove();
             }
         });
+
+        $('.hoat_dong_dieu_tri_bn_vaovien').on('keyup change',function(){
+            var hoat_dong_dieu_tri_tong_bn_vaovien = 0;
+            $('.hoat_dong_dieu_tri_bn_vaovien').each( function(key,val){
+                let valLue = $(val).val();
+                if(valLue){
+                    hoat_dong_dieu_tri_tong_bn_vaovien += parseInt(valLue);
+                }
+            });
+            $('.hoat_dong_dieu_tri_tong_bn_vaovien').val(hoat_dong_dieu_tri_tong_bn_vaovien);
+        });
+
+        // Auto total for col
+        if( $('.has_auto_total').length ){
+            $('.f_auto_col').each( function(key,val){
+                let col_auto = $(val);
+                let col_auto_colum = col_auto.data('col');
+                let col_need_autos = col_auto.closest('table').find('tr td:nth-of-type('+col_auto_colum+') input');
+                col_need_autos.addClass('col_need_autos')
+                //col_need_autos.each( function(key,val){
+                    col_need_autos.on('keyup change',function(){
+                        let total_value = 0;
+                        col_need_autos.each( function(key,val){
+                            if( $(val).val() && !$(val).hasClass('col_need_autos') ){
+                                total_value += parseInt($(val).val())
+                            }
+                        })
+                        col_auto.val(total_value)
+                    })
+                    
+                //})
+
+                
+            })
+        }
     });
 </script>
 <!-- END: main -->
