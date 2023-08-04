@@ -14,17 +14,9 @@
             <div class="card">
                 <div class="card-header">
                     <h5>BÁO CÁO GIAO BAN</h5>
-                    <span></span>
                     <div class="card-header-right">
-                        <ul class="list-unstyled card-option">
-                            <li><i class="fa fa-chevron-left"></i></li>
-                            <li><i class="fa fa-window-maximize full-card"></i></li>
-                            <li><i class="fa fa-minus minimize-card"></i></li>
-                            <li><i class="fa fa-refresh reload-card"></i></li>
-                            <li><i class="fa fa-times close-card"></i></li>
-                        </ul>
+                        <a class="btn bnt-mini btn-info" href="index.php?language=vi&nv=quanlynhanluc&op=baocaogiaoban_add">Thêm mới</a>
                     </div>
-
                 </div>
                 <div class="card-block">
                     <div class="table-responsive" style="padding-bottom: 100px;">
@@ -76,9 +68,9 @@
                                     <th>#</th>
                                     <th>Tiêu đề</th>
                                     <th>Ngày lập</th>
-                                    <th>Người lập</th>
+                                    <!--th>Người lập</th-->
                                     <th>Ngày cập nhật</th>
-                                    <th>Người cập nhật</th>
+                                    <!--th>Người cập nhật</th-->
                                     <th>Hành động</th>
                                 </tr>
                             </thead>
@@ -89,8 +81,7 @@
                                     <td><a href="{item.link_edit}">{item.title}</a></td>
                                     <td>{item.created_date}</td>
                                     <td>{item.updated_date}</td>
-                                    <td>{item.updated_date}</td>
-                                    <td>{item.updated_date}</td>
+                                    
                                     <td><a href="{item.link_view}">Xem</a></td>
                                 </tr>
                                 <!-- END: items -->

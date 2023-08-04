@@ -222,10 +222,50 @@
                         $('[name="tinh_hinh_benh_nhan[bn_vaovien]"]').val(total_value)
                     }
                     if( col_auto.hasClass('hoat_dong_dieu_tri_tong_bn_ravien') ){
-                        $('.tinh_hinh_benh_nhan_tong_bn_chuyenvien').text(total_value)
+                        $('.tinh_hinh_benh_nhan_tong_bn_chuyenvien').text(total_value);
+
+                        let t_bn_chuyenvien = parseInt( $('[name="tinh_hinh_benh_nhan[bn_chuyenvien]"]').val() )
+                        let t_bn_chuyenvien_cac_khoa = parseInt( $('.tinh_hinh_benh_nhan_tong_bn_chuyenvien').text() );
+                        $('[name="tinh_hinh_benh_nhan[tong_bn_chuyenvien]"]').val( t_bn_chuyenvien + t_bn_chuyenvien_cac_khoa );
                     }
                 })
             })
+        }
+
+        if( $('[name="tinh_hinh_benh_nhan[bn_chuyenvien]"]').length ){
+            $('[name="tinh_hinh_benh_nhan[bn_chuyenvien]"]').on('change keyup',function(){
+                let t_bn_chuyenvien = parseInt($(this).val())
+                let t_bn_chuyenvien_cac_khoa = parseInt( $('.tinh_hinh_benh_nhan_tong_bn_chuyenvien').text() );
+                $('[name="tinh_hinh_benh_nhan[tong_bn_chuyenvien]"]').val( t_bn_chuyenvien + t_bn_chuyenvien_cac_khoa );
+            });
+        }
+
+        if( $('.phantram_vao_vien').length ){
+            $('.phantram_vao_vien').each( function(key,val){
+                let col_auto = $(val);
+                let col_need_autos = col_auto.closest('tr').find('td input');
+                col_need_autos.on('keyup change',function(){
+                    let total_value = [];
+                    col_need_autos.each( function(key,val){
+                        if( $(val).val() && !$(val).hasClass('phantram_vao_vien') ){
+                            total_value.push(parseInt($(val).val()))
+                        }
+                    })
+                    col_auto.attr('data-values',total_value.join(','))
+                    let percent = (total_value[1] / total_value[0]) * 100;
+                    col_auto.val(percent.toFixed(2));
+                    // if( col_auto.hasClass('hoat_dong_dieu_tri_tong_bn_vaovien') ){
+                    //     $('[name="tinh_hinh_benh_nhan[bn_vaovien]"]').val(total_value)
+                    // }
+                    // if( col_auto.hasClass('hoat_dong_dieu_tri_tong_bn_ravien') ){
+                    //     $('.tinh_hinh_benh_nhan_tong_bn_chuyenvien').text(total_value);
+
+                    //     let t_bn_chuyenvien = parseInt( $('[name="tinh_hinh_benh_nhan[bn_chuyenvien]"]').val() )
+                    //     let t_bn_chuyenvien_cac_khoa = parseInt( $('.tinh_hinh_benh_nhan_tong_bn_chuyenvien').text() );
+                    //     $('[name="tinh_hinh_benh_nhan[tong_bn_chuyenvien]"]').val( t_bn_chuyenvien + t_bn_chuyenvien_cac_khoa );
+                    // }
+                })
+            });
         }
     });
 </script>

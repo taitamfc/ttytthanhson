@@ -28,6 +28,6 @@
             <input type="number" name="tinh_hinh_benh_nhan[bn_chuyenvien]" class="form-control w80 has_f f_khoakb" value="{item.tinh_hinh_benh_nhan.bn_chuyenvien}"> + 
             <span class="tinh_hinh_benh_nhan_tong_bn_chuyenvien">0</span>
         </td>
-        <td><input type="number" name="tinh_hinh_benh_nhan[bn_chuyenvien]" class="form-control w80 has_f f_khoakb" value="{item.tinh_hinh_benh_nhan.bn_chuyenvien}"></td>
+        <td><input type="number" name="tinh_hinh_benh_nhan[tong_bn_chuyenvien]" class="form-control w80 has_f f_khoakb" value="{item.tinh_hinh_benh_nhan.bn_chuyenvien}"></td>
     </tr>
 </table>
