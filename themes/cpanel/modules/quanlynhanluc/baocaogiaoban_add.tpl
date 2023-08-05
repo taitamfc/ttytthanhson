@@ -159,6 +159,7 @@
     var currentKhoa = '{currentKhoa}';
     var currentGroupId = '{currentGroupId}';
 
+
     if (currentGroupId > 1 && currentKhoa != 'admin') {
         jQuery('input.has_f').prop('disabled', true);
         jQuery('input.f_' + currentKhoa).prop('disabled', false);
@@ -175,6 +176,13 @@
     });
 
     $(function() {
+        $('.hoat_dong_dieu_tri.f_khoacovid19').val(0);
+        // $('.hoat_dong_dieu_tri').each( function(key,val){
+        //     if( !$(val).hasClass('f_auto_col') ){
+        //         $(val).val( $(val).val() );
+        //     }
+        // });
+
         $('.clone-btn').on('click', function() {
             var parent = $(this).closest('.clone-container');
             var cloned = parent.find('.clone-item').first().clone();
@@ -207,7 +215,7 @@
             $('.f_auto_col').each( function(key,val){
                 let col_auto = $(val);
                 let col_auto_colum = col_auto.data('col');
-                let col_need_autos = col_auto.closest('table').find('tr td:nth-of-type('+col_auto_colum+') input');
+                let col_need_autos = col_auto.closest('table').find('tr td:nth-of-type('+col_auto_colum+') input').not('.f_auto_col');
                 col_need_autos.addClass('col_need_autos')
                 col_need_autos.on('keyup change',function(){
                     let total_value = 0;
@@ -243,7 +251,7 @@
         if( $('.phantram_vao_vien').length ){
             $('.phantram_vao_vien').each( function(key,val){
                 let col_auto = $(val);
-                let col_need_autos = col_auto.closest('tr').find('td input');
+                let col_need_autos = col_auto.closest('tr').find('td input').not('.f_auto_col');
                 col_need_autos.on('keyup change',function(){
                     let total_value = [];
                     col_need_autos.each( function(key,val){
@@ -254,16 +262,6 @@
                     col_auto.attr('data-values',total_value.join(','))
                     let percent = (total_value[1] / total_value[0]) * 100;
                     col_auto.val(percent.toFixed(2));
-                    // if( col_auto.hasClass('hoat_dong_dieu_tri_tong_bn_vaovien') ){
-                    //     $('[name="tinh_hinh_benh_nhan[bn_vaovien]"]').val(total_value)
-                    // }
-                    // if( col_auto.hasClass('hoat_dong_dieu_tri_tong_bn_ravien') ){
-                    //     $('.tinh_hinh_benh_nhan_tong_bn_chuyenvien').text(total_value);
-
-                    //     let t_bn_chuyenvien = parseInt( $('[name="tinh_hinh_benh_nhan[bn_chuyenvien]"]').val() )
-                    //     let t_bn_chuyenvien_cac_khoa = parseInt( $('.tinh_hinh_benh_nhan_tong_bn_chuyenvien').text() );
-                    //     $('[name="tinh_hinh_benh_nhan[tong_bn_chuyenvien]"]').val( t_bn_chuyenvien + t_bn_chuyenvien_cac_khoa );
-                    // }
                 })
             });
         }

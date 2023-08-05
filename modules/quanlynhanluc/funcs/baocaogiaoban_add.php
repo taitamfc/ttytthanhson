@@ -17,6 +17,7 @@ $layout = $nv_Request->get_title('layout', 'post,get', 'add');
 $OAThemeHelper = oa_load_model('OAThemeHelper');
 $OABaoCaoGiaoBan = oa_load_model('OABaoCaoGiaoBan');
 $OABaoCaoKhamChuaBenh = oa_load_model('OABaoCaoKhamChuaBenh');
+$OAKhamChuaBenh = oa_load_model('OAKhamChuaBenh');
 
 // CONTROLLER
 if( $_SERVER['REQUEST_METHOD'] == 'POST' ){
@@ -64,20 +65,30 @@ if($id){
     $item = $OABaoCaoGiaoBan->format_item($item);
 }
 
+$cr_date = date('Y-m-d');
+$cr_date = '2023-04-03';
+
 $OABaoCaoKhamChuaBenhHomNay = $OABaoCaoKhamChuaBenh->all([
     'limit' => 1,
     'search' => [
-        'DATE(ngaygio)' => date('Y-m-d'),
+        'DATE(ngaygio)' => $cr_date,
         'DATE(ngaygio)' => '2023-04-03'
     ]
 ]);
 
+$hoat_dong_dieu_tri = $OAKhamChuaBenh->getDataReportGiaoBan($cr_date);
+if($hoat_dong_dieu_tri){
+    foreach( $hoat_dong_dieu_tri as $khoa => $mucs ){
+        foreach( $mucs as $muc_k => $muc_v ){
+            $item['hoat_dong_dieu_tri'][$khoa][$muc_k] = $muc_v;
+        }
+    }
+}
 if($OABaoCaoKhamChuaBenhHomNay){
     $item['tinh_hinh_benh_nhan']['bhyt']['ngoaitinh']   = $OABaoCaoKhamChuaBenhHomNay['bn_ngoaitinh'];
     $item['tinh_hinh_benh_nhan']['bhyt']['noitinh']     = $OABaoCaoKhamChuaBenhHomNay['bn_noitinh'];
     $item['tinh_hinh_benh_nhan']['bn_vienphi']          = $OABaoCaoKhamChuaBenhHomNay['bnkham'];
     $item['tinh_hinh_benh_nhan']['bhyt']['tong']          = $OABaoCaoKhamChuaBenhHomNay['sobn_bhyt'];
-    // dd($OABaoCaoKhamChuaBenhHomNay);
 }
 
 

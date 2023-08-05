@@ -4,13 +4,13 @@
         <ol class="clone-wrapper">
             <li class="clone-item empty-clone">
                 <div class="clone-input">
-                    <div class="mb-3">
+                    {* <div class="mb-3">
                         <label class="form-label">Tiêu đề báo cáo</label>
                         <input name="benh_nhan_theo_doi[khoa_hscc][tieude][]" value=""
                             class="form-control" type="text">
-                    </div>
+                    </div> *}
                     <div class="mb-3">
-                        <label class="form-label">Nội dung báo cáo</label>
+                        <label class="form-label">Bênh nhân</label>
                         <textarea name="benh_nhan_theo_doi[khoa_hscc][noidung][]"
                             class="form-control"></textarea>
                     </div>
@@ -22,13 +22,13 @@
             <!-- BEGIN: khoa_hscc -->
             <li class="clone-item first-clone">
                 <div class="clone-input">
-                    <div class="mb-3">
+                    {* <div class="mb-3">
                         <label class="form-label">Tiêu đề báo cáo</label>
                         <input name="benh_nhan_theo_doi[khoa_hscc][tieude][]" value="{khoa_hscc_item.tieude}"
                             class="form-control" type="text">
-                    </div>
+                    </div> *}
                     <div class="mb-3">
-                        <label class="form-label">Nội dung báo cáo</label>
+                        <label class="form-label">Bênh nhân</label>
                         <textarea name="benh_nhan_theo_doi[khoa_hscc][noidung][]"
                             class="form-control">{khoa_hscc_item.noidung}</textarea>
                     </div>

@@ -36,7 +36,7 @@ class OAModel {
 
     }
     public function all($options = []){
-        $limit = isset( $options['limit'] ) ? $options['limit'] : null;
+        $limit = isset( $options['limit'] ) ? $options['limit'] : -1;
         $search = isset( $options['search'] ) ? $options['search'] : [];
         $joins = isset( $options['join'] ) ? $options['join'] : [];
         $order = isset( $options['order'] ) ? $options['order'] : [
