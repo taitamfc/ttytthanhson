@@ -175,7 +175,7 @@
         }
     });
 
-    $(function() {
+    $(document).ready( function(){
         $('.hoat_dong_dieu_tri.f_khoacovid19').val(0);
         // $('.hoat_dong_dieu_tri').each( function(key,val){
         //     if( !$(val).hasClass('f_auto_col') ){
@@ -212,32 +212,39 @@
 
         // Auto total for col
         if( $('.has_auto_total').length ){
-            $('.f_auto_col').each( function(key,val){
+            setTimeout(() => {
+                $('.f_auto_col').each( function(key,val){
                 let col_auto = $(val);
                 let col_auto_colum = col_auto.data('col');
                 let col_need_autos = col_auto.closest('table').find('tr td:nth-of-type('+col_auto_colum+') input').not('.f_auto_col');
                 col_need_autos.addClass('col_need_autos')
-                col_need_autos.on('keyup change',function(){
-                    let total_value = 0;
-                    col_need_autos.each( function(key,val){
-                        if( $(val).val() && !$(val).hasClass('f_auto_col') ){
-                            total_value += parseInt($(val).val())
-                        }
-                    })
-                    col_auto.val(total_value)
-
-                    if( col_auto.hasClass('hoat_dong_dieu_tri_tong_bn_vaovien') ){
-                        $('[name="tinh_hinh_benh_nhan[bn_vaovien]"]').val(total_value)
-                    }
-                    if( col_auto.hasClass('hoat_dong_dieu_tri_tong_bn_ravien') ){
-                        $('.tinh_hinh_benh_nhan_tong_bn_chuyenvien').text(total_value);
-
-                        let t_bn_chuyenvien = parseInt( $('[name="tinh_hinh_benh_nhan[bn_chuyenvien]"]').val() )
-                        let t_bn_chuyenvien_cac_khoa = parseInt( $('.tinh_hinh_benh_nhan_tong_bn_chuyenvien').text() );
-                        $('[name="tinh_hinh_benh_nhan[tong_bn_chuyenvien]"]').val( t_bn_chuyenvien + t_bn_chuyenvien_cac_khoa );
-                    }
+                handle_auto_col(col_need_autos,col_auto);
+                col_need_autos.on('keyup change load',function(){
+                    handle_auto_col(col_need_autos,col_auto)
                 })
             })
+            }, 500);
+        }
+
+        function handle_auto_col(col_need_autos,col_auto){
+            let total_value = 0;
+            col_need_autos.each( function(key,val){
+                if( $(val).val() && !$(val).hasClass('f_auto_col') ){
+                    total_value += parseInt($(val).val())
+                }
+            })
+            col_auto.val(total_value)
+
+            if( col_auto.hasClass('hoat_dong_dieu_tri_tong_bn_vaovien') ){
+                $('[name="tinh_hinh_benh_nhan[bn_vaovien]"]').val(total_value)
+            }
+            if( col_auto.hasClass('hoat_dong_dieu_tri_tong_bn_ravien') ){
+                $('.tinh_hinh_benh_nhan_tong_bn_chuyenvien').text(total_value);
+
+                let t_bn_chuyenvien = parseInt( $('[name="tinh_hinh_benh_nhan[bn_chuyenvien]"]').val() )
+                let t_bn_chuyenvien_cac_khoa = parseInt( $('.tinh_hinh_benh_nhan_tong_bn_chuyenvien').text() );
+                $('[name="tinh_hinh_benh_nhan[tong_bn_chuyenvien]"]').val( t_bn_chuyenvien + t_bn_chuyenvien_cac_khoa );
+            }
         }
 
         if( $('[name="tinh_hinh_benh_nhan[bn_chuyenvien]"]').length ){
