@@ -69,7 +69,15 @@
                         <input type="hidden" name="token" value="{token}" />
                         <div class="mb-3">
                             <label class="form-label">Tên báo cáo:</label>
-                            <input name='title' value='{item.title}' type='text' class='has_f f_khoakb form-control'>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                BÁO CÁO TRỰC NGÀY 
+                                </div>
+                                <div class="col-lg-6">
+                                <input name='title' value='{item.title}' type='date' class='has_f f_khoakb form-control'>
+                                </div>
+                            </div>
+                            
                         </div>
                         <div class="mb-3">
                             <label class="form-label">I – THÀNH PHẦN TRỰC</label>

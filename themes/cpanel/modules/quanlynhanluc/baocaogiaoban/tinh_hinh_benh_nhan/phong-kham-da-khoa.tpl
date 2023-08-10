@@ -39,7 +39,7 @@
         </td>
     </tr>
     <tr>
-        <td rowspan="2">Bệnh nhân BHYT246</td>
+        <td rowspan="2">Bệnh nhân BHYT 246</td>
         <td>Ngoại tỉnh</td>
         <td><input type="number" class="form-control w80 has_f f_khoakb" name="tinh_hinh_benh_nhan[pkdk][bhyt][ngoaitinh]" value="{item.tinh_hinh_benh_nhan.pkdk.bhyt.ngoaitinh}">  </td>
     </tr>

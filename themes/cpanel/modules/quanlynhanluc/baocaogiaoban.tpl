@@ -78,7 +78,7 @@
                                 <!-- BEGIN: items -->
                                 <tr>
                                     <th scope="row"><a href="{item.link_edit}"> {item.id}</a></th>
-                                    <td><a href="{item.link_edit}">{item.title}</a></td>
+                                    <td><a href="{item.link_edit}">BÁO CÁO TRỰC NGÀY {item.title}</a></td>
                                     <td>{item.created_date}</td>
                                     <td>{item.updated_date}</td>
                                     
