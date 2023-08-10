@@ -55,9 +55,6 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ){
     if( isset($_REQUEST['benh_nhan_chuyen_tuyen']) ){
         $data['benh_nhan_chuyen_tuyen'] = json_encode($_REQUEST['benh_nhan_chuyen_tuyen']);
     }
-
-    dd($data);
-
     if($id){
         $saved = $OABaoCaoGiaoBan->update($id,$data);
     }else{
@@ -67,13 +64,12 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ){
 }
 
 $cr_date = date('Y-m-d');
-$cr_date = '2023-04-03';
+// $cr_date = '2023-04-03';
 
 $OABaoCaoKhamChuaBenhHomNay = $OABaoCaoKhamChuaBenh->all([
     'limit' => 1,
     'search' => [
-        'DATE(ngaygio)' => $cr_date,
-        'DATE(ngaygio)' => '2023-04-03'
+        'DATE(ngaygio)' => $cr_date
     ]
 ]);
 
