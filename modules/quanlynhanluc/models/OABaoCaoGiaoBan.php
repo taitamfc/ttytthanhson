@@ -29,6 +29,7 @@ class OABaoCaoGiaoBan extends OAModel{
     }
     public function format_items($items){
         foreach( $items as $k => $item ){
+            $items[$k]['title'] = date('d/m/Y',strtotime($item['title'])); 
             $items[$k]['created_date'] = date('d/m/Y H:i:s',strtotime($item['created_date'])); 
             $items[$k]['updated_date'] = date('d/m/Y H:i:s',strtotime($item['updated_date'])); 
             $items[$k]['link_edit'] = str_replace('op=baocaogiaoban','op=baocaogiaoban_add&id='.$item['id'],$this->home_url);

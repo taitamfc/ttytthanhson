@@ -1,13 +1,8 @@
 <!-- BEGIN: main -->
-<script type="text/javascript" src="{BASE_URL}{NV_ASSETS_DIR}/js/jquery/jquery.validate.min.js"></script>
-<script type="text/javascript" src="{BASE_URL}{NV_ASSETS_DIR}/js/language/jquery.validator-{NV_LANG_INTERFACE}.js">
-</script>
-<link type="text/css" href="{BASE_URL}{NV_ASSETS_DIR}/js/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
-<script type="text/javascript" src="{BASE_URL}{NV_ASSETS_DIR}/js/jquery-ui/jquery-ui.min.js"></script>
-<script type="text/javascript" src="{BASE_URL}{NV_ASSETS_DIR}/js/language/jquery.ui.datepicker-{NV_LANG_INTERFACE}.js">
-</script>
-
 <style>
+    .clone-container {
+        padding-left: 24px;
+    }
     .has_f:disabled,
     .has_fd input:disabled,
     .has_fd textarea:disabled {
@@ -167,14 +162,22 @@
     var currentKhoa = '{currentKhoa}';
     var currentGroupId = '{currentGroupId}';
 
+    console.log(currentKhoa);
+    console.log(currentGroupId);
 
-    if (currentGroupId > 1 && currentKhoa != 'admin') {
-        jQuery('input.has_f').prop('disabled', true);
-        jQuery('input.f_' + currentKhoa).prop('disabled', false);
+    if (currentKhoa != "" && currentKhoa != 'admin') {
+        jQuery('input.has_f').prop('readonly', true);
+        jQuery('input.f_' + currentKhoa).prop('readonly', false);
 
-        jQuery('.has_fd').find('input, textarea').prop('disabled', true);
-        jQuery('.has_fd').find('.clone-remove').remove();
-        jQuery('.has_fd').find('.clone-remove, .clone-btn').remove();
+        jQuery('.has_fd').find('input, textarea').prop('readonly', true);
+        jQuery('.has_fd').find('.clone-remove').hide();
+        jQuery('.has_fd').find('.clone-remove, .clone-btn').hide();
+
+        jQuery('.fd_' + currentKhoa).find('input, textarea').prop('readonly', false);
+        jQuery('.fd_' + currentKhoa).find('.clone-remove').show();
+        jQuery('.fd_' + currentKhoa).find('.clone-remove, .clone-btn').show();
+    }else{
+        jQuery('.clone-remove').hide();
     }
 
     $('.first-clone').each(function(key, val) {
@@ -183,15 +186,20 @@
         }
     });
 
+    
+
     $(document).ready( function(){
+
+        $('body').on('dbclick','input, textarea', function(e){
+            console.log(e);
+            e.preventDefault();
+            return false;
+        })
+
         $('.hoat_dong_dieu_tri.f_khoacovid19').val(0);
-        // $('.hoat_dong_dieu_tri').each( function(key,val){
-        //     if( !$(val).hasClass('f_auto_col') ){
-        //         $(val).val( $(val).val() );
-        //     }
-        // });
 
         $('.clone-btn').on('click', function() {
+            console.log('click');
             var parent = $(this).closest('.clone-container');
             var cloned = parent.find('.clone-item').first().clone();
             cloned.removeClass('first-clone')
@@ -200,6 +208,7 @@
         });
 
         $('body').on('click', '.clone-remove', function(e) {
+            console.log('click');
             e.preventDefault();
             var parent = $(this).closest('.clone-wrapper').find('.clone-item');
             if (parent.length > 1) {
@@ -208,6 +217,7 @@
         });
 
         $('.hoat_dong_dieu_tri_bn_vaovien').on('keyup change',function(){
+            console.log('change');
             var hoat_dong_dieu_tri_tong_bn_vaovien = 0;
             $('.hoat_dong_dieu_tri_bn_vaovien').each( function(key,val){
                 let valLue = $(val).val();
@@ -268,6 +278,7 @@
                 let col_auto = $(val);
                 let col_need_autos = col_auto.closest('tr').find('td input').not('.f_auto_col');
                 col_need_autos.on('keyup change',function(){
+                    console.log('change');
                     let total_value = [];
                     col_need_autos.each( function(key,val){
                         if( $(val).val() && !$(val).hasClass('phantram_vao_vien') ){

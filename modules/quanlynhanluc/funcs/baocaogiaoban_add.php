@@ -11,13 +11,18 @@
 if (! defined('NV_IS_MOD_QLNL')) {
     die('Stop!!!');
 }
-global $admin_info;
+global $admin_info,$user_info;
 $id = $nv_Request->get_int('id', 'post,get', 0);
 $layout = $nv_Request->get_title('layout', 'post,get', 'add');
 $OAThemeHelper = oa_load_model('OAThemeHelper');
 $OABaoCaoGiaoBan = oa_load_model('OABaoCaoGiaoBan');
 $OABaoCaoKhamChuaBenh = oa_load_model('OABaoCaoKhamChuaBenh');
 $OAKhamChuaBenh = oa_load_model('OAKhamChuaBenh');
+
+if($id){
+    $item = $OABaoCaoGiaoBan->find($id);
+    $item = $OABaoCaoGiaoBan->format_item($item);
+}
 
 // CONTROLLER
 if( $_SERVER['REQUEST_METHOD'] == 'POST' ){
@@ -51,6 +56,7 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ){
         $data['benh_nhan_chuyen_tuyen'] = json_encode($_REQUEST['benh_nhan_chuyen_tuyen']);
     }
 
+    dd($data);
 
     if($id){
         $saved = $OABaoCaoGiaoBan->update($id,$data);
@@ -58,11 +64,6 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ){
         $saved = $OABaoCaoGiaoBan->save($data);
     }
     $OAThemeHelper->redirectOp('baocaogiaoban');
-}
-
-if($id){
-    $item = $OABaoCaoGiaoBan->find($id);
-    $item = $OABaoCaoGiaoBan->format_item($item);
 }
 
 $cr_date = date('Y-m-d');
@@ -77,6 +78,7 @@ $OABaoCaoKhamChuaBenhHomNay = $OABaoCaoKhamChuaBenh->all([
 ]);
 
 $hoat_dong_dieu_tri = $OAKhamChuaBenh->getDataReportGiaoBan($cr_date);
+
 if($hoat_dong_dieu_tri){
     foreach( $hoat_dong_dieu_tri as $khoa => $mucs ){
         foreach( $mucs as $muc_k => $muc_v ){
@@ -84,6 +86,7 @@ if($hoat_dong_dieu_tri){
         }
     }
 }
+
 if($OABaoCaoKhamChuaBenhHomNay){
     $item['tinh_hinh_benh_nhan']['bhyt']['ngoaitinh']   = $OABaoCaoKhamChuaBenhHomNay['bn_ngoaitinh'];
     $item['tinh_hinh_benh_nhan']['bhyt']['noitinh']     = $OABaoCaoKhamChuaBenhHomNay['bn_noitinh'];
@@ -109,12 +112,15 @@ if( isset($item['benh_nhan_theo_doi']) && count($item['benh_nhan_theo_doi']) ){
         $OAThemeHelper->renderItemsFromArray($xtpl,$item['benh_nhan_theo_doi'][$khoa],$khoa.'_item','main.'.$khoa);
     }
 }
+if(!$admin_info){
+    $admin_info = $user_info; 
+}
 $xtpl->assign('currentGroupId', $admin_info['group_id']);
 $xtpl->assign('currentKhoa', $admin_info['username']);
 // $xtpl->assign('currentKhoa', 'khoakb');
 
 $xtpl->assign('page_title', $page_title);
-$item ? $xtpl->assign('item', $item) : null;
+$xtpl->assign('item', $item);
 $xtpl->parse('main');
 $contents = $xtpl->text('main');
 include NV_ROOTDIR . '/includes/header.php';

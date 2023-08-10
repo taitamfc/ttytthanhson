@@ -172,7 +172,7 @@
 							<thead>
 								<tr>
 										<th scope="row" class="text-center" style="text-transform: uppercase;">
-											<h5> NHẬP THÔNG TIN KHÁM CHỮA BỆNH<br/> {THONGTIN.tenkhoa} </h5>
+											<h5> NHẬP THÔNG TIN KHÁM CHỮA BỆNH - {THONGTIN.ngay_tao}<br/> {THONGTIN.tenkhoa} </h5> 
 										</th>									
 								</tr>
 							</thead>

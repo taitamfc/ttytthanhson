@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div class="clone-action">
-                <button type="button" class="clone-removebtn btn-danger btn-sm clone-remove">X</button>
+                <button type="button" class="btn btn-danger btn-sm clone-remove">X</button>
             </div>
         </li>
         <!-- BEGIN: benh_nhan_mo_phien -->
@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="clone-action">
-                <button type="button" class="clone-removebtn btn-danger btn-sm clone-remove">X</button>
+                <button type="button" class="btn btn-danger btn-sm clone-remove">X</button>
             </div>
         </li>
         <!-- END: benh_nhan_mo_phien -->
