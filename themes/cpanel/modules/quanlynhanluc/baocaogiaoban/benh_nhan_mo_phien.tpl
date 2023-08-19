@@ -1,6 +1,6 @@
 <div class="clone-container">
-    <ol class="clone-wrapper">
-        <li class="clone-item empty-clone">
+    <div class="clone-wrapper">
+        <div class="clone-item empty-clone">
             <div class="clone-input">
                 <div class="mb-3">
                     <label class="form-label">Bệnh nhân</label>
@@ -10,9 +10,9 @@
             <div class="clone-action">
                 <button type="button" class="btn btn-danger btn-sm clone-remove">X</button>
             </div>
-        </li>
+        </div>
         <!-- BEGIN: benh_nhan_mo_phien -->
-        <li class="clone-item first-clone">
+        <div class="clone-item first-clone">
             <div class="clone-input">
                 <div class="mb-3">
                     <label class="form-label">Bệnh nhân</label>
@@ -22,9 +22,9 @@
             <div class="clone-action">
                 <button type="button" class="btn btn-danger btn-sm clone-remove">X</button>
             </div>
-        </li>
+        </div>
         <!-- END: benh_nhan_mo_phien -->
 
-    </ol>
+    </div>
     <a class="clone-btn" href="#">Thêm bệnh nhân</a>
 </div>

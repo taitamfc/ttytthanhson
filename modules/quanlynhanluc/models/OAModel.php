@@ -36,9 +36,10 @@ class OAModel {
 
     }
     public function all($options = []){
-        $limit = isset( $options['limit'] ) ? $options['limit'] : -1;
+        $limit = isset( $options['limit'] ) ? $options['limit'] : null;
         $search = isset( $options['search'] ) ? $options['search'] : [];
         $joins = isset( $options['join'] ) ? $options['join'] : [];
+        $operators = isset( $options['operators'] ) ? $options['operators'] : [];
         $order = isset( $options['order'] ) ? $options['order'] : [
             'orderBy' => $this->primaryKey,
             'orderDir' => 'desc'
@@ -52,7 +53,11 @@ class OAModel {
         }
         if( count($search) ){
             foreach( $search as $field => $value ){
-                $this->app_db->where ($field, $value);
+                $this->app_db->where (
+                    $field, 
+                    $value,
+                    isset($operators[$field]) ? $operators[$field] : '='
+                );
             }
         }
         $this->app_db->orderBy($order['orderBy'],$order['orderDir']);

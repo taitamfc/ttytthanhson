@@ -238,5 +238,36 @@ class OAThemeHelper extends OAModel{
         nv_redirect_location('index.php?' . NV_NAME_VARIABLE . '=' . $module_name . '&' . NV_OP_VARIABLE . '=' . $op);
         exit;
     }
+
+    public function getDayNameVietNam($i){
+        
+        $n = date('w', strtotime( date('Y-m-'.$i) ) );
+
+
+        switch ($n) {
+            case 1:
+                $thu = 'T.2';
+                break;
+            case 2:
+                $thu = 'T.3';
+                break;
+            case 3:
+                $thu = 'T.4';
+                break;
+            case 4:
+                $thu = 'T.5';
+                break;
+            case 5:
+                $thu = 'T.6';
+                break;
+            case 6:
+                $thu = 'T.7';
+                break;
+            case 0:
+                $thu = 'CN';
+                break;
+        }
+        return $thu;
+    } 
     
 }
