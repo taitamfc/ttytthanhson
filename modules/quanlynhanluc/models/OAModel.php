@@ -136,7 +136,8 @@ class OAModel {
         if($id){
             return $id;
         }else{
-            die(__METHOD__.':'.$this->app_db->getLastError());
+            echo(__METHOD__.' Co loi xay ra:'.$this->app_db->getLastError());
+            die();
         }
     }
     public function update($id,$data,$options = []){
@@ -145,7 +146,8 @@ class OAModel {
         if($updated){
             return $updated;
         }else{
-            die(__METHOD__.':'.$this->app_db->getLastError());
+            echo(__METHOD__.' Co loi xay ra:'.$this->app_db->getLastError());
+            die();
         }
     }
     public function delete($id,$options = []){

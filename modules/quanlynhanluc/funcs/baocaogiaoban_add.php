@@ -19,10 +19,7 @@ $OABaoCaoGiaoBan = oa_load_model('OABaoCaoGiaoBan');
 $OABaoCaoKhamChuaBenh = oa_load_model('OABaoCaoKhamChuaBenh');
 $OAKhamChuaBenh = oa_load_model('OAKhamChuaBenh');
 
-if($id){
-    $item = $OABaoCaoGiaoBan->find($id);
-    $item = $OABaoCaoGiaoBan->format_item($item);
-}
+
 
 // CONTROLLER
 if( $_SERVER['REQUEST_METHOD'] == 'POST' ){
@@ -57,27 +54,54 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ){
     }
     
     $tinh_hinh_benh_nhan = $_REQUEST['tinh_hinh_benh_nhan'];
-    dd($tinh_hinh_benh_nhan);
+    $dataBaocaoKCB = [
+        'sobn_bhyt' => (int)$tinh_hinh_benh_nhan['bhyt']['tong'],
+        'bn_noitinh' => (int)$tinh_hinh_benh_nhan['bhyt']['noitinh'],
+        'bn_ngoaitinh' => (int)$tinh_hinh_benh_nhan['bhyt']['ngoaitinh'],
+        'bnkham' => (int)$tinh_hinh_benh_nhan['bn_vienphi'],
+        'account' => 'khoakb',
+        'thoigian' => time(),
+        'add_time' => 0,
+        'edit_time' => 0,
+        'ngaygio' => date('Y-m-d H:i:s'),
+        'status' => 1,
+        'ghichu' => ''
+    ];
+    $OABaoCaoKhamChuaBenh->saveOrUpdate($dataBaocaoKCB);
+
+    // Luu vao bang kham chua benh cua cac khoa
+    $hoat_dong_dieu_tri = $_REQUEST['hoat_dong_dieu_tri'];
+    foreach($hoat_dong_dieu_tri as $khoa => $dataKCB){
+        if( is_array($dataKCB) ){
+            foreach( $dataKCB as $k => $v ){
+                $dataKCB[$k] = (int)$v;
+            }
+            $dataKCB['ngaygio'] = date('Y-m-d H:i:s');
+            $dataKCB['account'] = $OAKhamChuaBenh->khoas[$khoa];
+            $dataKCB['thoigian'] = time();
+            $dataKCB['add_time'] = 0;
+            $dataKCB['edit_time'] = 0;
+            $dataKCB['status'] = 1;
+            $dataKCB['bn_tuvong'] = 0;
+            $dataKCB['ghichu'] = '';
+            if($dataKCB){
+                $OAKhamChuaBenh->saveOrUpdate($dataKCB);
+            }
+        }
+    }
+
 
     if($id){
         $saved = $OABaoCaoGiaoBan->update($id,$data);
     }else{
-        // Luu BaoCaoKhamChuaBenh
-        $dataBaocaoKCB = [
-            'sobn_bhyt' => $tinh_hinh_benh_nhan['bhyt']['tong'],
-            'bn_noitinh' => $tinh_hinh_benh_nhan['bhyt']['noitinh'],
-            'bn_ngoaitinh' => $tinh_hinh_benh_nhan['bhyt']['ngoaitinh'],
-            'bnkham' => $tinh_hinh_benh_nhan['bhyt']['ngoaitinh'],
-        ];
-        $OABaoCaoKhamChuaBenh->save($dataBaocaoKCB);
-        // Luu KhamChuaBenh
-        $tinh_hinh_benh_nhan = $_REQUEST['tinh_hinh_benh_nhan'];
-        
         $saved = $OABaoCaoGiaoBan->save($data);
     }
     $OAThemeHelper->redirectOp('baocaogiaoban');
 }
-
+if($id){
+    $item = $OABaoCaoGiaoBan->find($id);
+    $item = $OABaoCaoGiaoBan->format_item($item);
+}
 $cr_date = date('Y-m-d');
 // $cr_date = '2023-04-03';
 

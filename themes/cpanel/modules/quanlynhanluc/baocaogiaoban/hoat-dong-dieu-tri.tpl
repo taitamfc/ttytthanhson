@@ -60,7 +60,7 @@
                         value="{item.hoat_dong_dieu_tri.khoa_cc_hstc.bn_chuyenvien}"></td>
                 <td><input type="number" name="hoat_dong_dieu_tri[khoa_cc_hstc][bn_xinve]" class="hoat_dong_dieu_tri form-control w80 has_f f_capcuu"
                         value="{item.hoat_dong_dieu_tri.khoa_cc_hstc.bn_xinve}"></td>
-                <td><input type="number" name="hoat_dong_dieu_tri[khoa_cc_hstc]bn_noitru"
+                <td><input type="number" name="hoat_dong_dieu_tri[khoa_cc_hstc][bn_noitru]"
                         class="hoat_dong_dieu_tri form-control w80 has_f f_capcuu" value="{item.hoat_dong_dieu_tri.khoa_cc_hstc.bn_noitru}">
                 </td>
                 <td><input type="number" name="hoat_dong_dieu_tri[khoa_cc_hstc][bn_ngoaitru]"
@@ -91,7 +91,7 @@
                 </td>
                 <td><input type="number" name="hoat_dong_dieu_tri[khoa_ngoai_th][bn_xinve]" class="hoat_dong_dieu_tri form-control w80 has_f f_khoangoai"
                         value="{item.hoat_dong_dieu_tri.khoa_ngoai_th.bn_xinve}"></td>
-                <td><input type="number" name="hoat_dong_dieu_tri[khoa_ngoai_th]bn_noitru"
+                <td><input type="number" name="hoat_dong_dieu_tri[khoa_ngoai_th][bn_noitru]"
                         class="hoat_dong_dieu_tri form-control w80 has_f f_khoangoai" value="{item.hoat_dong_dieu_tri.khoa_ngoai_th.bn_noitru}">
                 </td>
                 <td><input type="number" name="hoat_dong_dieu_tri[khoa_ngoai_th][bn_ngoaitru]"
@@ -122,7 +122,7 @@
                 </td>
                 <td><input type="number" name="hoat_dong_dieu_tri[khoa_phu_san][bn_xinve]" class="hoat_dong_dieu_tri form-control w80 has_f f_khoaphusan"
                         value="{item.hoat_dong_dieu_tri.khoa_phu_san.bn_xinve}"></td>
-                <td><input type="number" name="hoat_dong_dieu_tri[khoa_phu_san]bn_noitru"
+                <td><input type="number" name="hoat_dong_dieu_tri[khoa_phu_san][bn_noitru]"
                         class="hoat_dong_dieu_tri form-control w80 has_f f_khoaphusan" value="{item.hoat_dong_dieu_tri.khoa_phu_san.bn_noitru}">
                 </td>
                 <td><input type="number" name="hoat_dong_dieu_tri[khoa_phu_san][bn_ngoaitru]"
@@ -151,7 +151,7 @@
                         value="{item.hoat_dong_dieu_tri.khoa_nhi.bn_chuyenvien}"></td>
                 <td><input type="number" name="hoat_dong_dieu_tri[khoa_nhi][bn_xinve]" class="hoat_dong_dieu_tri form-control w80 has_f f_khoanhi"
                         value="{item.hoat_dong_dieu_tri.khoa_nhi.bn_xinve}"></td>
-                <td><input type="number" name="hoat_dong_dieu_tri[khoa_nhi]bn_noitru"
+                <td><input type="number" name="hoat_dong_dieu_tri[khoa_nhi][bn_noitru]"
                         class="hoat_dong_dieu_tri form-control w80 has_f f_khoanhi" value="{item.hoat_dong_dieu_tri.khoa_nhi.bn_noitru}"></td>
                 <td><input type="number" name="hoat_dong_dieu_tri[khoa_nhi][bn_ngoaitru]"
                         class="hoat_dong_dieu_tri form-control w80 has_f f_khoanhi" value="{item.hoat_dong_dieu_tri.khoa_nhi.bn_ngoaitru}">
@@ -178,7 +178,7 @@
                         value="{item.hoat_dong_dieu_tri.khoa_noi_tn.bn_chuyenvien}"></td>
                 <td><input type="number" name="hoat_dong_dieu_tri[khoa_noi_tn][bn_xinve]" class="hoat_dong_dieu_tri form-control w80 has_f f_khoanoi"
                         value="{item.hoat_dong_dieu_tri.khoa_noi_tn.bn_xinve}"></td>
-                <td><input type="number" name="hoat_dong_dieu_tri[khoa_noi_tn]bn_noitru"
+                <td><input type="number" name="hoat_dong_dieu_tri[khoa_noi_tn][bn_noitru]"
                         class="hoat_dong_dieu_tri form-control w80 has_f f_khoanoi" value="{item.hoat_dong_dieu_tri.khoa_noi_tn.bn_noitru}">
                 </td>
                 <td><input type="number" name="hoat_dong_dieu_tri[khoa_noi_tn][bn_ngoaitru]"
@@ -209,7 +209,7 @@
                 </td>
                 <td><input type="number" name="hoat_dong_dieu_tri[khoa_covid19][bn_xinve]" class="hoat_dong_dieu_tri form-control w80 has_f f_khoacovid19"
                         value="{item.hoat_dong_dieu_tri.khoa_covid19.bn_xinve}"></td>
-                <td><input type="number" name="hoat_dong_dieu_tri[khoa_covid19]bn_noitru"
+                <td><input type="number" name="hoat_dong_dieu_tri[khoa_covid19][bn_noitru]"
                         class="hoat_dong_dieu_tri form-control w80 has_f f_khoacovid19" value="{item.hoat_dong_dieu_tri.khoa_covid19.bn_noitru}">
                 </td>
                 <td><input type="number" name="hoat_dong_dieu_tri[khoa_covid19][bn_ngoaitru]"
@@ -238,7 +238,7 @@
                         value="{item.hoat_dong_dieu_tri.khu_yhct.bn_chuyenvien}"></td>
                 <td><input type="number" name="hoat_dong_dieu_tri[khu_yhct][bn_xinve]" class="hoat_dong_dieu_tri form-control w80 has_f f_yhct"
                         value="{item.hoat_dong_dieu_tri.khu_yhct.bn_xinve}"></td>
-                <td><input type="number" name="hoat_dong_dieu_tri[khu_yhct]bn_noitru" class="hoat_dong_dieu_tri form-control w80 has_f f_yhct"
+                <td><input type="number" name="hoat_dong_dieu_tri[khu_yhct][bn_noitru]" class="hoat_dong_dieu_tri form-control w80 has_f f_yhct"
                         value="{item.hoat_dong_dieu_tri.khu_yhct.bn_noitru}"></td>
                 <td><input type="number" name="hoat_dong_dieu_tri[khu_yhct][bn_ngoaitru]"
                         class="hoat_dong_dieu_tri form-control w80 has_f f_yhct" value="{item.hoat_dong_dieu_tri.khu_yhct.bn_ngoaitru}"></td>
@@ -260,7 +260,7 @@
                         value="{item.hoat_dong_dieu_tri.tong_ravien}"></td>
                 <td><input type="number" name="hoat_dong_dieu_tri[tong_chuyenkhoa]" class="hoat_dong_dieu_tri form-control w80 has_f f_auto f_auto_col" data-col="5"
                         value="{item.hoat_dong_dieu_tri.tong_chuyenkhoa}"></td>
-                <td><input type="number" name="hoat_dong_dieu_tri[tong_chuyenvien]" class="hoat_dong_dieu_tri form-control w80 has_f f_auto f_auto_col" data-col="6"
+                <td><input type="number" name="hoat_dong_dieu_tri[tong_chuyenvien]" class="hoat_dong_dieu_tri form-control w80 has_f f_auto f_auto_col hoat_dong_dieu_tri_tong_bn_chuyenvien" data-col="6"
                         value="{item.hoat_dong_dieu_tri.tong_chuyenvien}"></td>
                 <td><input type="number" name="hoat_dong_dieu_tri[tong_xinve]" class="hoat_dong_dieu_tri form-control w80 has_f f_auto f_auto_col" data-col="7"
                         value="{item.hoat_dong_dieu_tri.tong_xinve}"></td>

@@ -232,15 +232,16 @@
         if( $('.has_auto_total').length ){
             setTimeout(() => {
                 $('.f_auto_col').each( function(key,val){
-                let col_auto = $(val);
-                let col_auto_colum = col_auto.data('col');
-                let col_need_autos = col_auto.closest('table').find('tr td:nth-of-type('+col_auto_colum+') input').not('.f_auto_col');
-                col_need_autos.addClass('col_need_autos')
-                handle_auto_col(col_need_autos,col_auto);
-                col_need_autos.on('keyup change load',function(){
-                    handle_auto_col(col_need_autos,col_auto)
+                    let col_auto = $(val);
+                    let col_auto_colum = col_auto.data('col');
+                    let col_need_autos = col_auto.closest('table').find('tr td:nth-of-type('+col_auto_colum+') input').not('.f_auto_col');
+                    col_need_autos.addClass('col_need_autos')
+                    handle_auto_col(col_need_autos,col_auto);
+                    
+                    col_need_autos.on('keyup change load',function(){
+                        handle_auto_col(col_need_autos,col_auto)
+                    })
                 })
-            })
             }, 500);
         }
 
@@ -256,7 +257,7 @@
             if( col_auto.hasClass('hoat_dong_dieu_tri_tong_bn_vaovien') ){
                 $('[name="tinh_hinh_benh_nhan[bn_vaovien]"]').val(total_value)
             }
-            if( col_auto.hasClass('hoat_dong_dieu_tri_tong_bn_ravien') ){
+            if( col_auto.hasClass('hoat_dong_dieu_tri_tong_bn_chuyenvien') ){
                 $('.tinh_hinh_benh_nhan_tong_bn_chuyenvien').text(total_value);
 
                 let t_bn_chuyenvien = parseInt( $('[name="tinh_hinh_benh_nhan[bn_chuyenvien]"]').val() )
