@@ -1,0 +1,416 @@
+<!-- BEGIN: main -->
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css" />
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://www.markuptag.com/bootstrap/5/css/bootstrap.min.css" />
+<style>
+  .modal-dialog {
+      margin-top: 200px;  
+      top: 200px;
+    }
+  .btn-circle.btn-sm {
+    width: 40px;
+    height: 40px;
+    padding: 6px 0px;
+    border-radius: 20px;
+    font-size: 10px;
+    text-align: center;
+  }
+
+  
+
+  @import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css");
+
+  .fade-scale {
+    transform: scale(0);
+    opacity: 0;
+    -webkit-transition: all .25s linear;
+    -o-transition: all .25s linear;
+    transition: all .25s linear;
+  }
+
+  .fade-scale.in {
+    opacity: 1;
+    transform: scale(1);
+  }
+</style>
+<!-- Click on Modal Button -->
+<!-- BEGIN: NHOMCAUHOI -->
+
+<button type="button" class="btn btn-outline-success btn-circle btn-sm font-weight-bold"
+  onclick="openModal('#modal{NHOMCAUHOI.stt}')">
+  {NHOMCAUHOI.stt}
+</button>
+
+
+<!-- Modal -->
+<div class="modal fade" id="modal{NHOMCAUHOI.stt}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-warning">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{NHOMCAUHOI.stt}. {NHOMCAUHOI.tennhom}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <!-- BEGIN: CH -->
+          {CH.title}
+          <!-- END: CH -->          
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="rememberMe" />
+            <label class="form-check-label" for="rememberMe">Remember me</label>
+          </div>
+          <div class="modal-footer d-block">
+
+            <button type="button" class="btn btn-primary float-end" onclick="navigateModal(-1)">Tiếp theo</button>
+            <button type="button" class="btn btn-success " onclick="navigateModal(1)">Quay lại</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END: NHOMCAUHOI -->
+
+
+
+<!-- Bootstrap JS -->
+<script src="https://www.markuptag.com/bootstrap/5/js/bootstrap.bundle.min.js"></script>
+<script>
+  function openModal(currentModal) {
+    //$(previousModal).modal('hide');
+    $(currentModal).modal('show');
+  }
+</script>
+
+<script>
+  var modalIndex = 1; // Current modal index (starts at 1)
+
+  function navigateModal(direction) {
+    var currentModal = $('#modal' + modalIndex);
+    currentModal.modal('hide'); // Hide the current modal
+
+    modalIndex += direction; // Update the modal index
+
+    // Wrap around to the first modal if reached the end
+    if (modalIndex <= 0) {
+      modalIndex = $('.modal').length;
+    } else if (modalIndex > $('.modal').length) {
+      modalIndex = 1;
+    }
+
+    var nextModal = $('#modal' + modalIndex);
+    nextModal.modal('show'); // Show the next modal
+  }
+</script>
+
+<!-- END: main -->
+
+//code form evalution test
+<div class="accordion" id="accordionPanelsStayOpenExample">
+  <!-- BEGIN: NHOMCAUHOI -->
+  <div class="accordion-item">
+    <h6 class="accordion-header" id="panelsStayOpen-headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse"
+        data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+        aria-controls="panelsStayOpen-collapseOne">
+        {NHOMCAUHOI.stt}. {NHOMCAUHOI.tennhom}
+      </button>
+      <input type="hidden" id="idcheckbut{NHOMCAUHOI.stt}"
+        name="checkbut{NHOMCAUHOI.vid}" />
+    </h6>
+    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+      aria-labelledby="panelsStayOpen-headingOne">
+      <div class="accordion-body">
+        <table id="myTable" class="table table-hover" style="width:100%">
+          <!-- BEGIN: CAUHOI -->
+          <tr>
+
+            {CAUHOI.td1}
+
+            {CAUHOI.form_control}
+
+            {CAUHOI.td2}
+
+
+          </tr>
+          <!-- END: CAUHOI -->
+        </table>
+
+
+
+      </div>
+    </div>
+  </div>
+  <!-- END: NHOMCAUHOI -->
+
+</div>
+
+
+
+
+<script>
+	let url='{link_frm}';
+	$(document).ready(function() {
+		$("#tbl_danhsach").on("dblclick", "tr.vl", function() {
+			//const firstTdValue = $(this).find("th:first-child").text();
+			const firstTdValue = $(this).find("td:eq(0)").text();
+			//alert("The value of the first th is: " + firstTdValue);
+			//window.location.reload();
+
+			//ajax
+			$.ajax({
+				url: url + '&act=hienmodal&msbc=' +
+				firstTdValue, // Replace with the actual URL to your PHP endpoint
+				method: "post", // Use the appropriate HTTP method based on your server setup
+				dataType: "text",
+				success: function(data) {
+					// Add the received HTML content to "mytable2" body
+					//alert(data);
+
+					//$("#modal_bcsc").html(data);
+					$("#mymodal").modal("show");
+				},
+				error: function(xhr, status, error) {
+					// Handle error (if needed)
+					console.error(error);
+				}
+			});
+		});
+	});
+</script>
+
+
+$st = "Select rows_numv,controlname FROM " . TABLE . "_voting_rows_a 
+    Where status = 1
+    group by rows_numv,controlname
+    order by rows_numv asc ";
+
+
+
+    function sendData() {
+			// Serialize the form data
+			var formData = $("#myform1").serialize();
+			var link_frm ="{link_frm}"+"&sta=update";
+			alert ('ok');
+
+			// Call the reusable AJAX function
+			sendDataToPHP(formData,
+				link_frm); // Replace with the actual path to your PHP script
+		}
+
+
+
+    
+    // Reusable AJAX function
+		function sendDataToPHP(formData, phpScriptUrl) {
+			$.ajax({
+				type: "POST",
+				url: phpScriptUrl,
+				data: formData,
+				success: function(response) {
+					// Handle the response from the server (if needed)
+					console.log("Data sent successfully!"+formData);
+					console.log("Data sent !"+response);
+				},
+				error: function(xhr, status, error) {
+					// Handle errors (if any)
+					console.error("Error occurred while sending data:", error);
+				}
+			});
+		}
+		// Function to handle the click event and send the form data
+		function sendData(idfrm) {
+			// Serialize the form data
+			var formData = $("#myform"+idfrm).serialize();
+			var link_frm ="{link_frm}"+"&check=update";
+			//alert ('ok');
+
+			// Call the reusable AJAX function
+			sendDataToPHP(formData,
+				link_frm); // Replace with the actual path to your PHP script
+		}
+		
+		// Alert the 'msbc' value after the page loads
+
+
+
+    <div class="modal fade" id="modal-tb" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-warning">
+            <h5 class="modal-title" id="exampleModalLabel">PHẢN HỒI BÁO CÁO MÃ SỐ : {MABC}</h5>
+    
+          </div>
+          <div class="modal-body">
+            <form name="nmyform4" id="myform4" action="#" method="post" onsubmit="test_submit(this);">
+    
+              <input type="hidden" name="sta4" id="id_sta4" value="phsc">
+    
+              <div class="row">
+              <h5> Gửi cho khoa/phòng </h5>
+                <select id="multiple" name="department[]" class="js-states form-control" multiple>
+                  <!-- BEGIN:  department -->
+                  <option {department.selected}="{department.selected}" value="{department.account}">
+                    {department.tenkhoa}"
+                  </option>
+                  <!-- END:  department -->
+    
+                </select>
+              </div>
+    
+    
+            </form>
+            <!--end form4 -->
+          </div>
+
+
+
+
+          buttons: [
+                    
+                    {
+                        extend:    'copy',
+                        text:      '<i class="fas fa-copy"></i>',
+                        titleAttr: 'Copy',
+                        className: 'btn btn-md mr-2 btn-copy'
+                    },
+                    {
+                        extend:    'excel',
+                        text:      '<i class="fas fa-file-excel"></i>',
+                        titleAttr: 'Excel',
+                        className: 'btn btn-md mr-2 btn-excel'
+                    },
+                    {
+                        extend:    'pdf',
+                        text:      '<i class="fas fa-file-pdf"></i>',
+                        titleAttr: 'PDF',
+                        className: 'btn btn-md mr-2 btn-pdf'
+                    },
+                    {
+                        extend:    'print',
+                        text:      '<i class="fas fa-print"></i>',
+                        titleAttr: 'Print',
+                        className: 'btn btn-md mr-2 btn-print'
+                    },
+                    {
+                        extend:    'colvis',
+                        text:      '<i class="fas fa-eye"></i>',
+                        titleAttr: 'Visibility',
+                        className: 'btn btn-md mr-2 btn-colvis'
+                    },
+
+                ],
+
+
+
+                $('#tbl_danhsach').DataTable({
+                  dom: '<"top"B>rt<"bottom"flp><"clear">',
+                  searching: false,
+                  paging: true,
+                  info: false,
+                  aLengthMenu: [
+                    [25, 50, 100, 200, -1],
+                    [25, 50, 100, 200, "Tất cả"]
+                  ],
+                  language: {"lengthMenu": "Hiển thị  _MENU_  dòng/trang","paginate": {"next": "Trang sau","previous": "Trang trước"}},
+                  buttons: [{extend: 'print', text: '<i class="fa fa-print"></i> In',className: 'btn btn-success',exportOptions: {modifier: {page: 'current'}}},
+                  {extend: 'excelHtml5', text: '<i class="fa fa-file-excel-o"></i> EXCEL',className: 'btn btn-warning',exportOptions: {modifier: {page: 'current'}}},
+                  {extend: 'pdfHtml5', text: '<i class="fa fa-file-pdf-o" ></i> Xuất PDF',className: 'btn  btn-danger',exportOptions: {modifier: {page: 'current'}}},
+                  {text: '<i class="fa fa-plus" ></i> Thêm mới',className: 'btn btn-primary',
+                  action: function ( e, dt, node, config ) {window.location='/index.php?language=vi&nv=quanlynhanluc&op=register';}}
+                ]
+              });
+
+
+
+              case 'radiog':
+                $form_control = '<td>
+                <div class="border  p-3 rounded">                     
+                    <div class="flex form-check  ">  
+                    <label>
+                    <input  class="form-check-input custom-radio" type="radio" name="' . $row['controlname'] . '" id="idradiog' . $id . '" 
+                    value="' . $row['title'] . '"
+                    data-next-button="#nextbutton' . $group['numv'] . '">
+                  
+                    ' . $row['title'] . '
+                    </label>                
+               
+                    </div>
+                    </div>
+                    </td>';
+                break;
+        
+
+
+                $form_control = '<td id="td_test" >
+                  <div class="border p-3 rounded">                     
+                  <div class="row"> 
+                      <div class="col"> 
+                      <div class="flex form-check"  id="div_radio">  
+                      <input type="radio" id="radCreateMode" name="mode" value="create" onchange="handleRadioChange(event)"
+                      data-next-button="#nextbutton' . $group['numv'] . '"/>
+  <label for="radCreateMode"><i>create table 2</i></label>
+                          <label class="w-100" > 
+                          
+                          </label>                
+                      </div>
+                      </div>
+                  </div>
+                  </div>           
+                
+                      </td>';
+
+
+//code hay cho radio và lable clicked
+
+<!-- Wrap elements without giving them each an ID -->
+<label>
+  <input type="radio" name="mode" value="create">
+  <i>create table</i>
+</label>
+
+<!--You can use <label> elements, which are designed to do exactly that-->
+<input type="radio" id="radCreateMode" name="mode" value="create" />
+<label for="radCreateMode"><i>create table</i></label>
+
+
+<input type="radio" class="form-check-input" 
+                     id="radCreateMode' . $group['numv'] . '" name="mode" value="create" onchange="handleRadioChange(event)"
+                    data-next-button="#nextbutton' . $group['numv'] . '"/>
+<label for="radCreateMode' . $group['numv'] . '">' . $row['title'] . 
+'</label>
+
+
+<script>
+  $(function() {
+
+    /* setting date */
+   
+
+    /* setting time */
+    $("#timepicker").datetimepicker({
+      format: "HH:mm:ss"
+    });
+
+    /* setting datetime */
+    $("#datetimepicker").datetimepicker({
+      format: "DD-MM-YYYY HH:mm:ss"
+    });
+
+    /* range */
+    $(".input-daterange").datetimepicker({
+      format: "YYYY-MM-DD"
+    });
+
+  });
+</script>
+
+<div class="mb-3"> 
+  <label class="form-label">' . $row['title'] . '</label>
+      <input readonly data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1" class="form-control form-control-lg" type="text" id="datetimepicker" name="' . $row['controlname'] . '" 
+      placeholder="' .  $capnhat . '" >
+      </div>';

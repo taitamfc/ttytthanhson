@@ -192,7 +192,7 @@
 								<thead>
 									<tr>
 											<th scope="row" class="text-center"  style="text-transform: uppercase;">
-												<h5> NHẬP THÔNG TIN CHI TIẾT BỆNH NHÂN<br/> KHOA/PHÒNG:{THONGTIN.tenkhoa}</h5 >
+												<h5> NHẬP THÔNG TIN CHI TIẾT BỆNH NHÂN - {THONGTIN.ngay_tao}<br/> KHOA/PHÒNG:{THONGTIN.tenkhoa}</h5 >
 											</th>									
 									</tr>
 								</thead>

@@ -74,11 +74,38 @@ function detail(tb='',t='') {
 	return !1;
 }
 function checkAllLevel(id=0,a) {
+  var id_cauhoi = document.getElementById("id_cauhoi").value; 
+  
+  for(var p=2;p<=5;p++){
+	  checkboxes = document.getElementsByClassName('level_'+p+'_1');
+	  for(var i=0,n=checkboxes.length; i<n;i++) {
+		if (p<=id)
+		checkboxes[i].checked = a.checked;
+		else checkboxes[i].checked = false;
+		
+	  }
+  }
+  /*for(var p=id+1;p<=5;p++){
+	  checkboxes = document.getElementsByClassName('level_'+p+'_1');
+	  for(var i=0,n=checkboxes.length; i<n;i++) {
+		checkboxes[i].checked = false;
+	  }
+  }*/
+  
+  var diembv=saveValueBV(1);
+	$("#bv"+id_cauhoi).html(diembv);
+	sendVal(1,diembv);
+	return !1;
+}
+function checkAllLevel1(id=0,a) {
+
+	
   checkboxes = document.getElementsByClassName('level_'+id+'_1');
   var id_cauhoi = document.getElementById("id_cauhoi").value; 
   for(var i=0,n=checkboxes.length; i<n;i++) {
     checkboxes[i].checked = a.checked;
   }
+  
   var diembv=saveValueBV(1);
 	$("#bv"+id_cauhoi).html(diembv);
 	sendVal(1,diembv);
@@ -97,9 +124,12 @@ function checkBV()
 function sendVal(item=1,diem=0) //1:BV;2:ĐoànKT
 {
   var kq=getVal(item);var dinhdanh = document.getElementById("dinhdanh").value; 
-  var url=nv_base_siteurl+nv_module_name+'/'+nv_func_name+'/?sta=savedanhgia';
-  $.post(url, 'token=' + kq+'_'+dinhdanh+'_'+item+'_'+diem, function(res) 
-  {var r_split = res.split("_");if (r_split[0] == 'ERR') {alert(r_split[1]);}});
+  var id = document.getElementById("id_cauhoi").value; 
+  var url=nv_base_siteurl+nv_module_name+'/'+nv_func_name+'/?sta=savedanhgia&id='+id;
+  //alert('token=' + kq+'_'+item+'_'+diem);
+  $.post(url, 'token=' +dinhdanh+'_'+ kq+'_'+item+'_'+diem, function(res) //'token=' + kq+'_'+dinhdanh+'_'+item+'_'+diem
+  { var r_split = res.split("_");if (r_split[0] == 'ERR') {alert(res);}}
+  );
 }
 function sendfile(a, id='') //1:BV;2:ĐoànKT
 {
@@ -370,4 +400,103 @@ function phanloaiphong(a,token=''){
         });
 
 	return false;
+}
+function quyensudung(a,token=''){
+		var url=nv_base_siteurl+nv_module_name+'/'+nv_func_name+'/?sta=quyensudung';
+        $.post(url, 'token=' + token+'_'+a.value, function(res) {
+            var r_split = res.split("_");alert(res);
+            if (r_split[0] == 'OK') {location.reload();} else {alert(r_split[1]);} 
+        });
+
+	return false;
+}
+
+function printDiv1(divId, title) {
+  let mywindow = window.open('', 'PRINT', 'height=650,width=900,top=100,left=150');
+  mywindow.document.write(`<html><head><title>${title}</title>`);
+  mywindow.document.write('</head><body class="A4">');
+  mywindow.document.write(document.getElementById(divId).innerHTML);
+  mywindow.document.write('</body></html>');
+  mywindow.document.close(); // necessary for IE >= 10
+  mywindow.focus(); // necessary for IE >= 10*/
+  mywindow.print();
+  mywindow.close();
+  return true;
+}
+
+function printDiv(divName,title){
+			var printContents = document.getElementById(divName).innerHTML;
+			var originalContents = document.body.innerHTML;
+			document.body.innerHTML = printContents;
+			window.print();
+			document.body.innerHTML = originalContents;
+
+		}
+
+function expWorld(divName,title){
+	/*
+			var printContents = document.getElementById(divName).innerHTML;
+			var originalContents = document.body.innerHTML;
+			document.body.innerHTML = printContents;
+			window.print();
+			document.body.innerHTML = originalContents;*/
+			var fileName =  'download.doc'; 
+			var elHtml = document.getElementById(divName).innerHTML;
+			 var link = document.createElement('a');
+			 link.setAttribute('download', title);   
+			 link.setAttribute('href', 'data:' + 'text/doc' + ';charset=utf-8,' + encodeURIComponent(elHtml));
+			 link.click(); 
+			 alert('Xuất file thành công, vui lòng truy cập thư mục Download máy tính để xem chi tiết!');
+		}
+function Export2Word(element, filename = ''){
+    var preHtml = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Export HTML To Doc</title></head><body>";
+    var postHtml = "</body></html>";
+    var html = preHtml+document.getElementById(element).innerHTML+postHtml;
+
+    var blob = new Blob(['\ufeff', html], {
+        type: 'application/msword'
+    });
+    
+    // Specify link url
+    var url = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(html);
+    
+    // Specify file name
+    filename = filename?filename+'.doc':'document.doc';
+    
+    // Create download link element
+    var downloadLink = document.createElement("a");
+
+    document.body.appendChild(downloadLink);
+    
+    if(navigator.msSaveOrOpenBlob ){
+        navigator.msSaveOrOpenBlob(blob, filename);
+    }else{
+        // Create a link to the file
+        downloadLink.href = url;
+        
+        // Setting the file name
+        downloadLink.download = filename;
+        
+        //triggering the function
+        downloadLink.click();
+    }
+    
+    document.body.removeChild(downloadLink);
+}
+function export_excel()
+{
+  var c = []; 
+	c.type = $(a).prop("method"); c.url =$(a).prop("action"); 
+	c.data = $(a).serialize();		
+	$.ajax({
+			url : c.url,
+			cache: !1,
+			data:c.data,
+			type : c.type,
+			dataType : 'text',
+			success : function (){
+			
+			}
+		});
+		return false;
 }

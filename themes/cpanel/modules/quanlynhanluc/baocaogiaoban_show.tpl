@@ -1,14 +1,14 @@
 <!-- BEGIN: main -->
 <style>
-ul.multi-report li {
+div.multi-report div {
     border-bottom: 1px solid #ccc;
     margin-bottom: 5px;
     padding-bottom: 5px;
 }
-ul.multi-report li:last-child {
+div.multi-report div:last-child {
     border: none !important;
 }
-ul.multi-report {
+div.multi-report {
     padding-left: 18px;
 }
 .text-bold {

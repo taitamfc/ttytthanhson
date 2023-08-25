@@ -28,10 +28,10 @@ if (empty($user_info)){	$url = MODULE_LINK . '&' . NV_OP_VARIABLE . '=login';Hea
 	$namapdung=$apdung['nam'];
 	$xtpl->assign('DG', $apdung);	
 	$link=array();
-	$link['token']=md5($client_info['session_id'] . $global_config['sitekey']).'_'.$namapdung;
-	$link['link_editbv']=MODULE_LINK. '&' . NV_OP_VARIABLE . '=detail_report&token='.$link['token'].'_bv_edit';
+	$link['token']=md5($client_info['session_id'] . $global_config['sitekey']).'_0';
+	$link['link_editbv']=MODULE_LINK. '&' . NV_OP_VARIABLE . '=edit_report&token='.md5($client_info['session_id'] . $global_config['sitekey']);
 	$link['link_bv']=MODULE_LINK. '&' . NV_OP_VARIABLE . '=detail_report&token='.$link['token'].'_bv';
-	$link['link_doandg']=MODULE_LINK. '&' . NV_OP_VARIABLE . '=detail_report&token='.$link['token'].'_doandg';
+	$link['link_doandg']=MODULE_LINK. '&' . NV_OP_VARIABLE . '=detail_report_doankt&token='.$link['token'].'_doandg';
 	$xtpl->assign('LINK', $link);	
 	
 	
@@ -57,7 +57,7 @@ if (empty($user_info)){	$url = MODULE_LINK . '&' . NV_OP_VARIABLE . '=login';Hea
 			$r['stt']=++$tt; $r['color']='';$r['status']='';
 			$r['tansuatgui']=$select[$r['tansuatgui']];
 			$r['title']='Chỉ tiêu số '.$tt; 
-			$r['token']=md5($client_info['session_id'] . $global_config['sitekey']).'_'.$namapdung.'_'.$r['id'];
+			$r['token']=md5($client_info['session_id'] . $global_config['sitekey']).'_0_'.$r['id'];
 			$r['link_detail']=MODULE_LINK. '&' . NV_OP_VARIABLE . '=detail_report&token='.$r['token'];
 			
 			$xtpl->assign('ROW', $r);

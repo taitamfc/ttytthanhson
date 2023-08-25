@@ -101,9 +101,48 @@ $lang_module['bc4_2'] = 'Quý II';
 $lang_module['bc4_3'] = 'Quý III';
 $lang_module['bc4_4'] = 'Quý IV';
 
+$lang_module['thang'] = 'Tháng %1$s';
+$lang_module['t6'] = '06 tháng đầu năm';
+$lang_module['t12'] = '06 tháng cuối năm';
+$lang_module['t3'] = 'QUÝ I';
+$lang_module['t9'] = 'QUÝ III';
+
+
+$lang_module['tansuat4_3'] = 'Nhập Quý III';
+$lang_module['tansuat4_4'] = 'Nhập Quý IV';
+
 
 $lang_module['error_word_min'] = 'Chuỗi ký tự bạn nhập vào phải lớn hơn 10';
 $lang_module['view_title'] = 'Lượt xem';
 $lang_module['next_title'] = 'Xem tiếp';
 
 $lang_module['phanquyen_err']="Thao tác không được lưu. Chức năng này chỉ áp dụng cho phòng Quản lý chất lượng";
+
+$lang_module['donvi_huyen'] = 'SỞ Y TẾ PHÚ THỌ';
+$lang_module['hoidong_dg'] = 'HỘI ĐỒNG QLCL ĐÁNH GIÁ';
+$lang_module['khoaphong_dg'] = 'KHOA PHÒNG ĐÁNH GIÁ';
+
+$lang_module['hoten_dg'] = 'Họ tên người đánh giá';
+$lang_module['vt_congtac'] = 'Vị trí công tác';
+$lang_module['sdt'] = 'Số điện thoại';
+
+$lang_module['matieuchi'] = 'Mã số tiêu chí chấm';
+$lang_module['xeploai'] = 'Xếp ở mức';
+$lang_module['ngaycham'] = 'Ngày chấm';
+
+$lang_module['mota1'] = '1. Mô tả thực trạng kiểm tra, đánh giá các khía cạnh tiêu chí (có thông tin… kèm theo)
+    <br/>- Nêu rõ các điểm mạnh, điểm yếu của bệnh viện theo tiêu chí này.';
+
+$lang_module['mota2'] = '2. Phương pháp áp dụng đánh giá tiêu chí: (quan sát, kiểm tra số liệu, văn bản, phỏng vấn, đóng vai).';
+
+$lang_module['mota3'] = '3. Giải trình tại sao chấm tiêu chí ở mức độ như vậy?.';
+
+$lang_module['mota4'] = '4. Những điểm nào còn phân vân, khó quyết định đánh giá và xếp mức? (nếu có).';
+
+$lang_module['tieude_bc'] = 'SỞ Y TẾ PHÚ THỌ<br /> TRUNG TÂM Y TẾ HUYỆN THANH SƠN<br />';
+$lang_module['thongke5_bc'] = 'BẢNG ĐIỂM KẾ HOẠCH 83 TIÊU CHÍ CHẤT LƯỢNG BỆNH VIỆN NĂM %1$s';
+$lang_module['tongcong'] = 'TỔNG CỘNG';
+$lang_module['dat'] = 'ĐẠT';
+$lang_module['khongdat'] = 'KHÔNG ĐẠT';
+
+

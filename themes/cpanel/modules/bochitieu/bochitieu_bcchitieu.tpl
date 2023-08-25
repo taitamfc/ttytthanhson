@@ -15,9 +15,7 @@
 						<div class="card-block text-center"  style="min-height: 250px;">
 							<i class="fa fa-file-text-o  text-c-green d-block f-40"></i>
 							<h4 class="m-t-20"><span class="text-c-blgreenue"></span> BÁO CÁO BỆNH VIỆN ĐÁNH GIÁ</h4>
-							<p class="m-b-20">Thời gian cung cấp: {ROW.tansuatgui} </p>
-							<button onclick="openForm('{LINK.link_editbv}',0,0);" class="btn btn-warning btn-sm btn-round">
-							<em class="fa fa-edit"> </em> Sửa Bố Cục Báo Cáo</button>
+							<p class="m-b-20"></p>
 							<button onclick="openForm('{LINK.link_bv}',0,0);" class="btn btn-success btn-sm btn-round">Xem Báo Cáo</button>
 						</div>
 					</div>
@@ -27,7 +25,7 @@
 						<div class="card-block text-center"  style="min-height: 250px;">
 							<i class="fa fa-file-text-o  text-c-green d-block f-40"></i>
 							<h4 class="m-t-20"><span class="text-c-blgreenue"></span> BÁO CÁO ĐOÀN KIỂM TRA ĐÁNH GIÁ</h4>
-							<p class="m-b-20">Thời gian cung cấp: {ROW.tansuatgui} </p>
+							<p class="m-b-20"> </p>
 							<button onclick="openForm('{LINK.link_doandg}',0,0);" class="btn btn-success btn-sm btn-round">Xem Báo Cáo</button>
 						</div>
 					</div>

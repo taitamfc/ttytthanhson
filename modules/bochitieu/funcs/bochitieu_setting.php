@@ -65,6 +65,9 @@ if (empty($user_info)){	$url = MODULE_LINK . '&' . NV_OP_VARIABLE . '=login';nv_
 			$stmt = $db->prepare($sql);
 			$row_id=$stmt->execute();
 			
+			
+			
+			
 			/*if ($row_id>0) //nv_redirect_location(MODULE_LINK . '&' . NV_OP_VARIABLE . '='.$op.'&sta=content');
 			{
 				Header('Location: ' . NV_BASE_ADMINURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&' . NV_NAME_VARIABLE . '=' . $module_name . '&' . NV_OP_VARIABLE . '=config_chitieu');   exit();
@@ -160,6 +163,18 @@ if (empty($user_info)){	$url = MODULE_LINK . '&' . NV_OP_VARIABLE . '=login';nv_
 	$sql = 'SELECT * FROM ' . TABLE. '_apdung where apdung=1';	
 	$kq = $db->query($sql)->fetch(); 
 	$namapdung=(!empty($kq))? $kq['nam']:'';
+	/*
+	update n2023 set n2023.diem_namngoai=n2022.diem_kehoach 
+	from nv4_vi_bochitieu_ketqua_2023 n2023 inner join nv4_vi_bochitieu_ketqua_2022 n2022 
+	on n2023.id=n2022.id
+	*/
+	$namngoai=$namapdung-1;
+	$sql="update n".$namapdung." set n".$namapdung.".diem_namngoai=n".$namngoai.".diem_kehoach 
+	FROM ".TABLE."_ketqua_".$namapdung." n".$namapdung." inner join ".TABLE."_ketqua_".$namngoai." n".$namngoai." on n".$namapdung.".id=n".$namngoai.".id";
+	//$stmt = $db->prepare($sql);
+	//$row_id=$stmt->execute();
+	
+	
 	if (empty($token)and !empty($namapdung))	$token='edit_'.$kq['nam'];
 	$key=explode('_',$token);
 	if ($key[0]=='edit' and !empty($namapdung))

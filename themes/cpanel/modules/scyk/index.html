@@ -1,0 +1,40 @@
+<div class="box box-danger">
+    <div class="box-header with-border">
+    {testcode}
+      <h6 class='text-center'>TỔNG HỢP KẾT QUẢ ĐÁNH GIÁ 5S TẠI MỘT ĐƠN VỊ </BR> Ở CÁC LẦN ĐG KHÁC NHAU</h6>
+      <table class="table-boder">
+        <tr>
+          <!-- BEGIN: KHOAPHONG1 -->
+          <td style="text-align: left;"><span id="sp-kp" class="badge badge-info mr-1"
+              onclick="get_khoaphong_lan(this);">{KHOAPHONG1.account}</span></td>
+          <!-- END: KHOAPHONG1 -->
+        </tr>
+        <tr>
+          <!-- BEGIN: KHOAPHONG2 -->
+          <td style="text-align: left;">
+            <a onclick="get_khoaphong_lan(this);"" ><span id=" sp-kp"
+              class="badge badge-info">{KHOAPHONG2.account}</span> </a>
+          </td>
+          <!-- END: KHOAPHONG2 -->
+        </tr>
+        <tr>
+          <!-- BEGIN: KHOAPHONG3 -->
+          <td style="text-align: left;">
+            <a onclick="get_khoaphong_lan(this);"" ><span id=" sp-kp"
+              class="badge badge-info">{KHOAPHONG3.account}</span> </a>
+          </td>
+          <!-- END: KHOAPHONG3 -->
+        </tr>
+      </table>
+
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+        </button>
+
+      </div>
+    </div>
+    <div class="box-body chart-responsive">
+      <div class="chart" id="khoaphong_lan" style="height: 250px; position: relative;"></div>
+    </div>
+
+  </div>

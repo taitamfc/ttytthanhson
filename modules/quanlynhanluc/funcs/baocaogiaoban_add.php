@@ -55,9 +55,24 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ){
     if( isset($_REQUEST['benh_nhan_chuyen_tuyen']) ){
         $data['benh_nhan_chuyen_tuyen'] = json_encode($_REQUEST['benh_nhan_chuyen_tuyen']);
     }
+    
+    $tinh_hinh_benh_nhan = $_REQUEST['tinh_hinh_benh_nhan'];
+    dd($tinh_hinh_benh_nhan);
+
     if($id){
         $saved = $OABaoCaoGiaoBan->update($id,$data);
     }else{
+        // Luu BaoCaoKhamChuaBenh
+        $dataBaocaoKCB = [
+            'sobn_bhyt' => $tinh_hinh_benh_nhan['bhyt']['tong'],
+            'bn_noitinh' => $tinh_hinh_benh_nhan['bhyt']['noitinh'],
+            'bn_ngoaitinh' => $tinh_hinh_benh_nhan['bhyt']['ngoaitinh'],
+            'bnkham' => $tinh_hinh_benh_nhan['bhyt']['ngoaitinh'],
+        ];
+        $OABaoCaoKhamChuaBenh->save($dataBaocaoKCB);
+        // Luu KhamChuaBenh
+        $tinh_hinh_benh_nhan = $_REQUEST['tinh_hinh_benh_nhan'];
+        
         $saved = $OABaoCaoGiaoBan->save($data);
     }
     $OAThemeHelper->redirectOp('baocaogiaoban');
@@ -66,37 +81,38 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ){
 $cr_date = date('Y-m-d');
 // $cr_date = '2023-04-03';
 
-$OABaoCaoKhamChuaBenhHomNay = $OABaoCaoKhamChuaBenh->all([
-    'limit' => 1,
-    'search' => [
-        'DATE(ngaygio)' => $cr_date
-    ]
-]);
+// $OABaoCaoKhamChuaBenhHomNay = $OABaoCaoKhamChuaBenh->all([
+//     'limit' => 1,
+//     'search' => [
+//         'DATE(ngaygio)' => $cr_date
+//     ]
+// ]);
 
-$hoat_dong_dieu_tri = $OAKhamChuaBenh->getDataReportGiaoBan($cr_date);
+// $hoat_dong_dieu_tri = $OAKhamChuaBenh->getDataReportGiaoBan($cr_date);
+// if($hoat_dong_dieu_tri){
+//     foreach( $hoat_dong_dieu_tri as $khoa => $mucs ){
+//         foreach( $mucs as $muc_k => $muc_v ){
+//             $item['hoat_dong_dieu_tri'][$khoa][$muc_k] = $muc_v;
+//         }
+//     }
+// }
 
-if($hoat_dong_dieu_tri){
-    foreach( $hoat_dong_dieu_tri as $khoa => $mucs ){
-        foreach( $mucs as $muc_k => $muc_v ){
-            $item['hoat_dong_dieu_tri'][$khoa][$muc_k] = $muc_v;
-        }
-    }
-}
-
-if($OABaoCaoKhamChuaBenhHomNay){
-    $item['tinh_hinh_benh_nhan']['bhyt']['ngoaitinh']   = $OABaoCaoKhamChuaBenhHomNay['bn_ngoaitinh'];
-    $item['tinh_hinh_benh_nhan']['bhyt']['noitinh']     = $OABaoCaoKhamChuaBenhHomNay['bn_noitinh'];
-    $item['tinh_hinh_benh_nhan']['bn_vienphi']          = $OABaoCaoKhamChuaBenhHomNay['bnkham'];
-    $item['tinh_hinh_benh_nhan']['bhyt']['tong']          = $OABaoCaoKhamChuaBenhHomNay['sobn_bhyt'];
-}
+// if($OABaoCaoKhamChuaBenhHomNay){
+//     $item['tinh_hinh_benh_nhan']['bhyt']['ngoaitinh']   = $OABaoCaoKhamChuaBenhHomNay['bn_ngoaitinh'];
+//     $item['tinh_hinh_benh_nhan']['bhyt']['noitinh']     = $OABaoCaoKhamChuaBenhHomNay['bn_noitinh'];
+//     $item['tinh_hinh_benh_nhan']['bn_vienphi']          = $OABaoCaoKhamChuaBenhHomNay['bnkham'];
+//     $item['tinh_hinh_benh_nhan']['bhyt']['tong']          = $OABaoCaoKhamChuaBenhHomNay['sobn_bhyt'];
+// }
 
 
 $page_title = !$id ? 'THÊM BÁO CÁO GIAO BAN' : 'CẬP NHẬT BÁO CÁO GIAO BAN';
 // VIEW
 if( $layout == 'add' ){
     $xtpl = $OAThemeHelper->setView($op.'.tpl');
-}else{
+}elseif( $layout == 'show' ) {
     $xtpl = $OAThemeHelper->setView('baocaogiaoban_show.tpl');
+}elseif( $layout == 'slide' ) {
+    $xtpl = $OAThemeHelper->setView('baocaogiaoban_slide.tpl');
 }
 
 $OAThemeHelper->renderItemsFromArray($xtpl,$item['benh_nhan_mo_cap_cuu'],'benh_nhan_mo_cap_cuu_item','main.benh_nhan_mo_cap_cuu');

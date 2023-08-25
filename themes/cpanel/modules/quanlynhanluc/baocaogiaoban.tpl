@@ -67,8 +67,8 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Tiêu đề</th>
+                                    <th>Trực lãnh đạo</th>
                                     <th>Ngày lập</th>
-                                    <!--th>Người lập</th-->
                                     <th>Ngày cập nhật</th>
                                     <!--th>Người cập nhật</th-->
                                     <th>Hành động</th>
@@ -77,12 +77,13 @@
                             <tbody>
                                 <!-- BEGIN: items -->
                                 <tr>
-                                    <th scope="row"><a href="{item.link_edit}"> {item.id}</a></th>
+                                    <th scope="row"><a href="{item.link_edit}"> {item.key}</a></th>
                                     <td><a href="{item.link_edit}">BÁO CÁO TRỰC NGÀY {item.title}</a></td>
+                                    <td>{item.truc_lanh_dao}</td>
                                     <td>{item.created_date}</td>
                                     <td>{item.updated_date}</td>
                                     
-                                    <td><a href="{item.link_view}">Xem</a></td>
+                                    <td><a href="{item.link_view}">Xem</a> | <a href="{item.link_show}">Chiếu</a></td>
                                 </tr>
                                 <!-- END: items -->
                                 <!-- BEGIN: generate_page -->

@@ -1,5 +1,5 @@
-<ol class="multi-report">
+<div class="multi-report">
     <!-- BEGIN: benh_nhan_mo_phien -->
-    <li>{benh_nhan_mo_phien_item}</li>
+    <div>{benh_nhan_mo_phien_item}</div>
     <!-- END: benh_nhan_mo_phien -->
-</ol>
+</div>

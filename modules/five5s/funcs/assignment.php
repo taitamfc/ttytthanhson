@@ -33,8 +33,8 @@ if (isset($post['submit'])) {
     group by rows_numv,controlname
     order by rows_numv asc ";
     $rows = $db->query($st)->fetchAll();
-    $tencot = "(";
-    $values = "VALUES(";
+    $tencot = "(masobc_a,";
+    $values = "VALUES(:masobc_a,";
     $data_insert = array();
     foreach ($rows as $row) {
         //dua vào mảng control
@@ -49,31 +49,26 @@ if (isset($post['submit'])) {
     $tencot = rtrim($tencot, ',') . ")";
     $values = rtrim($values, ',') . ")";
 
-    //insert to db
-    /* cách 1
-    $stt = "INSERT INTO " . TABLE . "_voted_result_a " . $tencot . ' ' . $values;
-       echo '<br>'.$stt;
-    $stmt = $db->prepare($stt);
-    //var_dump( $stmt);
-    foreach ($rows as $row) {
-        $stmt->bindParam(':' . $row['controlname'], $post[$row['controlname']]);
-    }
-    $row_id = $stmt->execute();
-    $ketqua['status'] = ($row_id > 0) ? 'OK' : 'ERR';
-    echo '<br>'.$ketqua['status'];
-    */
 
     //cách 2
+    //kiểm tra bảng dữ liệu rỗng hay có dữ liệu
+    $st = "SELECT max(id) as count_v FROM " . TABLE . "_voted_result_a ";
+    $result = $db->query($st)->fetch();
+    //tạo mã báo cáo tự động
+    (empty($result['count_v'])) ? $data_insert['masobc_a'] = Generate_Maso('1') : $data_insert['masobc_a'] = Generate_Maso($result['count_v'] + 1);
+    // cập nhật thời gian update
+    $capnhat = date('Y-m-d H:i:s');
+    echo $capnhat;
+    // $date_insert['capnhat'] = $capnhat;
     $st = "INSERT INTO " . TABLE . "_voted_result_a " . $tencot . ' ' . $values;
     $row_id = $db->insert_id($st, 'id', $data_insert);
-    //$ketqua['status'] = ($row_id > 0) ? 'OK' : 'ERR';
-    //echo '<br>'.$ketqua['status'];   
-    
+    $ketqua['status'] = ($row_id > 0) ? 'OK' : 'ERR';
+    echo '<br>' . $ketqua['status'];
 }
 
 
 //đưa danh sách số lượng thông tin khảo sát
-$st1 = "Select * FROM " . TABLE . "_voting_a where status = 1 order by numv asc  ";
+$st1 = "Select * FROM " . TABLE . "_voting_a where status = 1 and numv <=21 order by numv asc  ";
 //echo $st;
 $id = 0; //lưu lại số lượng các câu hỏi trong 1 lần khảo sát
 
@@ -108,11 +103,13 @@ foreach ($groups as $group) {
     $st2 = "Select * FROM " . TABLE . "_voting_rows_a
     WHERE status = 1 and rows_numv =" . $group['numv'] . "
     ";
+    (intval($group['numv']) == 0) ? $group['numv'] = '' : '';
     $rows = $db->query($st2)->fetchAll();
     $xtpl->assign(
         'NHOMCAUHOI',
         array(
             'tennhom' => $group['question'],
+            'ghichu' => $group['comment'],
             'stt' => $group['numv'],
             'stt0' => $stt0,
             'stt1' => $stt1,
@@ -130,7 +127,9 @@ foreach ($groups as $group) {
             case 'text':
                 $form_control = '<div class="mb-3">
               <label class="form-label">' . $row['title'] . '</label>
-              <input type="text" class="form-control" id="idtext' . $id . '" name="' . $row['controlname'] . '" />
+              <input type="text" class="form-control form-control-lg" id="idtext' . $id . '" name="' . $row['controlname'] . '" />
+             
+             
             </div>';
                 break;
 
@@ -156,19 +155,32 @@ foreach ($groups as $group) {
                 break;
 
             case 'radiog':
-                $form_control = '<td>                     
-                    <div class="flex form-check ">                     
-                    <input  class="form-check-input" type="radio" name="' . $row['controlname'] . '" id="idradiog' . $id . '" 
-                    onchange="handleRadioChange(event)" value="' . $row['title'] . '"
-                    data-next-button="#nextbutton'.$group['numv'].'">
-                    <label class="form-check-label" for="radiog' . $id . '" >' . $row['title'] . '</label>
-                  </div>
-                  </td>';
+                $form_control = '<td >
+                <div class="border p-3 rounded">                     
+               
+                    
+                    <label class="w-100">
+                    <input type="radio" id="radCreateMode" name="mode" value="create" onchange="handleRadioChange(event)"
+                    data-next-button="#nextbutton' . $group['numv'] . '"/>
+  <i>' . $row['title'] . '</i>
+</label>
+                                       
+                  
+                
+                </div>           
+              
+                    </td>';
                 break;
 
             case 'textarea':
-                $form_control = ' <td><textarea id="idtextarea' . $id . '" name="' . $row['controlname'] . '" rows="3"
-                    class="form-control"></textarea></td>';
+                $form_control = ' <td><textarea id="idtextarea' . $id . '" name="' . $row['controlname'] . '" rows="4"
+                    class="form-control form-control-lg"></textarea></td>';
+                break;
+
+            case 'textareak':
+                $form_control = ' <td><textarea id="idtextarea' . $id . '" name="' . $row['controlname'] . '" rows="4"
+                        class="form-control form-control-lg">' . $row['title'] . '
+                        </textarea></td>';
                 break;
 
 
@@ -177,7 +189,9 @@ foreach ($groups as $group) {
                 $st1 = "SELECT * FROM " . TABLE . "_groupuser where status = 1 order by tenkhoa";
                 // print($st2);
                 $rows = $db->query($st1)->fetchAll();
-                $form_control = '<select id="khoaphong" name="kpbc" class="form-control" placeholder="Chọn Khoa/Phòng"
+                $form_control = '
+                <label class="form-label">' . $row['title'] . '</label>
+                <select id="khoaphong" name="kpbc" class="form-control form-control-lg" placeholder="Chọn Khoa/Phòng"
                 title="" data-toggle="tooltip" data-original-title="Chọn Khoa/Phòng">
                 <option value="" disabled selected>Chọn Khoa/Phòng</option>';
 
@@ -189,12 +203,10 @@ foreach ($groups as $group) {
 
             case 'check':
                 $form_control = '
-                <label class="form-label">' . $row['title'] . '</label>
+                
                 <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="' . $row['controlname'] . '" id="idcheck' . $id . '" value="1">
-                <label class="form-check-label" for="idcheck' . $id . '">
-                  Tôi cam kết
-                </label>
+                <label class="form-label">' . $row['title'] . '</label>
               </div>';
                 break;
 
@@ -203,9 +215,9 @@ foreach ($groups as $group) {
             
                 <div class="mb-3"> 
                 <label class="form-label">' . $row['title'] . '</label>
-                    <input class="form-control" type="text" id="datetimepicker" name="' . $row['controlname'] . '" 
+                    <input class="form-control form-control-lg" type="text" id="datetimepicker" name="' . $row['controlname'] . '" 
                     placeholder="Thời gian báo cáo" />
-                    </div>';              
+                    </div>';
                 break;
 
             case 'date':
@@ -213,7 +225,7 @@ foreach ($groups as $group) {
                 <div class="mb-3"> 
                 <label class="form-label">' . $row['title'] . '</label>             
                             
-                <input class="form-control" type="text" name="' . $row['controlname'] . '" id="datepicker" placeholder="Chọn ngày sinh" />
+                <input class="form-control form-control-lg" type="text" name="' . $row['controlname'] . '" id="datepicker" placeholder="Chọn ngày sinh" />
                 </div>';
                 break;
 
@@ -258,7 +270,12 @@ foreach ($rows as $row) {
 
 
 */
-
+//hàm tạo mã số bc dạng 00000x
+function Generate_Maso($number)
+{
+    $formattedNumber = str_pad($number, 5, "0", STR_PAD_LEFT);
+    return date("Y") . ".MSBC." . $formattedNumber;
+}
 
 $xtpl->parse('main.buttons');
 /*End Code for Here*/

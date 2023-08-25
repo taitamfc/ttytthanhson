@@ -68,9 +68,17 @@ function nv_mailHTML($title, $content, $footer = '')
 function nv_site_theme($contents, $full = true)
 {
     global $home, $array_mod_title, $lang_global, $global_config, $site_mods, $module_name, $module_info, $op_file, $mod_title, $my_head, $my_footer, $client_info, $module_config, $op, $nv_plugin_area;
-    
+
     // Determine tpl file, check exists tpl file
+	if( isset( $_GET['debug'] ) ){
+		dd($module_info);
+	}
+	$module_info['layout_funcs']['baocaogiaoban'] = 'main';
+	$module_info['layout_funcs']['chamcong'] = 'main';
+	$module_info['layout_funcs']['baocaogiaoban_add'] = 'main';
+	$module_info['layout_funcs']['baocaodieuduong'] = 'main';
     $layout_file = ($full) ? 'layout.' . $module_info['layout_funcs'][$op_file] . '.tpl' : 'simple.tpl';
+
     if (!file_exists(NV_ROOTDIR . '/themes/' . $global_config['module_theme'] . '/layout/' . $layout_file)) {
         nv_info_die($lang_global['error_layout_title'], $lang_global['error_layout_title'], $lang_global['error_layout_content']);
     }

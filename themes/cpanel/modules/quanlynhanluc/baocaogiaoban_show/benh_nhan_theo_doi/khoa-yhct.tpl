@@ -1,13 +1,13 @@
 <div class="has_fd fd_khoahscc">
-    <label class="form-label">6.7. KHOA YHCT</label>
-    <ol class="multi-report">
+    <label class="form-label text-uppercase">6.6. Khoa Y Học cổ truyền & PHCN</label>
+    <div class="multi-report">
         <!-- BEGIN: khoa_yhct -->
-        <li>
+        <div>
             <div class="report-text">
                 <strong>{khoa_yhct_item.tieude}</strong>
                 <p>{khoa_yhct_item.noidung}</p>
             </div>
-        </li>
+        </div>
         <!-- END: khoa_yhct -->
-    </ol>
+    </div>
 </div>

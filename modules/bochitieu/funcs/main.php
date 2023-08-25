@@ -16,22 +16,33 @@ $sta =$nv_Request->get_title('sta', 'get,post', '');
 $kq=array();
 	if($sta=='get_info')
 	{
-		$namapdung=2022;
-		/*if($nv_Request->get_title('act', 'get,post', '')=='get_kehoach_chitieu'){
-		$sql = "SELECT id_chiso, sum(if(chuky=99, giatri,0)) as kehoach,sum(if(chuky=100, giatri,0)) as nam
-		FROM " . TABLE . "_baocao_".$namapdung." where chuky>98 group by id_chiso order by id_chiso, chuky";
-		$bc = $db->query($sql)->fetchAll();
-		foreach ($bc as $item)
-			{
-				$r=array();	
-				$sql = "SELECT * FROM " . TABLE . "_chitieu where id=".$item['id_chiso'];
-				$ct = $db->query($sql)->fetch();
-				$r['chitieu']=nv_clean60($ct['chi_so'],15);
-				$r['kehoach']=$item['kehoach']."%";
-				$r['nam']=$item['nam']."%";
-				$kq[]=$r;
-			}
-		}*/
+		$apdung=array();
+		$apdung=$global_apdung;
+		$namngoai=$apdung['nam']-1;
+		$namkia=$apdung['nam']-2;
+		
+		if($nv_Request->get_title('act', 'get,post', '')=='get_bieudo1'){
+		$sql = "SELECT avg(diem_kehoach) as kehoach,avg(diem_namngoai) as namngoai,avg(diem_namkia) as namkia
+		FROM ". TABLE. "_ketqua_".$apdung['nam'];
+		$r = $db->query($sql)->fetch();
+			/*
+			$item['label']=$apdung['nam'];
+			$item['value']=$r['kehoach'];
+			$kq[]=$item;
+			
+			$item['label']=$namngoai;
+			$item['value']=$r['namngoai'];
+			$kq[]=$item;
+		
+			$item['label']=$namkia;
+			$item['value']=$r['namkia'];
+			*/
+			
+			$kq['label']=sprintf('"%1$s","%2$s","%3$s"',$apdung['nam'],$namngoai,$namkia);
+			$kq['value']=sprintf("%1$s,%2$s,%3$s",$r['kehoach'],$r['namngoai'],$r['namkia']); ;
+			//$kq[]=$item;
+		
+		}
 		
 		
 		
@@ -53,70 +64,155 @@ if (empty($user_info)){	$url = MODULE_LINK . '&' . NV_OP_VARIABLE . '=login';nv_
 	
 	$xtpl->assign('link', MODULE_LINK . '&' . NV_OP_VARIABLE . '='.$op. '&sta=get_info');
 	
-	
-	/*$namapdung=2022;
-	$xtpl->assign('namapdung', 'Năm '.$namapdung);	
-	//Show chart
-	$sql = "SELECT * FROM " . TABLE . "_chitieu where id in (1,2,3,4,7,8,9,10)";
-	$ct = $db->query($sql)->fetchAll(); $stt=0;
-		foreach ($ct as $r)
-		{
-			$solan=$r['tansuatgui'];
-			$r['stt']=++$stt;
-			$sql = "SELECT * FROM " . TABLE . "_baocao_".$namapdung." 
-			where chuky>0 and id_chiso=".$r['id']." order by id";//chuky";
-			$bc = $db->query($sql)->fetchAll();$i=0;$cuoinam=0;
-			$datachart='';
-			foreach ($bc as $item)
-			{
-				$item['title']=$lang_module['bc'.$solan.'_'.$item['chuky']];				
-				$item['no']=++$i;
-				if (empty($item['giatri'])) $item['giatri']=0;
-				
-				$xtpl->assign('TS', $item);
-				if ($item['chuky']==100){$cuoinam=$item['giatri'];}
-				else
-				if ($item['chuky']==99)	{$xtpl->parse('main.group.kehoach');$xtpl->parse('main.group.kehoachnhap');}
-				else 
-				{
-				$xtpl->parse('main.group.solan');
-				$xtpl->parse('main.group.solannhap');
-				
-				$datachart .="{Quy: '".$item['title']."',giatri: ".$item['giatri']."}";
-				if ($item['chuky']<4) $datachart .=",";
-				$xtpl->assign('datachart', $datachart);
-				}
-				
-			}
-			$xtpl->assign('ROW', $r);
-			$xtpl->parse('main.group');
-		}
-	//show table
-	$sql = "SELECT * FROM " . TABLE . "_chitieu where id in (5,6)";
-	$ct = $db->query($sql)->fetchAll(); 
-		foreach ($ct as $r)
-		{
-			$sql = "SELECT * FROM " . TABLE . "_baocao_".$namapdung." 
-			where id_chiso=".$r['id']." order by id";
-			$bc = $db->query($sql)->fetchAll();$stt=0;
-			foreach ($bc as $item)
-			{
-				$item['stt']=++$stt;
-				if (empty($item['giatri'])) $item['giatri']=0;
-				$xtpl->assign('ITEM', $item);
-				$xtpl->parse('main.list_table.chitieu.loop');
-			}
-			$xtpl->assign('ROW', $r);
-			$xtpl->parse('main.list_table.chitieu');
-		}
-			
-	$xtpl->parse('main.list_table');*/
 	$sql = 'SELECT * FROM ' .TABLE. '_rows WHERE status=1';
 	$kq = $db->query($sql)->fetch();
 	$xtpl->assign('ROW', $kq);
+	
+	$apdung=array();
+	$apdung=$global_apdung;
+	$namngoai=$apdung['nam']-1;
+	$namkia=$apdung['nam']-2;
+	$apdung['tieude']=($apdung['thangapdung']%3==0)?$lang_module['t'.$apdung['thangapdung']]:sprintf($lang_module['thang'],$apdung['thangapdung']).' Năm '.$apdung['nam']; 
+	//$xtpl->assign('thang', $thang);	
+		
+	$chart=array();
+	$sql = "SELECT avg(diem_kehoach) as kehoach,avg(diem_namngoai) as namngoai,
+	avg(diem_namkia) as namkia FROM ". TABLE. "_ketqua_".$apdung['nam'];
+	$r = $db->query($sql)->fetch();
+	
+	$chart['id']='line_1';
+	$chart['label']="'','Năm ".$namkia."','Năm ".$namngoai."','Năm ".$apdung['nam']."'";
+	$chart['value']="0,".$r['namkia'].",".$r['namngoai'].",".$r['kehoach'];
+
+	$xtpl->assign('CH', $chart);
+	$xtpl->parse('main.loopchart');
+	
+	//Show chart 2 Biểu đồ 2: Phụ lục 3. Bảng theo dõi đánh giá chất lượng bệnh viện theo tháng 
+	$col="t".$apdung['thangapdung'];
+	$sql = "SELECT avg(diem_kehoach) as kehoach,avg(diem_namngoai) as namngoai,
+	avg(".$col."_diem_bvdg) as diem_bvdg,avg(".$col."_diem_doandg) as diem_doandg
+	FROM ". TABLE. "_ketqua_".$apdung['nam'];
+	$r = $db->query($sql)->fetch();
+	$chart['id']='chart_2';
+	$chart['label']="'','Năm ".$namngoai."','Điểm kế hoạch','Tự đánh giá','Đoàn đánh giá',''";
+	$chart['value']='0,'.$r['namngoai'].",".$r['kehoach'].",".$r['diem_bvdg'].",".$r['diem_doandg'].',0';
+	$xtpl->assign('CH', $chart);
+	$xtpl->parse('main.chart_2');
+	
+	//Show chart 3
+	$sql = 'SELECT account, tenkhoa FROM ' . TABLE. '_groupuser where status=1 
+	and account in (select phongxuly from '.TABLE.'_question) order by account asc';
+	$list_khoa = $db->query($sql)->fetchAll();$tt=0;
+	$tk=array();
+	$chart['id']='chart_3';
+	$chart['label']="'',";
+	$chart['value']='0,';
+	foreach ($list_khoa as $r)
+	{
+		$tk=checkdanhgia($r['account'],$apdung);
+		if ($tk['slgiamdiem']>0){
+			$chart['label'] .="'".$r['account']."',";
+			$chart['value'] .=$tk['slgiamdiem'].',';
+		}
+	}
+		$chart['label'] .="''";
+		$chart['value'] .='0';
+	$xtpl->assign('CH', $chart);
+	$xtpl->parse('main.chart_3');
+	
+	//Show chart 4 Biểu đồ GHI CHÚ VÀ FILE 
+
+	$sql = "SELECT count(id) as sl FROM ". TABLE. "_ketqua_".$apdung['nam']." where ghichu is not null";
+	$note = $db->query($sql)->fetch();
+	
+	$sql = "SELECT count(id) as sl FROM ". TABLE. "_file where namapdung=".$apdung['nam'];
+	$file = $db->query($sql)->fetch();
+	
+	
+	$chart['id']='chart_4';
+	
+	$chart['label']="'','Ghi chú','Bằng Chứng',''";
+	$chart['value']='0,'.$note['sl'].','.$file['sl'].',0';
+	$xtpl->assign('CH', $chart);
+	$xtpl->parse('main.chart_4');
+	
+	//Show chart 5
+	$sql = 'SELECT account, tenkhoa FROM ' . TABLE. '_groupuser where status=1 
+	and account in (select phongxuly from '.TABLE.'_question) order by account asc';
+	$list_khoa = $db->query($sql)->fetchAll();$tt=0;
+	$tk=array();
+	$chart['id']='chart_5';
+	$chart['label']="'',";
+	$chart['sltangdiem']='0,';
+	$chart['slgiamdiem']='0,';
+	$chart['slgiunguyen']='0,';
+	foreach ($list_khoa as $r)
+	{
+		$tk=checkdanhgia($r['account'],$apdung);
+
+		$chart['label'] .='"'.$r['account'].'",';
+		$chart['sltangdiem'] .=$tk['sltangdiem'].',';
+		$chart['slgiamdiem'] .=$tk['slgiamdiem'].',';
+		$chart['slgiunguyen'] .=$tk['slgiunguyen'].',';
+	}
+		$chart['label'] .="''";
+		$chart['sltangdiem'] .='0';
+		$chart['slgiamdiem'] .='0';
+		$chart['slgiunguyen'] .='0';
+		
+	$xtpl->assign('CH', $chart);
+	$xtpl->parse('main.chart_5');	
+	$xtpl->assign('BC', $apdung);
 	$xtpl->parse('main');
     $contents = $xtpl->text('main');
 
 include NV_ROOTDIR . '/includes/header.php';
 echo nv_site_theme($contents);
 include NV_ROOTDIR . '/includes/footer.php';
+
+function checkdanhgia($phong,$apdung)
+{
+	global $db,$module_data,$lang_module,$module_info;
+	$r=array();
+		$sql = "SELECT code FROM ". TABLE. "_question where parent in 
+		(SELECT code FROM ". TABLE. "_question  where phongxuly like '".$phong."')";
+		$slchitieu = $db->query($sql)->fetchALL();
+		$r['slchitieu']=0;
+		$r['sltangdiem']=0;$r['slgiamdiem']=0;$r['slgiunguyen']=0;
+		$r['kh_tangdiem']=0;$r['kh_giamdiem']=0;$r['kh_giunguyen']=0;
+		
+		foreach ($slchitieu as $sl)
+		{
+			$r['slchitieu']++;
+			
+			$sql = "SELECT * FROM ". TABLE. "_ketqua_".$apdung['nam']." where dinhdanh like '%_".$sl['code']."'";
+			$kq = $db->query($sql)->fetch();
+			
+			if (!empty($kq))// 
+			{	$kq['diem_bvdg']=$kq['t'.$apdung['thangapdung'].'_diem_bvdg'];
+				$kq['diem_doandg']=$kq['t'.$apdung['thangapdung'].'_diem_doandg'];
+				
+				$r['kh_tangdiem'] +=($kq['diem_kehoach']>$kq['diem_namngoai'])?1:0;
+				$r['kh_giamdiem']+=($kq['diem_kehoach']<$kq['diem_namngoai'])?1:0;
+				$r['kh_giunguyen']+=($kq['diem_kehoach']==$kq['diem_namngoai'])?1:0;
+				
+				if($kq['diem_doandg']>0){
+				$r['sltangdiem'] +=($kq['diem_doandg']>$kq['diem_namngoai'])?1:0;
+				$r['slgiamdiem']+= ($kq['diem_doandg']<$kq['diem_namngoai'])?1:0;
+				$r['slgiunguyen']+=($kq['diem_doandg']==$kq['diem_namngoai'])?1:0;
+				}
+				else
+				{
+					$r['sltangdiem'] +=($kq['diem_bvdg']>$kq['diem_namngoai'])?1:0;
+					$r['slgiamdiem']+= ($kq['diem_bvdg']<$kq['diem_namngoai'])?1:0;
+					$r['slgiunguyen']+=($kq['diem_bvdg']==$kq['diem_namngoai'])?1:0;
+				}
+				
+				
+			}
+			
+				
+		}
+		return $r;
+}
+

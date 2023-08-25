@@ -1,3 +1,17 @@
+<!-- BEGIN: sub -->
+<ul class="pcoded-submenu">
+	<!-- BEGIN: item -->
+    <li class="{ITEM.active}">
+        <a href="{ITEM.link}">
+            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+            <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">{ITEM.title}</span>
+            <span class="pcoded-mcaret"></span>
+        </a>
+    </li>
+	<!-- END: item -->
+</ul>
+<!-- END: sub -->
+
 <!-- BEGIN: main -->
 <nav class="pcoded-navbar">
     <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
@@ -11,12 +25,13 @@
                 </a>
             </li>
 		<!-- BEGIN: loop -->
-            <li class="{ROW.active}">
+            <li class="{ROW.has_sub} {ROW.active}">
                 <a href="{ROW.link}">
                     <span class="pcoded-micon"><i class="ti-layers"></i><b></b></span>
                     <span class="pcoded-mtext" data-i18n="nav.form-components.main">{ROW.title}</span>
                     <span class="pcoded-mcaret"></span>
                 </a>
+				<!-- BEGIN: sub --> {SUB}<!-- END: sub -->
             </li>
         <!-- END: loop -->
 		<!-- BEGIN: chitieu -->

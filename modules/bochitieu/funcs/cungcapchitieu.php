@@ -35,7 +35,8 @@ if (empty($user_info)){	$url = MODULE_LINK . '&' . NV_OP_VARIABLE . '=login';nv_
 		//631ce8d71764da9dd2cccc656d415005_202306_1_A1.1
 		$k=$key[1].'_'.$key[2];//.'_'.$key[3];
 		$ghichu=$nv_Request->get_title('ghichu', 'get,post', '');
-		if (!empty($ghichu)){
+		//if (!empty($ghichu))
+		{
 		$sql = 'Update ' . TABLE. '_ketqua_'.$global_apdung['nam']. " SET ghichu='".$ghichu."'  WHERE dinhdanh ='".$k."'";
 		$stmt = $db->prepare($sql);
 		$row_id=$stmt->execute();
@@ -44,7 +45,7 @@ if (empty($user_info)){	$url = MODULE_LINK . '&' . NV_OP_VARIABLE . '=login';nv_
 		{$ketqua['status']='ERR';$ketqua['mess']=$lang_module['update_err'];}
 		$ketqua['url']=MODULE_LINK . '&' . NV_OP_VARIABLE .'='.$op.'&token='.$checkss.'_'.$key[1].'_'.$key[2];
 		
-		}		else	{$ketqua['status']='ERR';$ketqua['mess']= 'Lỗi, bạn chưa nhập ghi chú';}	
+		}//else	{$ketqua['status']='ERR';$ketqua['mess']= 'Lỗi, bạn chưa nhập ghi chú';}	
 		nv_jsonOutput($ketqua); exit;
 	}	
 	if ($sta=='getvalue')
@@ -388,17 +389,11 @@ if (empty($user_info)){	$url = MODULE_LINK . '&' . NV_OP_VARIABLE . '=login';nv_
 	$log=$key[1]-1;$log1=$key[1]-2;
 	$xtpl->assign('log', 'Năm '.$log);
 	$xtpl->assign('log1', 'Năm '.$log1);
-	//check log $log=$log.'12'; 
-	/*$check_log=false;
-	$sql = 'SELECT * FROM ' . TABLE. "_apdung where nam='".$log."'";	
-	$l = $db->query($sql)->fetch();	if (!empty($l)) $check_log=true;
-	$sql = 'SELECT * FROM ' . TABLE. "_apdung where nam='".$log1."'";	
-	$l = $db->query($sql)->fetch();	if (!empty($l)) $check_log1=true;*/
-	//var_dump($token);23137f37d92fda51373b2559e515f231_2023_1
+
 	foreach($list as $cs)
 	{
 		$cs['stt']=++$stt;
-		$xtpl->assign('CS', $cs);	
+		$cs['tong_bvdg']=0;$cs['tong_doandg']=0;$cs['tong_kehoach']=0;
 		
 		$sql = 'SELECT * FROM ' . TABLE. "_question 
 			where status=1 and giatri>0 and parent like '".$cs['code']."' order by code";
@@ -418,19 +413,13 @@ if (empty($user_info)){	$url = MODULE_LINK . '&' . NV_OP_VARIABLE . '=login';nv_
 				if (empty($kq)) {$kq['diem_bvdg']=0;$kq['diem_doandg']=0;}
 				else {$kq['diem_bvdg']=$kq['t'.$apdung['thangapdung'].'_diem_bvdg'];
 				$kq['diem_doandg']=$kq['t'.$apdung['thangapdung'].'_diem_doandg'];}
+				if ($kq['diem_doandg']>0)
+					$kq['color']=($kq['diem_bvdg']<$kq['diem_doandg'])?" btn-danger":" btn-primary";
+				else $kq['color']=($kq['diem_bvdg']<$kq['diem_namngoai'])?" btn-danger":" btn-primary";
 				
+				$cs['tong_bvdg'] +=$kq['diem_bvdg'];$cs['tong_doandg']+=$kq['diem_doandg'];
+				$cs['tong_kehoach'] +=$kq['diem_kehoach'];
 				$xtpl->assign('KQ', $kq);	
-				//show log
-				/*$dslog=array(); 
-				if ($check_log)
-				{
-					$sql = 'SELECT * FROM ' .TABLE. "_ketqua_".$log." where status=1 
-					and dinhdanh like '".$key[2].'_'.$q['code']."'";
-					$dslog = $db->query($sql)->fetch();
-					//$log."12'"
-				}
-				if (empty($dslog)) {$dslog['diem_bvdg']='-';$dslog['diem_doandg']='-';}
-				$xtpl->assign('LOG', $dslog);*/
 				
 				if ($quyen>100) {
 					for ($d=1;$d<=5;$d++){
@@ -460,9 +449,13 @@ if (empty($user_info)){	$url = MODULE_LINK . '&' . NV_OP_VARIABLE . '=login';nv_
 				$xtpl->parse('main.solan.chiso.khoaphong');
 			}
 			
+			$cs['tong_bvdg'] =round($cs['tong_bvdg']/count($Q),2);
+			$cs['tong_doandg']=round($cs['tong_doandg']/count($Q),2);
+			$cs['tong_kehoach']=round($cs['tong_kehoach']/count($Q),2);
 			
+			$xtpl->assign('CS', $cs);	
 			$xtpl->parse('main.solan.chiso');
-		}
+	}
 		
 		$xtpl->assign('token',md5($code).'_'.$code );//md5($key[1].$key[2].$i).'_'.$key[1].'_'.$key[2]);
 		$xtpl->assign('sohang', ++$stt);

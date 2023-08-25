@@ -9,20 +9,28 @@
 			<div class="table-responsive" style="padding-bottom: 100px;">
                     <table class="table table-hover" >
                         <tbody>
-							<tr><th colspan="1" class="text-center">CẬP NHẬT THÔNG TIN CHỈ TIÊU</th></tr>
-                            <tr> <th>Chỉ tiêu</th> </tr>
-                            <tr> <td><textarea name=chi_so rows="2"  class="form-control">{ROW.chi_so}</textarea></td> </tr>
-							<tr> <th>Thành tố</th> </tr>
-                            <tr> <td>
+							<tr><th colspan="2" class="text-center">CẬP NHẬT THÔNG TIN CHỈ TIÊU</th></tr>
+                            <tr> <th colspan="2">Chỉ tiêu</th> </tr>
+                            <tr> <td colspan="2"><textarea name=chi_so rows="2"  class="form-control">{ROW.chi_so}</textarea></td> </tr>
+							<tr> 
+							<th>Thành tố</th> 
+							<th>Chỉ tiêu(%) </th> 
+							</tr>
+                            <tr> 
+							<td>
 							<select name="thanh_to" class="form-control" placeholder="" title="Thành tố" data-toggle="tooltip">
 									<!-- BEGIN: thanh_to -->
 									<option value="{r.id}" {r.select}>{r.name}</option>
 									<!-- END: thanh_to -->
 							</select>
 							</td> 
+							<td>
+							<input name="chitieu" value="{ROW.chitieu}" type="text" class="dataValue form-control">
+							</td> 
+							
 							</tr>
-							<tr> <th>Phạm vi áp dụng</th> </tr>
-                            <tr> <td>
+							<tr> <th colspan="2">Phạm vi áp dụng</th> </tr>
+                            <tr> <td colspan="2">
 							<select name="pham_vi[]"  multiple="multiple" class="form-control phamvi" >
 									
 									<!-- BEGIN: pham_vi -->
@@ -31,8 +39,8 @@
 							</select>
 							</td> 
 							</tr>
-							<tr> <th>Khoa/phòng cung cấp</th> </tr>
-                            <tr> <td>
+							<tr> <th colspan="2">Khoa/phòng cung cấp</th> </tr>
+                            <tr> <td colspan="2">
 							<select name="list_khoacungcap[]"  multiple="multiple" class="form-control khoacungcap" >
 									<!-- BEGIN: khoacungcap -->
 									<option value="{r.id}" {r.select}>{r.name}</option>
@@ -40,8 +48,8 @@
 							</select>
 							</td> 
 							</tr>
-							<tr> <th>Thời gian cung cấp</th> </tr>
-							<tr> <td>
+							<tr> <th colspan="2">Thời gian cung cấp</th> </tr>
+							<tr> <td colspan="2">
 							<select name="tansuatgui"  class="form-control" >
 									<!-- BEGIN: tansuatgui -->
 									<option value="{r.id}" {r.select}>{r.name}</option>
@@ -50,13 +58,10 @@
 							</td> 
 							</tr>
 							
-							<tr> <td class="text-center"> 
+							<tr> <td class="text-center" colspan="2"> 
 							
 								<button type="submit" class="btn btn-out-dashed btn-info btn-square"> 
 								<i class="icofont icofont-check-circled"></i> Cập nhật</button>	
-							
-							
-							
 								<a href="{link_back}"><span type="text" class="btn btn-out-dotted btn-danger btn-square">Trở lại</span>	</a>
 							
 							

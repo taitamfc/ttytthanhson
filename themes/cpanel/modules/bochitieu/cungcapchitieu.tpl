@@ -22,13 +22,13 @@
 <!-- BEGIN: select -->
 	<div class="ks-cboxtags">
             <input type="checkbox" id="check{lev}"  value="1" onclick="checkAllLevel({lev},this);">
-            <label for="check{lev}">Chọn toàn bộ mức {lev}</label>
+            <label for="check{lev}">Chọn đến mức {lev}</label>
     </div>
 <!-- END: select -->
 </div>
 <div class="row">
 <button onclick="copydanhgia();" class="btn btn-out-dashed btn-primary btn-square btn-block">
-<i class="icofont icofont-user-alt-3"></i><strong>COPY ĐÁNH GIÁ TỪ BV SANG ĐOÀN KT</strong></button>
+<i class="icofont icofont-user-alt-3"></i><strong>COPY ĐÁNH GIÁ TỪ KHOA/PHÒNG SANG HỘI ĐỒNG</strong></button>
 
 </div>
 
@@ -176,10 +176,10 @@
 									 <th class="text-left col-1">Mã số:</th>
 									 <th class="text-center"> Chỉ tiêu</th>									
 									 <th class="text-left"> Kế hoạch</th>									
-									 <th class="text-center"> Đoàn KT đánh giá <br/>{log1} </th>									
-									 <th class="text-center"> Đoàn KT đánh giá <br/>{log}</th>
-									 <th class="text-center"> BV tự đánh giá <br/>{namapdung} </th>									
-									 <th class="text-center"> Đoàn KT đánh giá <br/>{namapdung}</th>
+									 									
+									 <th class="text-center phanhang"> Đoàn KT đánh giá <br/>{log}</th>
+									 <th class="text-center phanhang"> Khoa/Phòng tự đánh giá <br/>{namapdung} </th>									
+									 <th class="text-center phanhang"> Hội đồng QLCL đánh giá <br/>{namapdung}</th>
 									 <th class="text-center"> Thao tác </th>
 								</tr>
 								<!-- BEGIN: chiso -->
@@ -187,8 +187,9 @@
 									<td class="text-center">{CS.code}</td>
 									<td class="text-left phanhang">-{CS.noidung}</td>
 									
-									<td class="text-center"> </td>
-									<td class="text-center"> </td>
+									<td class="text-left"> 
+									<div class="btn btn-success"><span style="font-weight: bold;">{CS.tong_kehoach}</span></div>
+									</td>
 									
 									<td class="text-center"> 
 									<!-- BEGIN: khoaphong -->
@@ -200,8 +201,10 @@
 									</select>
 									<!-- END: khoaphong -->
 									</td>									
-									<td class="text-center"> </td>
-									<td class="text-center"> </td>	
+									<td class="text-center"> 
+										<div class="btn btn-success"><span style="font-weight: bold;">{CS.tong_bvdg}</span></div>
+									</td>
+									<td class="text-center"><div class="btn btn-success"><span style="font-weight: bold;">{CS.tong_doandg}</span></div>  </td>	
 									<td class="text-center"> </td>	
 									
 								</tr>
@@ -213,7 +216,7 @@
 										<!-- BEGIN: ghichu --><div style="color:#ccc">{KQ.ghichu}</div><!-- END: ghichu -->
 									</td>									
 									
-									<td class="text-center"> 
+									<td class="text-left"> 
 										<!-- BEGIN: user -->
 										<div class="btn label-inverse-default">
 										<span  style="font-weight: bold;color:#f00">{KQ.diem_kehoach}</span></div>
@@ -228,10 +231,7 @@
 										<!-- END: qlchatluong -->
 									</td>
 									
-									<td class="text-center"> 
-										<div class="btn label-inverse-default">
-										<span  style="font-weight: bold;color:#000">{KQ.diem_namkia}</span></div>
-									</td>
+									
 									
 									<td class="text-center"> 
 										<div class="btn label-inverse-default">
@@ -239,7 +239,7 @@
 									</td>
 									
 									<td class="text-center"> 
-										<div class="btn btn-primary">
+										<div class="btn {KQ.color}">
 										<span style="font-weight: bold;" id="bv{Q.id}">{KQ.diem_bvdg}</span></div>
 									</td>									
 									<td class="text-center"> 
@@ -311,7 +311,10 @@
 
 <!-- END: main -->
 
-			
+<td class="text-center"> 
+	<div class="btn label-inverse-default">
+	<span  style="font-weight: bold;color:#000">{KQ.diem_namkia}</span></div>
+</td>		
 			
 			
 			

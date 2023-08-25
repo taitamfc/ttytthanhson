@@ -195,6 +195,33 @@ function checkValue(object)
 	 else object.css("color", "#222");
 	 return true;
 }
+
+function checktile(object,id=0,res=0)
+{
+	if(object.val().trim()=='') return false;
+	if (isNaN(object.val())) 
+	  {
+		alert("Vui lòng nhập giá trị là số!");
+		object.css("color", "#ff0000");
+		return false;
+	  }
+	 else object.css("color", "#222");
+	 
+	 if (res>0)
+	 {
+		 var ts = document.getElementById("ketqua_"+id+"1").value; 
+		 var ms = document.getElementById("ketqua_"+id+"2").value; 
+		 var tile = document.getElementById("ketqua_"+id+"3").value; 
+		 //alert();
+		 var kq=0;		 
+		 if (ms>0) kq=Math.round(ts*100/ms,1); 
+		 $("#tile_"+id+"3").html(kq+"%");
+		 tile.value=kq;
+	 }
+	 
+	 return true;
+}
+
 function default0(object)
 {
 	if(object.val().trim()=='') return false;

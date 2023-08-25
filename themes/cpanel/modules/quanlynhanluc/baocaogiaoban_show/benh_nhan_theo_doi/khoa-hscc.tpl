@@ -1,13 +1,13 @@
 <div class="has_fd fd_khoahscc">
-    <label class="form-label">6.1. KHOA HSCC</label>
-    <ol class="multi-report">
+    <label class="form-label text-uppercase">6.1. Khoa Cấp cứu - HSTC - CĐ</label>
+    <div class="multi-report">
         <!-- BEGIN: khoa_hscc -->
-        <li>
+        <div>
             <div class="report-text">
                 <strong>{khoa_hscc_item.tieude}</strong>
                 <p>{khoa_hscc_item.noidung}</p>
             </div>
-        </li>
+        </div>
         <!-- END: khoa_hscc -->
-    </ol>
+    </div>
 </div>

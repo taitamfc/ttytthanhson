@@ -1,0 +1,157 @@
+
+
+//test code 1
+
+
+<div class="container py-5">
+    <h1>Employee Management System</h1>
+
+    <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addModal">Add Employee</button>
+
+    <table id="employeeTable" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John Doe</td>
+                <td>Administration</td>
+                <td>
+                    <button class="btn btn-primary edit-btn">Edit</button>
+                    <button class="btn btn-danger delete-btn">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Jane Smith</td>
+                <td>Human Resources</td>
+                <td>
+                    <button class="btn btn-primary edit-btn">Edit</button>
+                    <button class="btn btn-danger delete-btn">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Add Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addModalLabel">Add Employee</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="name" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="department" class="col-form-label">Department:</label>
+                        <input type="text" class="form-control" id="department">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="saveBtn">Save</button>
+            </div>
+        </div>
+    </div>
+
+
+    <tr data-f-bold="true">
+        <th data-f-sz="12" data-f-name="Times New Roman" data-f-bold="false" colspan="7" data-a-h="center"
+          class="text-center">SỞ Y TẾ PHÚ THỌ </th>
+        <th data-f-sz="12" data-f-name="Times New Roman" data-f-bold="true" colspan="7" data-a-h="center"
+          class="text-center">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM </th>
+      </tr>
+
+
+    <script>
+    $(document).ready(function() {
+        // Initialize DataTable
+        var table = $('#employeeTable').DataTable({
+          columnDefs: [{
+            targets: -1,
+            orderable: false
+          }]
+        });
+      
+        // Edit button click handler
+        $('#employeeTable').on('click', '.edit-btn', function() {
+          var data = table.row($(this).closest('tr')).data();
+          $('#editName').val(data[0]);
+          $('#editDepartment').val(data[1]);
+          $('#editRowId').val(table.row($(this).closest('tr')).index());
+        });
+      
+        // Add button click handler
+        $('#addBtn').click(function() {
+          var name = $('#newName').val();
+          var department = $('#newDepartment').val();
+          var actions = '<button class="btn btn-primary edit-btn">Edit</button>';
+      
+          table.row.add([name, department, actions]).draw(false);
+      
+          $('#newName').val('');
+          $('#newDepartment').val('');
+          $('#addModal').modal('hide');
+        });
+      
+        // Save button click handler
+        $('#saveEditBtn').click(function() {
+          var name = $('#editName').val();
+          var department = $('#editDepartment').val();
+          var rowId = $('#editRowId').val();
+      
+          table.row(rowId).data([name, department,
+            '<button class="btn btn-primary edit-btn">Edit</button>'
+          ]).draw(false);
+      
+          $('#editModal').modal('hide');
+        });
+
+// Reset form fields on modal close
+$('#myModal').on('hidden.bs.modal', function () {
+  $(this).find('form')[0].reset();
+});
+
+
+      });
+      </script>
+
+
+//test code 2
+
+
+
+array(50) { 
+[0]=> string(4) "1=>1" 
+[1]=> string(4) "2=>1" 
+[2]=> string(4) "3=>1" 
+[3]=> string(4) "4=>1" 
+[4]=> string(4) "5=>1" 
+[5]=> string(4) "6=>1" 
+[6]=> string(4) "7=>1" 
+[7]=> string(4) "8=>1" 
+[8]=> string(4) "9=>1" 
+[9]=> string(5) "10=>1" 
+[10]=> string(5) "11=>1" 
+[11]=> string(5) "12=>1" 
+[12]=> string(5) "13=>1" 
+[13]=> string(5) "14=>1" 
+[14]=> string(5) "15=>1" 
+[15]=> string(5) "16=>1" 
+[16]=> string(5) "17=>1" 
+[17]=> string(5) "18=>|" 
+[18]=> string(5) "
+
+
+
+SELECT * FROM `nv4_vi_five5s_report_details_2023` WHERE account_report='tochuc' and count=1

@@ -66,15 +66,17 @@ if (empty($user_info)){	$url = MODULE_LINK . '&' . NV_OP_VARIABLE . '=login';nv_
 		$data['pham_vi']=$nv_Request->get_array('pham_vi', 'get,post', '');
 		$data['list_khoacungcap']=$nv_Request->get_array('list_khoacungcap', 'get,post', '');
 		$data['tansuatgui']=$nv_Request->get_title('tansuatgui', 'get,post', '');
+		$data['chitieu']=$nv_Request->get_title('chitieu', 'get,post', '');
 		//var_dump($data['pham_vi']);
 		$sql = 'Update ' . TABLE. '_chitieu_'.$key[1]. " SET chi_so=:chi_so, thanh_to=:thanh_to, pham_vi=:pham_vi , 
-		list_khoacungcap=:list_khoacungcap, tansuatgui=:tansuatgui  WHERE id =".$key[2];
+		list_khoacungcap=:list_khoacungcap, tansuatgui=:tansuatgui , chitieu=:chitieu  WHERE id =".$key[2];
 		$stmt = $db->prepare($sql);
 		$stmt->bindParam(':chi_so', $data['chi_so'], PDO::PARAM_STR);
 		$stmt->bindParam(':thanh_to', $data['thanh_to'], PDO::PARAM_STR);
 		$stmt->bindParam(':pham_vi', serialize($data['pham_vi']), PDO::PARAM_STR);
 		$stmt->bindParam(':list_khoacungcap', serialize($data['list_khoacungcap']), PDO::PARAM_STR);
 		$stmt->bindParam(':tansuatgui', $data['tansuatgui'], PDO::PARAM_STR);
+		$stmt->bindParam(':chitieu', $data['chitieu'], PDO::PARAM_STR);
 		$row_id=$stmt->execute();
 		if ($row_id>0) $ketqua['status']='OK';
 		

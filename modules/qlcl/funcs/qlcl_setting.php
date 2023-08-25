@@ -48,8 +48,8 @@ if (empty($user_info)){	$url = MODULE_LINK . '&' . NV_OP_VARIABLE . '=login';nv_
 			
 			$stmt = $db->prepare("Update ".TABLE."_apdung set apdung=0")->execute();
 			
-			$sql="INSERT INTO ".TABLE."_apdung (id,nam,status,apdung,ngaytao) 
-			VALUES (NULL, ".$namkhoitao.", '1', '1', now());";
+			$sql="INSERT INTO ".TABLE."_apdung (id,nam,status,apdung,ngaytao,add_time,edit_time) 
+			VALUES (NULL, ".$namkhoitao.", '1', '1', now(), '0', '0');";
 			$stmt = $db->prepare($sql)->execute();
 			
 			

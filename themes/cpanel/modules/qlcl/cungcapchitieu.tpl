@@ -18,7 +18,7 @@
                     <table class="table table-hover" >
                         <thead>
 							<tr style="background-color: #2ed8b6; color: #fff;height:100px">
-                                <th colspan="10" class="align-middle">Chỉ tiêu: {ROW.chi_so}</th>
+                                <th colspan="10" class="align-middle" style="text-transform: uppercase;">Chỉ tiêu: {ROW.chi_so}</th>
                             </tr>
                             
                         </thead>
@@ -61,10 +61,20 @@
 							<!-- BEGIN: chiso -->
 								<tr>									
 									 <th class="text-left col-1">{CS.stt}.{CS.giatri}:</th>
+									<!-- BEGIN: input -->
 									 <td class="text-center"> 
-									 <input {ROW.lock} onchange="checkValue($(this))" id="ketqua[]" name="ketqua[]" value="{CS.kq}" type="text" class="dataValue form-control">
-									</td>									
+									 <input {ROW.lock} onchange="{CS.onchange}" id="ketqua_{TS.no}{CS.stt}" name="ketqua[]" value="{CS.kq}" type="text" class="dataValue form-control">
+									</td>
+									<!-- END: input -->
+									<!-- BEGIN: tile -->
+									 <td class="text-center"> 
+									 <div class="btn btn-success"><span id="tile_{TS.no}{CS.stt}" style="font-weight: bold;">{tile}%</span></div>
+									 <input {ROW.lock} id="ketqua_{TS.no}{CS.stt}" name="ketqua[]" value="{CS.kq}" type="hidden" class="dataValue form-control">
+									</td>
+									<!-- END: tile -->
+									
 								</tr>
+								
 							<!-- END: chiso -->	
 						</table>	
 						</form>		

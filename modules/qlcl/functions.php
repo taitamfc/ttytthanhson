@@ -76,6 +76,16 @@ function nv_redirect_location($url) // Version cũ ko có hàm này
      exit();
 }
 
+
+function check_quyen($user)
+{
+	global $db,$module_data,$lang_module;
+	$sql= "SELECT * FROM " . TABLE . "_groupuser where account like '".$user['username']."'";
+	$ds = $db->query($sql)->fetch();
+	if (!empty($ds))return $ds[id_nhomquyen];
+	return 0; // trả lại giá trị không thực hiện được 
+}
+
 function check_khoaphong($user)
 {
 	global $db,$module_data,$lang_module;

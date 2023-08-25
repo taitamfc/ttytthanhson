@@ -51,7 +51,7 @@ if (! nv_function_exists('nv_qlnl_menu')) {
 					or (in_array('ALL',unserialize($r['list_khoacungcap']))))
 				{
 				$r['stt']=++$tt; $r['color']='';$r['status']='';
-				$r['title']='Chỉ tiêu số '.$tt; 
+				$r['title']='Chỉ tiêu số '.$r['id']; 
 				$r['token']=md5($client_info['session_id'] . $global_config['sitekey']).'_'.$namapdung.'_'.$r['id'];
 				$r['link_action']=MODULE_LINK. '&' . NV_OP_VARIABLE . '=cungcapchitieu&token='.$r['token'];
 				if (strpos($client_info['selfurl'].'sub',$r['token'].'sub')>0) 

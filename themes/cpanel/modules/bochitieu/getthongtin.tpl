@@ -1,3 +1,140 @@
+<!-- BEGIN: editreport1 -->
+
+<div class="card-header">
+    <h5>CẬP NHẬT BÁO CÁO</h5>
+</div>
+<div class="card-block table-border-style">
+    <div class="table-responsive">
+        <table class="table table-bordered border-primary">
+			<tbody>
+			<tr>
+				<td class=""><h5>V. TỰ ĐÁNH GIÁ VỀ CÁC ƯU ĐIỂM CHẤT LƯỢNG BỆNH VIỆN</h5></td>
+			</tr>
+			<tr>
+				<td class="phanhang" style="color:#000">{COM.content_v}</td>
+			</tr>
+
+			<tr>
+				<td class=""><h5>VI. TỰ ĐÁNH GIÁ VỀ CÁC NHƯỢC ĐIỂM, VẤN ĐỀ TỒN TẠI </h5></td>
+			</tr>
+			<tr>
+				<td class="phanhang"  style="color:#000">{COM.content_vi}</td>
+			</tr>
+
+			<tr>
+				<td class=""><h5>VII. XÁC ĐỊNH CÁC VẤN ĐỀ ƯU TIÊN CẢI TIẾN CHẤT LƯỢNG </h5></td>
+			</tr>
+
+			<tr>
+				<td class="phanhang"  style="color:#000">{COM.content_vii}</td>
+			</tr>
+
+			<tr>
+				<td class=""><h5>VIII. GIẢI PHÁP, LỘ TRÌNH, THỜI GIAN CẢI TIẾN CHẤT LƯỢNG</h5></td>
+			</tr>
+			<tr>
+				<td class="phanhang"  style="color:#000">{COM.content_viii}</td>
+			</tr>
+
+			<tr>
+				<td><h5>IX. KẾT LUẬN, CAM KẾT CỦA BỆNH VIỆN CẢI TIẾN CHẤT LƯỢNG</h5></td>
+			</tr>
+			<tr>
+				<td class="phanhang"  style="color:#000">{COM.content_ix}</td>
+			</tr>
+			</tbody>
+			</table>
+    </div>
+</div>
+
+<!-- END: editreport1 -->
+
+
+<!-- BEGIN: tkbangchung -->
+<div class="card-header">
+    <h5>Danh sách file</h5>
+</div>
+<div class="card-block table-border-style">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Tên File</th>
+                    <th>Liên kết</th>
+                    <th>Thời gian</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+			<!-- BEGIN: row -->
+                <tr>
+                    <th scope="row">{ROW.stt}</th>
+                    <td>{ROW.file_name}</td>                    
+                    <td><a href="{ROW.url_file}">Link file</a></td>
+					<td>{ROW.ngaygio}</td>
+                    <td>
+					<label onclick="view_detail('{ROW.url_file}');" 
+					title="Xem chi tiết" class="btn btn-success btn-mini waves-effect waves-light "> <i class="icofont icofont-eye-alt"></i> </label>
+					
+					</td>
+                </tr>
+            <!-- END: row -->
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- Modal start -->
+<div class="modal fade modal-detail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialogdetail modal-lg" role="document">
+        <div class="modal-content">
+		<div class="modal-header" style="background-color: #b2f3fd;">
+			<div style="width:90%; float:left">
+				<div class="breadcrumb-header"><strong>CHI TIẾT ĐÍNH KÈM</strong></div>
+			</div>
+			<div style="width:10%; float:right">
+			<div class="card-header-right" style="float:right">
+					<button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" >
+					Đóng</button>
+			</div>
+			</div>
+			
+		 </div>
+		<div class="card borderless-card" style="margin-bottom: 0px;">
+			<div id="modal_body" class="card-block" style="background-repeat: no-repeat;  min-height: 500px;min-width: 50%;">                
+                <div class="page-header-breadcrumb">
+				<div id="modal_bodydetail"></div> 
+				
+				</div>
+			   
+            </div>
+		</div>
+		
+        </div>
+		
+    </div>
+</div>
+<!-- Modal end -->
+
+<script type="text/javascript">
+function view_detail(tb='',t='') {
+		var body=document.getElementById("modal_body");
+		var detail=document.getElementById("modal_bodydetail");
+		var h=screen.height-100;
+		//body.setAttribute("style","height:"+h+"px");
+		//body.style.backgroundImage = "url('"+tb+"')"; 
+		//var elem = document.createElement("img");elem.setAttribute("src", tb);
+		//document.getElementById("modal_bodydetail").appendChild("elem");
+          $('.modal-detail').modal({ keyboard: false,show: true});
+		  detail.innerHTML = '<img width="100%" height="100%" src="'+tb+'">';
+		  //$('#modal_bodydetail').html(tb);
+		  $('.modal-dialogdetail').draggable({handle: ".modal-header"});
+	return !1;
+}
+</script>
+<!-- END: tkbangchung -->
+
+
 <!-- BEGIN: dsdinhkem -->
 <div class="card-header">
     <h5>Danh sách file</h5>

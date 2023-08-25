@@ -14,7 +14,11 @@ if (!defined('NV_ADMIN') or !defined('NV_MAINFILE')) {
 
 $module_version = array(
     'name' => 'bochitieu',
-    'modfuncs' => 'detail_report,bochitieu_bcchitieu,bochitieu_danhsach,bochitieu_setting,config_chitieu,usersetting,notification,login,main,
+    'modfuncs' => 'tk_tangdiem,tk_giamdiem,tk_tangdiemnamngoai,tk_giamdiemnamngoai,
+	tk_tonghopthang,tk_tonghopkhoa,tk_bangchung,tk_ghichu,pvkiemtra,
+	edit_report_doankt,edit_report,detail_report,detail_report_doankt,bochitieu_bcchitieu,bochitieu_danhsach,
+	bochitieu_setting,config_chitieu,
+	usersetting,notification,login,main,config_home,
 	cungcapchitieu,	getthongtin',
     'is_sysmod' => 0,
     'virtual' => 1,

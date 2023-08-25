@@ -1,10 +1,10 @@
 
-<ol class="multi-report">
+<div class="multi-report">
     <!-- BEGIN: benh_nhan_chuyen_tuyen -->
-    <li>
+    <div>
         <strong>Bệnh nhân:</strong> {benh_nhan_chuyen_tuyen_item.benh_nhan} <br>
         <strong>Chẩn đoán:</strong> {benh_nhan_chuyen_tuyen_item.chuan_doan} <br>
         <strong>Nơi chuyển đến:</strong> {benh_nhan_chuyen_tuyen_item.noi_chuyen_den} <br>
-    </li>
+    </div>
     <!-- END: benh_nhan_chuyen_tuyen -->
-</ol>
+</div>

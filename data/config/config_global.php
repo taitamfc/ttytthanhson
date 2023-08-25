@@ -5,7 +5,7 @@
  * @Author VINADES.,JSC (contact@vinades.vn)
  * @Copyright (C) 2023 VINADES.,JSC. All rights reserved
  * @License GNU/GPL version 2 or any later version
- * @Createdate Sat, 22 Jul 2023 04:40:05 GMT
+ * @Createdate Wed, 23 Aug 2023 13:09:18 GMT
  */
 
 if ( ! defined( 'NV_MAINFILE' ) ) die( 'Stop!!!' );
@@ -68,8 +68,8 @@ $global_config['lang_multi']=1;
 $global_config['login_number_tracking']=100;
 $global_config['login_time_ban']=0;
 $global_config['login_time_tracking']=100;
-$global_config['max_requests_300']=150;
-$global_config['max_requests_60']=40;
+$global_config['max_requests_300']=250;
+$global_config['max_requests_60']=100;
 $global_config['my_domains']='ttytthanhson.test,ttythuyenthanhson.com,localhost';
 $global_config['notification_active']=1;
 $global_config['notification_autodel']=15;
@@ -93,7 +93,7 @@ $global_config['site_timezone']='byCountry';
 $global_config['spadmin_add_admin']=1;
 $global_config['ssl_https']=0;
 $global_config['str_referer_blocker']=0;
-$global_config['timestamp']=80;
+$global_config['timestamp']=84;
 $global_config['two_step_verification']=0;
 $global_config['upload_alt_require']=1;
 $global_config['upload_auto_alt']=1;

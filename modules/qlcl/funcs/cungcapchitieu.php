@@ -108,7 +108,7 @@ if (empty($user_info)){	$url = MODULE_LINK . '&' . NV_OP_VARIABLE . '=login';nv_
 		
 		//check chỉ tiêu đã nhập/khóa chưa?
 		$kq=array();
-		$sql = 'SELECT * FROM ' .TABLE. "_ketqua_".$key[1]." where status=1 and token like '".md5($code)."'";
+		$sql = 'SELECT * FROM ' .TABLE. "_ketqua_".$key[1]." where status=1 and account like '".$user_info['username']."'and token like '".md5($code.$user_info['username'])."'";
 		$kq = $db->query($sql)->fetch();$tl=0;
 		if (!empty($kq))
 		{
@@ -124,15 +124,25 @@ if (empty($user_info)){	$url = MODULE_LINK . '&' . NV_OP_VARIABLE . '=login';nv_
 		
 		foreach($list as $cs)
 		{
-			if (!empty($kq)) $cs['kq']=$kq['ketqua'][$stt];			
+			if (!empty($kq)) $cs['kq']=$kq['ketqua'][$stt];	
+			else  $cs['kq']=0;			
 			$cs['stt']=++$stt;
+			if ($cs['check']>0)  
+				$cs['onchange']="checktile($(this),".$ts['no'].",".$ts['no'].$cs['check'].");";
+			else $cs['onchange']="checkValue($(this));";
 			$xtpl->assign('CS', $cs);		
-			
+			if ($cs['check']==$stt) 
+				{
+				$tile=($kq['ketqua'][1]>0)?round($kq['ketqua'][0]*100/$kq['ketqua'][1],1):0;
+				$xtpl->assign('tile',$tile);	
+				$xtpl->parse('main.solan.chiso.tile');
+				}
+			else $xtpl->parse('main.solan.chiso.input');
 			$xtpl->parse('main.solan.chiso');
 		}
 		
 		
-		$xtpl->assign('token',md5($code).'_'.$code );//md5($key[1].$key[2].$i).'_'.$key[1].'_'.$key[2]);
+		$xtpl->assign('token',md5($code.$user_info['username']).'_'.$code );//md5($key[1].$key[2].$i).'_'.$key[1].'_'.$key[2]);
 		$xtpl->assign('sohang', ++$stt);
 		$xtpl->parse('main.solan');		
 	}

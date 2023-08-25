@@ -32,13 +32,39 @@ if ($sta=='dsdinhkem')
 	//Check đính kèm
 	$sql = 'SELECT * FROM ' . TABLE. "_file where 
 	namapdung =".$global_apdung['nam']." and token ='".$dinhdanh."' and status=1 and id_tm=".$key[2];
-	$list = $db->query($sql);//->fetchAll();
-	
+	$list = $db->query($sql);//->fetchAll();	
 	while ($r = $list->fetch()) {
 			$r['stt']=++$stt;
 			//$r['ngaygio']=date('H:i d/m/y',$r['ngaygio']);
 			$r['url_file']=NV_BASE_SITEURL.$r['url_file'];
 			$r['url_del']=MODULE_LINK . '&' . NV_OP_VARIABLE . '=cungcapchitieu&sta=delfile&token='.md5($client_info['session_id'] . $r['id']).'_'.$r['id'];
+			$xtpl->assign('ROW', $r);
+			$xtpl->parse($sta.'.row');
+        }
+	
+	$xtpl->assign('token', $token);
+	$xtpl->parse($sta);
+	$contents = $xtpl->text($sta);
+	
+	include NV_ROOTDIR . '/includes/header.php';
+	echo nv_site_theme($contents);
+	include NV_ROOTDIR . '/includes/footer.php';
+}
+if ($sta=='tkbangchung')	
+{
+	//token: năm_itemChill
+	$key=explode('_',$token);
+	
+	//Check đính kèm
+	$sql = 'SELECT * FROM ' .TABLE. "_file where status=1 
+			and token like '%_".$key[1]."%' and namapdung=".$key[0];
+	$list = $db->query($sql);//->fetchAll();
+	//$sta='dsdinhkem'; // lấy template
+	while ($r = $list->fetch()) {
+			$r['stt']=++$stt;
+			//$r['ngaygio']=date('H:i d/m/y',$r['ngaygio']);
+			$r['url_file']=NV_BASE_SITEURL.$r['url_file'];
+			//$r['url_del']=MODULE_LINK . '&' . NV_OP_VARIABLE . '=cungcapchitieu&sta=delfile&token='.md5($client_info['session_id'] . $r['id']).'_'.$r['id'];
 			$xtpl->assign('ROW', $r);
 			$xtpl->parse($sta.'.row');
         }

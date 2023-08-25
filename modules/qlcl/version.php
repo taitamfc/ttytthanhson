@@ -13,10 +13,9 @@ if (!defined('NV_ADMIN') or !defined('NV_MAINFILE')) {
 }
 
 $module_version = array(
-    'name' => 'qlnl',
-    'modfuncs' => 'qlcl_danhsach,qlcl_setting,config_chitieu,usersetting,notification,login,main,
-	cungcapchitieu,
-	getthongtin',
+    'name' => 'qlcl',
+    'modfuncs' => 'detail_report,qlcl_bcchitieu,qlcl_danhsach,qlcl_setting,config_chitieu,usersetting,notification,login,main,
+	cungcapchitieu,	getthongtin',
     'is_sysmod' => 0,
     'virtual' => 1,
     'version' => '4.1.02',
