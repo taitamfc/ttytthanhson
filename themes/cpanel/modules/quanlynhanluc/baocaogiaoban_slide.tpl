@@ -218,7 +218,7 @@
 			interval:20000,
 			pause:'hover',
 		});
-		$('input[type="number"]').each( function(key,val){
+		$('input[type="number"], input[type="text"]').each( function(key,val){
             let oldVal = $(val).val();
             $(val).closest('td').append('<p class="form-control-static text-center text-bold">'+oldVal+'</p>')
             $(val).remove();

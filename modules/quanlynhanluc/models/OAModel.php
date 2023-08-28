@@ -114,6 +114,11 @@ class OAModel {
         ];
         return $return;
     }
+    public function findByField($field,$value){
+        $this->app_db->where ($field, $value);
+        $item = $this->app_db->getOne ($this->table);
+        return $item;
+    }
     public function find($id,$options = []){
         $this->app_db->where ($this->primaryKey, $id);
         $search = isset( $options['search'] ) ? $options['search'] : [];
@@ -136,8 +141,7 @@ class OAModel {
         if($id){
             return $id;
         }else{
-            echo(__METHOD__.' Co loi xay ra:'.$this->app_db->getLastError());
-            die();
+            die(__METHOD__.':'.$this->app_db->getLastError());
         }
     }
     public function update($id,$data,$options = []){
@@ -146,8 +150,7 @@ class OAModel {
         if($updated){
             return $updated;
         }else{
-            echo(__METHOD__.' Co loi xay ra:'.$this->app_db->getLastError());
-            die();
+            die(__METHOD__.':'.$this->app_db->getLastError());
         }
     }
     public function delete($id,$options = []){

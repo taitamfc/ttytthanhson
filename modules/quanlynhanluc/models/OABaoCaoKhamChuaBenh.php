@@ -8,18 +8,16 @@ class OABaoCaoKhamChuaBenh extends OAModel{
         parent::__construct();
         $this->table = $this->table_prefix . 'baocaokcb';
     }
-
     public function saveOrUpdate($data){
-        $ngay = date('Y-m-d',strtotime($data['ngaygio']));
+        $ngaygio = date('Y-m-d',strtotime($data['ngaygio']));
         $check = $this->all([
             'search' => [
-                'DATE(ngaygio)' => $ngay,
-                'account' => 'khoakb'
+                'DATE(ngaygio)' => $ngaygio,
+                'account' => $data['account']
             ],
             'limit' => 1
         ]);
-
-        if($check){
+        if( $check ){
             $this->update($check['id'],$data);
         }else{
             $this->save($data);

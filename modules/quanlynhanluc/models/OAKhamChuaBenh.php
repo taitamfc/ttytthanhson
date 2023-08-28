@@ -38,17 +38,16 @@ class OAKhamChuaBenh extends OAModel{
         }
         return $items;
     }
-
     public function saveOrUpdate($data){
-        $ngay = date('Y-m-d',strtotime($data['ngaygio']));
+        $ngaygio = date('Y-m-d',strtotime($data['ngaygio']));
         $check = $this->all([
             'search' => [
-                'DATE(ngaygio)' => $ngay,
+                'DATE(ngaygio)' => $ngaygio,
                 'account' => $data['account']
             ],
             'limit' => 1
         ]);
-        if($check){
+        if( $check ){
             $this->update($check['id'],$data);
         }else{
             $this->save($data);
