@@ -101,9 +101,9 @@
         <tr class="td-text-danger">
             <td></td>
             <td><b>Tổng số</b></td>
-            <td><input type="number" name="tinh_hinh_benh_nhan[tsbn][tong_so_kham]" class="form-control w80 has_f f_khoakb f_auto_col" value="{item.tinh_hinh_benh_nhan.tsbn.tong_so_kham}" data-col="3" ></td>
-            <td><input type="number" name="tinh_hinh_benh_nhan[tsbn][tong_so_vao_vien]" class="form-control w80 has_f f_khoakb f_auto_col" value="{item.tinh_hinh_benh_nhan.tsbn.tong_so_vao_vien}" data-col="4"></td>
-            <td><input type="text" name="tinh_hinh_benh_nhan[tsbn][tong_so_phantram]" class="form-control w80 has_f f_khoakb tong_phantram_vao_vien" value="{item.tinh_hinh_benh_nhan.tsbn.tong_so_phantram}" ></td>
+            <td><input type="number" name="tinh_hinh_benh_nhan[tsbn][tong_so_kham]" class="form-control w80 has_f f_khoakb f_auto_col tong_so_kham" value="{item.tinh_hinh_benh_nhan.tsbn.tong_so_kham}" data-col="3" ></td>
+            <td><input type="number" name="tinh_hinh_benh_nhan[tsbn][tong_so_vao_vien]" class="form-control w80 has_f f_khoakb f_auto_col tong_so_vao_vien" value="{item.tinh_hinh_benh_nhan.tsbn.tong_so_vao_vien}" data-col="4"></td>
+            <td><input type="text" name="tinh_hinh_benh_nhan[tsbn][tong_so_phantram]" class="form-control w80 has_f f_khoakb tong_so_phantram" value="{item.tinh_hinh_benh_nhan.tsbn.tong_so_phantram}" data-col="5"></td>
         </tr>
     </tbody>
 </table>

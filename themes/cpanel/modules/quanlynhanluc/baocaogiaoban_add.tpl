@@ -190,6 +190,10 @@
 
     $(document).ready( function(){
 
+        $('.tong_so_kham, .tong_so_vao_vien').on('change',function(){
+            tong_so_phantram();
+        });
+
         $('body').on('dbclick','input, textarea', function(e){
             console.log(e);
             e.preventDefault();
@@ -274,12 +278,52 @@
             });
         }
 
+        // Moi
+        function tong_so_phantram(){
+            setTimeout(() => {
+                let tong_so_kham = $('.tong_so_kham').val();
+                let tong_so_vao_vien = $('.tong_so_vao_vien').val();
+                let tong_so_phantram = (tong_so_vao_vien / tong_so_kham) * 100;
+                $('.tong_so_phantram').val(tong_so_phantram.toFixed(2))
+            }, 500);
+        }
+        
+        $('.benh_nhan_kham').on('change keyup',function(){
+            tong_benh_nhan_kham();
+        });
+        tong_benh_nhan_kham();
+        function tong_benh_nhan_kham(){
+            if( $('.benh_nhan_kham').length ){
+                let benh_nhan_kham = 0;
+                $('.benh_nhan_kham').each( function(key,val){
+                    benh_nhan_kham += parseInt($(val).val());
+                })
+                $('.tong_benh_nhan_kham').val(benh_nhan_kham)
+                $('.tong_benh_nhan_kham').prop('readonly',true)
+            }
+        }
+        $('.benh_nhan_kham_phuthu').on('change keyup',function(){
+            tong_benh_nhan_kham_phuthu();
+        });
+        tong_benh_nhan_kham_phuthu();
+        function tong_benh_nhan_kham_phuthu(){
+            if( $('.benh_nhan_kham_phuthu').length ){
+                let benh_nhan_kham_phuthu = 0;
+                $('.benh_nhan_kham_phuthu').each( function(key,val){
+                    benh_nhan_kham_phuthu += parseInt($(val).val());
+                })
+                $('.tong_benh_nhan_kham_phuthu').val(benh_nhan_kham_phuthu)
+                $('.tong_benh_nhan_kham_phuthu').prop('readonly',true)
+            }
+        }
+        
+        // End moi
         if( $('.phantram_vao_vien').length ){
             $('.phantram_vao_vien').each( function(key,val){
                 let col_auto = $(val);
                 let col_need_autos = col_auto.closest('tr').find('td input').not('.f_auto_col');
                 col_need_autos.on('keyup change',function(){
-                    console.log('change');
+                    
                     let total_value = [];
                     col_need_autos.each( function(key,val){
                         if( $(val).val() && !$(val).hasClass('phantram_vao_vien') ){
@@ -289,6 +333,8 @@
                     col_auto.attr('data-values',total_value.join(','))
                     let percent = (total_value[1] / total_value[0]) * 100;
                     col_auto.val(percent.toFixed(2));
+
+                    tong_so_phantram();
                 })
             });
         }
