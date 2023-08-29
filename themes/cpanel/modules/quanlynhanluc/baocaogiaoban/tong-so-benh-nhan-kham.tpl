@@ -92,7 +92,7 @@
             <td><input type="text" name="tinh_hinh_benh_nhan[tsbn][phong_kham_dong_y][phantram_vao_vien]" class="form-control w80 has_f f_khoakb phantram_vao_vien" value="{item.tinh_hinh_benh_nhan.tsbn.phong_kham_dong_y.phantram_vao_vien}"></td>
         </tr>
         <tr>
-            <td><b> </b><span style="font-weight: 400;">13</span></td>
+            <td><span style="font-weight: 400;">13</span></td>
             <td><span style="font-weight: 400;">PK TMH 210</span></td>
             <td><input type="number" name="tinh_hinh_benh_nhan[tsbn][phong_kham_tmh_210][tong_so_kham]" class="form-control w80 has_f f_khoakb" value="{item.tinh_hinh_benh_nhan.tsbn.phong_kham_tmh_210.tong_so_kham}"></td>
             <td><input type="number" name="tinh_hinh_benh_nhan[tsbn][phong_kham_tmh_210][vao_vien]" class="form-control w80 has_f f_khoakb" value="{item.tinh_hinh_benh_nhan.tsbn.phong_kham_tmh_210.vao_vien}"></td>

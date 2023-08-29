@@ -136,6 +136,7 @@ if( $layout == 'add' ){
 }elseif( $layout == 'show' ) {
     $xtpl = $OAThemeHelper->setView('baocaogiaoban_show.tpl');
 }elseif( $layout == 'slide' ) {
+    $item['title'] = date('d/m/Y',strtotime($item['title']));
     $xtpl = $OAThemeHelper->setView('baocaogiaoban_slide.tpl');
 }
 
@@ -151,9 +152,12 @@ if( isset($item['benh_nhan_theo_doi']) && count($item['benh_nhan_theo_doi']) ){
 if(!$admin_info){
     $admin_info = $user_info; 
 }
+
+
 $xtpl->assign('currentGroupId', $admin_info['group_id']);
 $xtpl->assign('currentKhoa', $admin_info['username']);
 // $xtpl->assign('currentKhoa', 'khoakb');
+$xtpl->assign('layout', $layout);
 
 $xtpl->assign('page_title', $page_title);
 $xtpl->assign('item', $item);

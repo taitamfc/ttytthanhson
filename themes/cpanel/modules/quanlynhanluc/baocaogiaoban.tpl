@@ -83,7 +83,7 @@
                                     <td>{item.created_date}</td>
                                     <td>{item.updated_date}</td>
                                     
-                                    <td><a href="{item.link_view}">Xem</a> | <a href="{item.link_show}">Chiếu</a></td>
+                                    <td><a href="{item.link_view}">Xem</a> | <a href="{item.link_edit}">Cập nhật</a> | <a href="{item.link_show}">Chiếu</a></td>
                                 </tr>
                                 <!-- END: items -->
                                 <!-- BEGIN: generate_page -->

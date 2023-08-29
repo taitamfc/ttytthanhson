@@ -1,5 +1,6 @@
 <!-- BEGIN: main -->
 <style>
+    
     .clone-container {
         padding-left: 24px;
     }
@@ -161,11 +162,12 @@
 <script type="text/javascript">
     var currentKhoa = '{currentKhoa}';
     var currentGroupId = '{currentGroupId}';
+    var layout = '{layout}';
 
     console.log(currentKhoa);
     console.log(currentGroupId);
 
-    if (currentKhoa != "" && currentKhoa != 'admin') {
+    if (currentKhoa != "" || currentKhoa == 'admin') {
         jQuery('input.has_f').prop('readonly', true);
         jQuery('input.f_' + currentKhoa).prop('readonly', false);
 
@@ -181,7 +183,8 @@
     }
 
     $('.first-clone').each(function(key, val) {
-        if ($(val).find('input').val()) {
+        //if ($(val).find('input').val() != '') {
+        if( layout == 'add' ){
             $(val).closest('.clone-wrapper').find('.empty-clone').remove();
         }
     });
@@ -200,7 +203,7 @@
             return false;
         })
 
-        $('.hoat_dong_dieu_tri.f_khoacovid19').val(0);
+        // $('.hoat_dong_dieu_tri.f_khoanoi').val(0);
 
         $('.clone-btn').on('click', function() {
             console.log('click');

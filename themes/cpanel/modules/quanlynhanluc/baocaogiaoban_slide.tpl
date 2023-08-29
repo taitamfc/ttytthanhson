@@ -20,13 +20,23 @@
 		font-size: 1.3rem;
 	}
 	.slide-1 .form-control-static {
-		font-size: 2rem;
+		font-size: 1.5rem;
 	}
 	.slide-1 .form-label {
 		font-size: 1.5rem;
 	}
 	.slide-2 .form-label {
 		font-size: 1.5rem;
+	}
+	.slide-3 tr *, .slide-4 tr * {
+		padding-bottom: 0px !important;
+		padding-top: 0px !important;
+		line-height: unset !important;
+		height: 1px !important;
+		margin-bottom: 0px !important;
+	}
+	.slide-4 * {
+		font-size: 1.2rem !important;
 	}
 
 	div#admintoolbar {
@@ -44,6 +54,9 @@
 		font-weight: bold;
 		color: red;
 	}
+	.slide-large-font {
+        font-size: 50px;
+    }
 </style>
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 	<!-- Wrapper for slides -->
@@ -51,7 +64,7 @@
 		<div class="item active slide-1">
 			<div class="container-fluid">
 				<div class="mb-3">
-					<h1 class="text-center text-danger">BÁO CÁO TRỰC NGÀY {item.title}<h1>
+					<h1  class="text-center text-danger slide-large-font">BÁO CÁO TRỰC NGÀY {item.title}<h1>
 				</div>
 				<div class="mb-3">
 					<label class="form-label">I – THÀNH PHẦN TRỰC</label>

@@ -5,46 +5,20 @@
     <table class="table table-hover table-bordered">
         <tbody class="has_auto_total">
             <tr>
-                <td rowspan="2"><b>KHOA PHÒNG </b></td>
-                <td rowspan="2"><b>BN</b>
-
-                    <b>Cũ </b>
-                </td>
-                <td rowspan="2"><b>BN</b>
-
-                    <b>Vào viện</b>
-                </td>
-                <td rowspan="2"><b>BN</b>
-
-                    <b>Ra Viện</b>
-                </td>
-                <td rowspan="2"><b>BN </b>
-                    <b>Chuyển</b>
-                    <b>Khoa</b>
-                </td>
-                <td rowspan="2"><b>BN</b>
-
-                    <b>Chuyển</b>
-
-                    <b>Viện</b>
-                </td>
-                <td rowspan="2"><b>BN</b>
-
-                    <b>Xin Về</b>
-                </td>
-                <td colspan="3"><b>BN HIỆN CÓ </b></td>
-                <td rowspan="2"><b>Chi tiết BN</b>
-
-                    <b>Yêu cầu</b>
-                </td>
+                <th rowspan="2">KHOA PHÒNG</th>
+                <th rowspan="2">Cũ</th>
+                <th rowspan="2">Vào viện</th>
+                <th rowspan="2">Ra Viện</th>
+                <th rowspan="2">Chuyển Khoa</th>
+                <th rowspan="2">Chuyển Viện</th>
+                <th rowspan="2">Xin Về</th>
+                <th colspan="3">HIỆN CÓ</th>
+                <th rowspan="2">Yêu cầu</th>
             </tr>
             <tr>
-                <td><b>BN Nội Trú</b></td>
-                <td><b>BN </b>
-
-                    <b>Ngoại trú</b>
-                </td>
-                <td><b>Tổng số BN</b></td>
+                <td><b>Nội Trú</b></td>
+                <td><b>Ngoại trú</b></td>
+                <td><b>Tổng</b></td>
             </tr>
             <tr>
                 <td><b>Khoa CC-HSTC-CĐ</b></td>
@@ -195,33 +169,33 @@
             </tr>
             <tr>
                 <td><b>Khoa Covid 19</b></td>
-                <td><input type="number" name="hoat_dong_dieu_tri[khoa_covid19][bn_cu]" class="hoat_dong_dieu_tri form-control w80 has_f f_khoacovid19"
+                <td><input type="number" name="hoat_dong_dieu_tri[khoa_covid19][bn_cu]" class="hoat_dong_dieu_tri form-control w80 has_f f_khoanoi"
                         value="{item.hoat_dong_dieu_tri.khoa_covid19.bn_cu}"></td>
-                <td><input type="number" name="hoat_dong_dieu_tri[khoa_covid19][bn_vaovien]" class="hoat_dong_dieu_tri form-control w80 has_f f_khoacovid19 hoat_dong_dieu_tri_bn_vaovien"
+                <td><input type="number" name="hoat_dong_dieu_tri[khoa_covid19][bn_vaovien]" class="hoat_dong_dieu_tri form-control w80 has_f f_khoanoi hoat_dong_dieu_tri_bn_vaovien"
                         value="{item.hoat_dong_dieu_tri.khoa_covid19.bn_vaovien}"></td>
-                <td><input type="number" name="hoat_dong_dieu_tri[khoa_covid19][bn_ravien]" class="hoat_dong_dieu_tri form-control w80 has_f f_khoacovid19"
+                <td><input type="number" name="hoat_dong_dieu_tri[khoa_covid19][bn_ravien]" class="hoat_dong_dieu_tri form-control w80 has_f f_khoanoi"
                         value="{item.hoat_dong_dieu_tri.khoa_covid19.bn_ravien}"></td>
                 <td><input type="number" name="hoat_dong_dieu_tri[khoa_covid19][bn_chuyenkhoa]"
-                        class="hoat_dong_dieu_tri form-control w80 has_f f_khoacovid19" value="{item.hoat_dong_dieu_tri.khoa_covid19.bn_chuyenkhoa}">
+                        class="hoat_dong_dieu_tri form-control w80 has_f f_khoanoi" value="{item.hoat_dong_dieu_tri.khoa_covid19.bn_chuyenkhoa}">
                 </td>
                 <td><input type="number" name="hoat_dong_dieu_tri[khoa_covid19][bn_chuyenvien]"
-                        class="hoat_dong_dieu_tri form-control w80 has_f f_khoacovid19" value="{item.hoat_dong_dieu_tri.khoa_covid19.bn_chuyenvien}">
+                        class="hoat_dong_dieu_tri form-control w80 has_f f_khoanoi" value="{item.hoat_dong_dieu_tri.khoa_covid19.bn_chuyenvien}">
                 </td>
-                <td><input type="number" name="hoat_dong_dieu_tri[khoa_covid19][bn_xinve]" class="hoat_dong_dieu_tri form-control w80 has_f f_khoacovid19"
+                <td><input type="number" name="hoat_dong_dieu_tri[khoa_covid19][bn_xinve]" class="hoat_dong_dieu_tri form-control w80 has_f f_khoanoi"
                         value="{item.hoat_dong_dieu_tri.khoa_covid19.bn_xinve}"></td>
                 <td><input type="number" name="hoat_dong_dieu_tri[khoa_covid19][bn_noitru]"
-                        class="hoat_dong_dieu_tri form-control w80 has_f f_khoacovid19" value="{item.hoat_dong_dieu_tri.khoa_covid19.bn_noitru}">
+                        class="hoat_dong_dieu_tri form-control w80 has_f f_khoanoi" value="{item.hoat_dong_dieu_tri.khoa_covid19.bn_noitru}">
                 </td>
                 <td><input type="number" name="hoat_dong_dieu_tri[khoa_covid19][bn_ngoaitru]"
-                        class="hoat_dong_dieu_tri form-control w80 has_f f_khoacovid19"
+                        class="hoat_dong_dieu_tri form-control w80 has_f f_khoanoi"
                         value="{item.hoat_dong_dieu_tri.khoa_covid19.bn_ngoaitru}"></td>
                 <td>
                         <input type="number" name="hoat_dong_dieu_tri[khoa_covid19][bn_tong]"
-                        class="hoat_dong_dieu_tri form-control w80 has_f f_khoacovid19 f_auto f_auto_row_6" data-sum="7,8" 
+                        class="hoat_dong_dieu_tri form-control w80 has_f f_khoanoi f_auto f_auto_row_6" data-sum="7,8" 
                         value="{item.hoat_dong_dieu_tri.khoa_covid19.bn_tong}">
                 </td>
                 <td><input type="number" name="hoat_dong_dieu_tri[khoa_covid19][bn_namyc]"
-                        class="hoat_dong_dieu_tri form-control w80 has_f f_khoacovid19" value="{item.hoat_dong_dieu_tri.khoa_covid19.bn_namyc}">
+                        class="hoat_dong_dieu_tri form-control w80 has_f f_khoanoi" value="{item.hoat_dong_dieu_tri.khoa_covid19.bn_namyc}">
                 </td>
             </tr>
             <tr>
