@@ -6,7 +6,7 @@
         </td>
     </tr>
     <tr>
-        <td rowspan="2">Bệnh nhân BHYT 246</td>
+        <td rowspan="2">Bệnh nhân BHYT {item.tinh_hinh_benh_nhan.bhyt.noitinh_ngoaitinh}</td>
         <td>Ngoại tỉnh</td>
         <td>
             <p class="form-control-static">{item.tinh_hinh_benh_nhan.bhyt.ngoaitinh}</p>

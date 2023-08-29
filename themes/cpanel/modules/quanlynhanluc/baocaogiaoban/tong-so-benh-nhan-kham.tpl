@@ -1,12 +1,15 @@
 <table class="table table-hover table-bordered">
-    <tbody>
+    <thead>
         <tr>
-            <td><b>STT</b></td>
-            <td><b>Phòng khám</b></td>
-            <td><b>Tổng số khám</b></td>
-            <td><b>Vào viện</b></td>
-            <td><b>% vào viện</b></td>
+            <th>STT</th>
+            <th>Phòng khám</th>
+            <th class="text-center">Tổng số khám</th>
+            <th class="text-center">Vào viện</th>
+            <th class="text-center">% vào viện</th>
         </tr>
+    </thead>
+    <tbody>
+        
         <tr>
             <td><span style="font-weight: 400;">1</span></td>
             <td><span style="font-weight: 400;">PK Mắt</span></td>

@@ -12,7 +12,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Bệnh nhân</label>
-                        <textarea name="benh_nhan_theo_doi[khoa_noi][noidung][]" class="form-control"></textarea>
+                        <input name="benh_nhan_theo_doi[khoa_noi][noidung][]" class="form-control">
                     </div>
                 </div>
                 <div class="clone-action">
@@ -29,8 +29,8 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Bệnh nhân</label>
-                        <textarea name="benh_nhan_theo_doi[khoa_noi][noidung][]"
-                            class="form-control">{khoa_noi_item.noidung}</textarea>
+                        <input name="benh_nhan_theo_doi[khoa_noi][noidung][]"
+                            class="form-control" value="{khoa_noi_item.noidung}">
                     </div>
                 </div>
                 <div class="clone-action">

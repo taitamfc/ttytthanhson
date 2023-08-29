@@ -241,7 +241,7 @@
                 $('.f_auto_col').each( function(key,val){
                     let col_auto = $(val);
                     let col_auto_colum = col_auto.data('col');
-                    let col_need_autos = col_auto.closest('table').find('tr td:nth-of-type('+col_auto_colum+') input').not('.f_auto_col');
+                    let col_need_autos = col_auto.closest('table').find('tr td:nth-of-type('+col_auto_colum+') input').not('.f_auto_col').not('.f_col_not_auto');
                     col_need_autos.addClass('col_need_autos')
                     handle_auto_col(col_need_autos,col_auto);
                     
@@ -291,6 +291,22 @@
             }, 500);
         }
         
+        $('.bhyt_ngoaitinh, .bhyt_noitinh').on('change keyup',function(){
+            bhyt_ngoaitinh_noitinh();
+        });
+        function bhyt_ngoaitinh_noitinh(){
+            let bhyt_noitinh = $('.bhyt_noitinh').val();
+            let bhyt_ngoaitinh = $('.bhyt_ngoaitinh').val();
+            $('.noitinh_ngoaitinh').val( parseInt(bhyt_noitinh) + parseInt(bhyt_ngoaitinh) );
+        }
+        $('.pkdk_bhyt_ngoaitinh, .pkdk_bhyt_noitinh').on('change keyup',function(){
+            pkdk_bhyt_ngoaitinh_noitinh();
+        });
+        function pkdk_bhyt_ngoaitinh_noitinh(){
+            let pkdk_bhyt_noitinh = $('.pkdk_bhyt_noitinh').val();
+            let pkdk_bhyt_ngoaitinh = $('.pkdk_bhyt_ngoaitinh').val();
+            $('.pkdk_noitinh_ngoaitinh').val( parseInt(pkdk_bhyt_noitinh) + parseInt(pkdk_bhyt_ngoaitinh) );
+        }
         $('.benh_nhan_kham').on('change keyup',function(){
             tong_benh_nhan_kham();
         });
