@@ -167,20 +167,25 @@
     console.log(currentKhoa);
     console.log(currentGroupId);
 
-    if (currentKhoa != "" || currentKhoa == 'admin') {
-        jQuery('input.has_f').prop('readonly', true);
-        jQuery('input.f_' + currentKhoa).prop('readonly', false);
+    if( currentKhoa != 'admin' ){
+        if (currentKhoa != "") {
+            jQuery('input.has_f').prop('readonly', true);
+            jQuery('input.f_' + currentKhoa).prop('readonly', false);
 
-        jQuery('.has_fd').find('input, textarea').prop('readonly', true);
-        jQuery('.has_fd').find('.clone-remove').hide();
-        jQuery('.has_fd').find('.clone-remove, .clone-btn').hide();
+            jQuery('.has_fd').find('input, textarea').prop('readonly', true);
+            jQuery('.has_fd').find('.clone-remove').hide();
+            jQuery('.has_fd').find('.clone-remove, .clone-btn').hide();
 
-        jQuery('.fd_' + currentKhoa).find('input, textarea').prop('readonly', false);
-        jQuery('.fd_' + currentKhoa).find('.clone-remove').show();
-        jQuery('.fd_' + currentKhoa).find('.clone-remove, .clone-btn').show();
-    }else{
-        jQuery('.clone-remove').hide();
+            jQuery('.fd_' + currentKhoa).find('input, textarea').prop('readonly', false);
+            jQuery('.fd_' + currentKhoa).find('.clone-remove').show();
+            jQuery('.fd_' + currentKhoa).find('.clone-remove, .clone-btn').show();
+        }else{
+            jQuery('.clone-remove').hide();
+        }
     }
+
+
+    
 
     $('.first-clone').each(function(key, val) {
         //if ($(val).find('input').val() != '') {
@@ -356,6 +361,16 @@
                     tong_so_phantram();
                 })
             });
+        }
+
+        if( $('.f_auto_row_1').length ){
+            for(let i = 1; i <= 7; i++){
+                $('.f_auto_row_'+i).closest('tr').find('td:nth-of-type(8) input, td:nth-of-type(9) input').on('change keyup',function(){
+                    let noi_tru = $('.f_auto_row_'+i).closest('tr').find('td:nth-of-type(8) input').val();
+                    let ngoai_tru = $('.f_auto_row_'+i).closest('tr').find('td:nth-of-type(9) input').val();
+                    $('.f_auto_row_'+i).val( parseInt(noi_tru) + parseInt(ngoai_tru) );
+                });
+            }
         }
     });
 </script>

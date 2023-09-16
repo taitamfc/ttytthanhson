@@ -17,7 +17,7 @@ if (empty($user_info)){	$url = MODULE_LINK . '&' . NV_OP_VARIABLE . '=login';nv_
 	$sta=$nv_Request->get_title('sta', 'get,post', '');
 	$cri='';$f=array();
 	$data=array();
-	/*$data['bs_lamsang']=0;
+	$data['bs_lamsang']=0;
 	$data['so_giuong']=0;
 	$data['bn_c1']=0;
 	$data['c1_toandien']=0;
@@ -35,7 +35,7 @@ if (empty($user_info)){	$url = MODULE_LINK . '&' . NV_OP_VARIABLE . '=login';nv_
 	$data['ca_de']=0;
 	$data['phau_thuat']=0;
 	$data['bn_loet']=0;
-	$data['bn_viem']=0;*/
+	$data['bn_viem']=0;
 
 
 	if ($sta=='find_item')
@@ -123,7 +123,6 @@ if (empty($user_info)){	$url = MODULE_LINK . '&' . NV_OP_VARIABLE . '=login';nv_
     $xtpl->assign('link_frm', MODULE_LINK . '&' . NV_OP_VARIABLE . '='.$op);
     $xtpl->assign('token', nv_md5safe($user_info['username']));
 	$thongtin = $db->query('select * from '.TABLE."_khoaphong where account like '".$user_info['username']."'")->fetch();
-	$thongtin['ngay_tao'] = date('d/m/Y');
 	$xtpl->assign('F', $f);
 	$xtpl->assign('THONGTIN', $thongtin);
 	$xtpl->assign('DATA', $data);

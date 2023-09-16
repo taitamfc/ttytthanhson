@@ -39,7 +39,7 @@
 					<tr><th class='align-middle'>Điện thoại:</th><th class='align-middle'>{ROW.dienthoai}</th></tr>
 					<tr><th class='align-middle'>Khoa/Phòng:</th><th class='align-middle'>{ROW.tenkhoa}</th></tr>
 					<tr><th class='align-middle'>Chức vụ:</th><th class='align-middle'>{ROW.chucvu}</th></tr>
-					<tr><th class='align-middle'>Số hiệu VC:</th><th class='align-middle'>{ROW.sohieu_vc}</th></tr>
+					<tr><th class='align-middle'>Nghề nghiệp:</th><th class='align-middle'>{ROW.nghe_nghiep}</th></tr>
 					<tr><th class='align-middle'>Phân loại:</th><th class='align-middle'>{ROW.phanloai_cb}</th></tr>
 					<tr><th class='align-middle'>Hình thức làm việc:</th><th class='align-middle'>{ROW.hinhthuclamviec}</th></tr>
 					<tr><th class='align-middle'>Điều động:</th><th class='align-middle'>{ROW.ghichu_dd}</th></tr>

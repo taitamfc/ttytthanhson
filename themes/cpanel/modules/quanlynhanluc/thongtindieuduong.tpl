@@ -56,9 +56,9 @@
                                 <th>Nam/Nữ</th>
                                 <th>Ngày sinh</th>
                                 <th>Điện thoại</th>
-                                <th>Địa chỉ</th>
                                 <th>Chức vụ</th>
                                 <th>Trình độ</th>
+								<th>Nghề nghiệp</th>
                                 <th>Khoa/phòng</th>
                                 
 								<th>Thao tác</th>
@@ -72,11 +72,12 @@
                                 <td>{ROW.hovaten}</td>
                                 <td>{ROW.gioitinh}</td>
                                 <td>{ROW.ngaysinh}</td>
-                                <td>{ROW.dienthoai}</td>
-                                <td>{ROW.diachi}</td>
+                                <td>{ROW.dienthoai}</td>                                
                                 <td>{ROW.chucvu}</td>
                                 <td>{ROW.trinhdo}</td>
+								<td>{ROW.nghe_nghiep}</td>
                                 <td>{ROW.tenkhoa}</td>
+								
                                 <!-- BEGIN: admin --><td>{ROW.ghichu}</td><!-- END: admin -->
                                 <td><div class="dropdown-success dropdown">
 								<button class="btn btn-mini btn-success dropdown-toggle waves-effect waves-light " type="button" id="dropdown-3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Chọn</button>

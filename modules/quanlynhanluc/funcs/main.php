@@ -43,9 +43,6 @@ if (! defined('NV_IS_MOD_QLNL')) {
 		FROM " . TABLE . '_canbo cb inner join '  . TABLE . '_khoaphong khoa on cb.id_khoaphong=khoa.id
 		where cb.tangcuong_tungay>0 group by khoa.tenkhoa ';
 		$kq = $db->query($sql)->fetchAll();}
-		
-		
-		
 		if($nv_Request->get_title('act', 'get,post', '')=='get_gender'){
 			$sql = "SELECT  sum(IF(gioitinh='nam',1,0)) as nam, sum(if(gioitinh='nam',0,1)) as nu FROM " . TABLE . '_canbo ';
 			$item = $db->query($sql)->fetch();
@@ -83,14 +80,11 @@ if (! defined('NV_IS_MOD_QLNL')) {
 			$sql = 'SELECT * FROM ' . NV_PREFIXLANG . '_' . $module_data . "_groupuser WHERE id_nhomquyen=4 order by id";
 			$list = $db->query($sql);
 			while ($r = $list->fetch()) {
-				$item['tenkhoa']=$r['account'];
-				
+				$item['tenkhoa']=$r['account'];				
 				$cs_bacsi=explode('/',$bs[$r['account']]);
-				$item['value1']=(empty($cs_bacsi[0]))?0:$cs_bacsi[0];
-				
+				$item['value1']=(empty($cs_bacsi[0]))?0:$cs_bacsi[0];				
 				$cs_benhnhan=explode('/',$bn[$r['account']]);
-				$item['value2']=(empty($cs_benhnhan[1]))?0:$cs_benhnhan[1];
-				
+				$item['value2']=(empty($cs_benhnhan[1]))?0:$cs_benhnhan[1];				
 				$kq[]=$item;
 			}					
 		}
@@ -126,7 +120,11 @@ if (! defined('NV_IS_MOD_QLNL')) {
 	nv_jsonOutput($kq);
 	exit;
 	}
-
+/*
+ $sql = "SELECT khoa.account as label, count(cb.id) as value 
+		FROM " . TABLE . '_canbo cb inner join '  . TABLE . '_khoaphong khoa on cb.id_khoaphong=khoa.id
+		group by khoa.tenkhoa ';
+ var_dump($sql);*/
 
 if (empty($user_info)){	$url = MODULE_LINK . '&' . NV_OP_VARIABLE . '=login';nv_redirect_location($url); exit();}
 

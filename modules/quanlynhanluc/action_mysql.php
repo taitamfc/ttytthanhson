@@ -8,6 +8,8 @@
  * @Createdate 10 April 2017 17:00
  */
 
+
+
 if (! defined('NV_IS_FILE_MODULES')) {
     die('Stop!!!');
 }
@@ -96,3 +98,6 @@ $sql_create_module[] = "INSERT INTO " . $db_config['prefix'] . "_" . $lang . "_"
 ('imgwidth', '100'),
 ('imgheight', '74'),
 ('timeout', '1')";
+
+
+

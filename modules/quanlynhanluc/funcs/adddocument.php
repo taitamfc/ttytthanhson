@@ -98,7 +98,7 @@ if (empty($user_info))
     $xtpl->assign('BASE_URL', NV_BASE_SITEURL);
 	$xtpl->assign('link_frm',MODULE_LINK. '&' . NV_OP_VARIABLE . '='.$op);
 	$xtpl->assign('link_close',MODULE_LINK. '&' . NV_OP_VARIABLE . '=tailieudieuduong');
-	$xtpl->assign('TITLE',$title);
+	
 	//$xtpl->assign('sta',$sta);
 	if ($sta=='edit_document')	
 	{
@@ -108,8 +108,7 @@ if (empty($user_info))
 		$data['ngaybanhanh']=date('d/m/Y',$data['ngaybanhanh']);
 		$xtpl->assign('DATA',$data);
 		$xtpl->assign('token',$token);
-		$xtpl->assign('TITLE','CẬP NHẬT');
-		
+		$title='CẬP NHẬT ';
 	}
 	$sql = 'SELECT * FROM ' . NV_PREFIXLANG . '_' . $module_data . "_select WHERE status = 1 and select_group like 'loai_vb'";
 	$list = $db->query($sql);
@@ -129,7 +128,7 @@ if (empty($user_info))
 		$xtpl->parse('main.hieuluc');
 	}
 	
-	
+	$xtpl->assign('TITLE',$title);
 	$xtpl->parse('main');
     $contents = $xtpl->text('main');
 include NV_ROOTDIR . '/includes/header.php';

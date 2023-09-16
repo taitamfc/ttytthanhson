@@ -94,7 +94,6 @@ if (empty($user_info)){	$url = MODULE_LINK . '&' . NV_OP_VARIABLE . '=login';nv_
     $xtpl->assign('link_frm', MODULE_LINK . '&' . NV_OP_VARIABLE . '='.$op);
     $xtpl->assign('token', nv_md5safe($user_info['username']));
 	$thongtin = $db->query('select * from '.TABLE."_khoaphong where account like '".$user_info['username']."'")->fetch();
-	$thongtin['ngay_tao'] = date('d/m/Y');
 	$xtpl->assign('F', $f);
 	$xtpl->assign('THONGTIN', $thongtin);
 	$xtpl->assign('DATA', $data);

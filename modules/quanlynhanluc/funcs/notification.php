@@ -171,7 +171,6 @@ if ($sta=='del_msg')
 	$sql = 'Update ' . TABLE. "_notification SET status=0, deleted=1, delete_by=:delete_by, 
 	delete_date=:delete_date  WHERE code_pro like '".$code."'";
 	$stmt = $db->prepare($sql);
-
 	$stmt->bindParam(':delete_by', $user_info['username'], PDO::PARAM_STR);
 	$stmt->bindParam(':delete_date', date('Y/m/d H:m'), PDO::PARAM_STR);
 	$row_id=$stmt->execute();

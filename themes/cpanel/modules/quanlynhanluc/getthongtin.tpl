@@ -94,7 +94,7 @@
 			<tr><th class='align-middle'>Điện thoại:</th><th class='align-middle'>{ROW.dienthoai}</th></tr>
 			<tr><th class='align-middle'>Khoa/Phòng:</th><th class='align-middle'>{ROW.tenkhoa}</th></tr>
 			<tr><th class='align-middle'>Chức vụ:</th><th class='align-middle'>{ROW.chucvu}</th></tr>
-			<tr><th class='align-middle'>Số hiệu VC:</th><th class='align-middle'>{ROW.sohieu_vc}</th></tr>
+			<tr><th class='align-middle'>Nghề nghiệp:</th><th class='align-middle'>{ROW.nghe_nghiep}</th></tr>
 			<tr><th class='align-middle'>Phân loại:</th><th class='align-middle'>{ROW.phanloai_cb}</th></tr>
 			<tr><th class='align-middle'>Hình thức làm việc:</th><th class='align-middle'>{ROW.hinhthuclamviec}</th></tr>
 		</thead>
@@ -119,7 +119,7 @@ tr td input,textarea {height: 30px;width: 98%;}
         <input type="hidden" name="sta" id="sta" value="save_taichinh" />
         <input type="hidden" name="table" value="{table}" />
         <input type="hidden" name="token" value="{token}" />
-        <table id="tbl_danhsach" style="width: 99%;" class="table table-hover table-bordered table-hover">
+        <table id="tbl_danhsach" style="width: 99%;" class="table table-bordered table-hover">
             <thead>
                 <tr>
                     <th class="align-middle text-center " rowspan="2">STT</th>

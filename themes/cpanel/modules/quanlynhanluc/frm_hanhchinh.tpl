@@ -25,7 +25,7 @@
 				</div>
             </div>
 			
-			<form name="myform" id="myform" method="post" action="{link_frm}" onsubmit="return nv_execute_frm(this);">
+			<form name="myform" id="myform" method="post" action="{link_frm}" onsubmit="return nv_execute_update(this);">
 			<input type="hidden" name="checkss" id="checkss" value="{CHECKSESS}" />
 			<input type="hidden" name="sta" id="sta" value="{sta}" />
 			<input type="hidden" name="id" id="id" value="{ROW.id}" />

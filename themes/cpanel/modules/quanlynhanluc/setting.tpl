@@ -13,7 +13,7 @@
         <!-- Tooltips on textbox card start -->
         <div class="card">
             <div class="card-header">
-                <h5 class="m-b-10">CẬP NHẬT DS CÁN BỘ TỪ EXCEL</h5>
+                <h5 class="m-b-10">CẬP NHẬT TỪ EXCEL</h5>
                 <div class="card-header-right">
 					<ul class="list-unstyled card-option">
 						<li><i class="fa fa-chevron-left"></i></li>
@@ -28,7 +28,14 @@
 			<input type="hidden" name="checkss" id="checkss" value="{CHECKSESS}" />
 			<input type="hidden" name="sta" id="sta" value="{sta}" />
 			<input type="hidden" name="id" id="id" value="{ROW.id}" />
-			
+			<div class="input-group">
+					<span class="input-group-addon" id="id_loaihinh" style="width: auto;min-width:100px;" >Loại hình:</span>
+                    <select name="table" class="form-control">
+						<option value="_khoaphong">_khoaphong</option>
+						<option value="_groupuser">_groupuser</option>
+						<option value="_canbo">_canbo</option>
+                    </select>
+            </div>
             <div class="card-block tooltip-icon button-list">
 				<div class="form-group row">
 					<label class="col-sm-2 col-form-label">Upload File</label>
@@ -43,7 +50,7 @@
 		</form>
         <!-- Tooltips on textbox card end -->
 		<!-- BEGIN: data -->
-			<table class="table table-striped table-hover table-bordered table-hover" >
+			<table class="table table-striped table-bordered table-hover" >
 			<tbody>
 			<!-- BEGIN: row -->
 				<tr {color}>
@@ -78,7 +85,7 @@
 		</form>
         <!-- Tooltips on textbox card end -->
 		<!-- BEGIN: phong -->
-			<table class="table table-striped table-hover table-bordered table-hover" >
+			<table class="table table-striped table-bordered table-hover" >
 			<tbody>
 			<!-- BEGIN: row -->
 				<tr {color}>
@@ -100,7 +107,7 @@
             </div>			
 			<form name="myform" id="myform" method="post" action="{link_frm}">
 			<input type="hidden" name="checkss" id="checkss" value="{CHECKSESS}" />
-			<input type="hidden" name="sta" id="sta" value="update_ctkcb" />
+			<input type="hidden" name="sta" id="sta" value="update_demo" />
 			<input type="hidden" name="id" id="id" value="{ROW.id}" />
 			
             <div class="card-block tooltip-icon button-list">
@@ -111,7 +118,7 @@
 		</form>
         <!-- Tooltips on textbox card end -->
 		<!-- BEGIN: phong -->
-			<table class="table table-striped table-hover table-bordered table-hover" >
+			<table class="table table-striped table-bordered table-hover" >
 			<tbody>
 			<!-- BEGIN: row -->
 				<tr {color}>

@@ -79,7 +79,7 @@ $lang_module['thoigian'] = 'Thời gian';
 $lang_module['khoaphong_nhan'] = 'Khoa/Phòng nhận điều động';
 
 
-$lang_module['title_login'] = 'Chào mừng bạn đến với phần mềm quản lý hệ thống chất lượng bệnh viện của TTYT Huyện Thanh Sơn';
+$lang_module['title_login'] = 'Chào mừng bạn đến với phần mềm quản lý hệ thống chất lượng bệnh viện của TTYT Huyện Đoan Hùng';
 $lang_module['nho_pass'] = 'Nhớ mật khẩu';
 $lang_module['title_thongbao'] = 'Thông báo của bạn';
 $lang_module['viewall'] = 'Xem tất cả';

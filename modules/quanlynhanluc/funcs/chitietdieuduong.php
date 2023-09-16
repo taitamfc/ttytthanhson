@@ -491,15 +491,16 @@ if ($sta=='save_tochuc')
 				
 				/*$sql = 'Update ' . TABLE. "_tttochuc SET denngay=". $data['tungay']." WHERE denngay=0 and id_canbo=".$id;
 				$stmt = $db->prepare($sql)->execute();*/		
-				
-				$sql = "INSERT INTO ".TABLE . "_tttochuc (id,id_canbo,tochuc,chucvu,ghichu,tungay) VALUES(NULL,
-				:id_canbo,:tochuc,:chucvu,:ghichu,:tungay)";
+				$data['thaotac'] =$user_info['username'].'_at_'.date('d/m/Y H:i');
+				$sql = "INSERT INTO ".TABLE . "_tttochuc (id,id_canbo,tochuc,chucvu,ghichu,tungay,thaotac) VALUES(NULL,
+				:id_canbo,:tochuc,:chucvu,:ghichu,:tungay,:thaotac)";
 				$data_insert = array();
 				$data_insert['id_canbo'] = $id;
 				$data_insert['tochuc'] = $data['tochuc'];
 				$data_insert['chucvu'] = $data['chucvu'];
 				$data_insert['ghichu'] = $data['ghichu'];
 				$data_insert['tungay'] = $data['tungay'];
+				$data_insert['thaotac'] = $data['thaotac'];
 				$_id = $db->insert_id($sql, 'id', $data_insert);				
 				$ketqua['status']='OK';
 				}

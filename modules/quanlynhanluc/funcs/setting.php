@@ -285,7 +285,7 @@ VALUES (NULL,:bs_lamsang,:so_giuong,:bn_c1,:c1_toandien,:bn_c2,:c2_toandien,:bn_
 		$a6=$r['bn_xinve']+rand(1, 5);$a7=$r['bn_noitru']+rand(1, 15);
 		$a8=$r['bn_ngoaitru']+rand(1, 15);$a9=$r['bn_namyc']+rand(1, 15);*/
 		$data_insert['bs_lamsang']=$r['bs_lamsang']+rand(3, 10);
-		$data_insert['so_giuong']=$r['so_giuong']+rand(20, 50);
+		$data_insert['so_giuong']=$r['so_giuong'];
 		$data_insert['bn_c1']=$r['bn_c1']+rand(0, 10);
 		$data_insert['c1_toandien']=$r['c1_toandien']+rand(10, 20);
 		$data_insert['bn_c2']=$r['bn_c2']+rand(0, 20);

@@ -35,7 +35,7 @@
                 <td><input type="number" name="hoat_dong_dieu_tri[khoa_cc_hstc][bn_xinve]" class="hoat_dong_dieu_tri form-control w80 has_f f_capcuu"
                         value="{item.hoat_dong_dieu_tri.khoa_cc_hstc.bn_xinve}"></td>
                 <td><input type="number" name="hoat_dong_dieu_tri[khoa_cc_hstc][bn_noitru]"
-                        class="hoat_dong_dieu_tri form-control w80 has_f f_capcuu" value="{item.hoat_dong_dieu_tri.khoa_cc_hstc.bn_noitru}">
+                        class="hoat_dong_dieu_tri  form-control w80 has_f f_capcuu" value="{item.hoat_dong_dieu_tri.khoa_cc_hstc.bn_noitru}">
                 </td>
                 <td><input type="number" name="hoat_dong_dieu_tri[khoa_cc_hstc][bn_ngoaitru]"
                         class="hoat_dong_dieu_tri form-control w80 has_f f_capcuu" value="{item.hoat_dong_dieu_tri.khoa_cc_hstc.bn_ngoaitru}">

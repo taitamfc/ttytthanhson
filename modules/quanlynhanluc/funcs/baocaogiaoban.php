@@ -11,6 +11,7 @@
 if (! defined('NV_IS_MOD_QLNL')) {
     die('Stop!!!');
 }
+
 $OAThemeHelper = oa_load_model('OAThemeHelper');
 $OABaoCaoGiaoBan = oa_load_model('OABaoCaoGiaoBan');
 $page_title = 'Báo cáo giao ban';

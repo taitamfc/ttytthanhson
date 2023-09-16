@@ -35,7 +35,8 @@
             <a href="#">
                 <img src="{USER.photo}" class="img-radius" alt="image">
                 <span>{USER.name}</span>
-                <i class="ti-angle-down"></i>
+                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+
             </a>
             <ul class="show-notification profile-notification">
                 <li>

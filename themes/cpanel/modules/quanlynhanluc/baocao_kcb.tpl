@@ -158,7 +158,7 @@
 								<thead>
 									<tr>
 											<th scope="row" class="text-center"  style="text-transform: uppercase;">
-												<h5> BÁO CÁO KẾT QUẢ KHÁM CHỮA BỆNH - {THONGTIN.ngay_tao}<br/> KHOA/PHÒNG:{THONGTIN.tenkhoa}</h5 >
+												<h5> BÁO CÁO KẾT QUẢ KHÁM CHỮA BỆNH<br/> KHOA/PHÒNG:{THONGTIN.tenkhoa}</h5 >
 											</th>									
 									</tr>
 								</thead>

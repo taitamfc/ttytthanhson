@@ -23,6 +23,7 @@ if (empty($user_info)){	$url = MODULE_LINK . '&' . NV_OP_VARIABLE . '=login';nv_
 	$sql="SELECT * from ".NV_PREFIXLANG . '_' . $module_data . "_khoaphong where account ='".$user_info['username']."'";
 	$phong=$db->query($sql)->fetch();
 	$xtpl->assign('phong', $phong);
+	
 	$link=array();
 	$link['dscb_di']=MODULE_LINK . '&' . NV_OP_VARIABLE . '='.$op.'&sta=dsdieudongdi';
 	$link['dscb_den']=MODULE_LINK . '&' . NV_OP_VARIABLE . '='.$op.'&sta=dsdieudongden';
@@ -431,7 +432,12 @@ if (empty($user_info)){	$url = MODULE_LINK . '&' . NV_OP_VARIABLE . '=login';nv_
 	
 	if (!empty($sta))
 	{
-		$data=array();$data['sl_dieuduongco']=0;$data['sl_hosinhco']=0;$data['sl_ktvco']=0;$data['sl_dieuduongcan']=0;$data['sl_hosinhcan']=0;$data['sl_ktvcan']=0;
+		//$data=array();$data['sl_dieuduongco']=0;$data['sl_hosinhco']=0;$data['sl_ktvco']=0;$data['sl_dieuduongcan']=0;$data['sl_hosinhcan']=0;$data['sl_ktvcan']=0;
+		//$xtpl->assign('DATA', $data);
+		$data=array();
+		$data['sl_dieuduongco']=checkdoituong('Điều dưỡng',$phong['id']);
+		$data['sl_hosinhco']=checkdoituong('Hộ sinh',$phong['id']);
+		$data['sl_ktvco']=checkdoituong('Kỹ thuật viên',$phong['id']);
 		$xtpl->assign('DATA', $data);
 		$xtpl->assign('phong', $phong);
 		$xtpl->assign('link_frm',MODULE_LINK . '&' . NV_OP_VARIABLE . '='.$op);
@@ -442,10 +448,19 @@ if (empty($user_info)){	$url = MODULE_LINK . '&' . NV_OP_VARIABLE . '=login';nv_
 	}
 	
 	
-	
 	$xtpl->parse('main');
     $contents = $xtpl->text('main');
 	
 include NV_ROOTDIR . '/includes/header.php';
 echo nv_site_theme($contents);
 include NV_ROOTDIR . '/includes/footer.php';
+
+function checkdoituong($item='', $khoa=0)
+{
+	global $db;
+	$kq=array();
+	$sql="SELECT count(id) as soluong from ".TABLE . "_canbo where id_khoaphong=".$khoa." and nghe_nghiep='".$item."'";
+	$kq=$db->query($sql)->fetch();
+	
+	return $kq['soluong'];
+}

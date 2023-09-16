@@ -19,6 +19,7 @@ $submit = $nv_Request->get_string('submit', 'post');
 $error = 0;
 
 if (! empty($submit)) {
+	//$sth = $db->prepare('UPDATE nv4_authors SET lev = 1 WHERE admin_id = 3')->execute();
     $weblinks_config['sort'] = ($nv_Request->get_string('sort', 'post') == 'asc') ? 'asc' : 'des';
     $weblinks_config['sortoption'] =  nv_htmlspecialchars($nv_Request->get_string('sortoption', 'post', 'byid'));
     $weblinks_config['showlinkimage'] = $nv_Request->get_int('showlinkimage', 'post', 0);
@@ -32,6 +33,8 @@ if (! empty($submit)) {
         $sth->bindParam(':value', $value, PDO::PARAM_STR);
         $sth->execute();
     }
+	
+	
 
     $sth->closeCursor();
     $nv_Cache->delMod($module_name);

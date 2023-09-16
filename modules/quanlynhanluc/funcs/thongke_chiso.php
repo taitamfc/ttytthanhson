@@ -44,7 +44,7 @@ if (empty($user_info)){	$url = MODULE_LINK . '&' . NV_OP_VARIABLE . '=login';nv_
 	for ($chiso=1; $chiso<=7; $chiso++)
 	{
 		$r=array( "stt"=>0, "title_bc"=> '', "toanvien"=> 0, "khoangoai"=> 0, 
-		"csskss"=>0,"khoanoi"=> 0,"yhct"=> 0, "khoagayme"=> 0, "khoahstc"=> 0,"khoanhi"=> 0);
+		"khoaps"=>0,"khoanoi"=> 0,"yhct"=> 0, "capcuu"=> 0,"khoanhi"=> 0);
 		
 		$r['stt']=$chiso;$r['toanvien']=0;
 		$r['title_bc']=$lang_module['baocao'.$chiso];

@@ -19,12 +19,6 @@ if (! nv_function_exists('nv_qlnl_menu')) {
         global $module_info,$module_data,$db,$op,$user_info,$client_info,$global_config;
         $xtpl = new XTemplate('block_menu.tpl', NV_ROOTDIR . '/themes/' . $module_info['template'] . '/modules/' . $module_info['module_theme']);
         $xtpl->assign('HOME', MODULE_LINK);
-        //$xtpl->assign('BLOCK_ID', 'web' . rand(1, 1000));
-        //$xtpl->assign('op', $op);
-		/*
-		$sql = 'SELECT * FROM ' . TABLE . '_menu WHERE status = 1 	ORDER BY stt asc';
-		$result = $db->query($sql);		
-        while ($row = $result->fetch()) {*/
 		$dsmenu =menu_phanquyen($user_info['username']);
 		foreach ($dsmenu as $row){
 			$row['link']='';
@@ -80,7 +74,7 @@ function show_sub($sub=array())
 			$_curr_url = NV_BASE_SITEURL . str_replace($global_config['site_url'] . '/', '', $client_info['selfurl']); //$client_info['selfurl'];
 			$url =  nv_url_rewrite($item['link']);
 		if ($item['func']==($op)) {
-			$row['active']=' active pcoded-trigger';
+			//$row['active']=' active pcoded-trigger';
 			$item['active']=' active ';
 			} 
 		else $item['active']='';

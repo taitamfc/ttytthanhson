@@ -30,12 +30,11 @@
 									<th class="align-middle">CÁC CHỈ SỐ ĐÁNH GIÁ NHU CẦU NHÂN LỰC</th>		
 									<th class="align-middle text-center">Tổng chỉ số <br> cả viện</th>
 									<th class="align-middle text-center">Khoa Ngoại <br>tổng hợp</th>
-									<th class="align-middle text-center">Khoa Chăm sóc <br>sức khỏe <br>sinh sản</th>
-									<th class="align-middle text-center">Khoa Hồi Sức<br>Tích Cực <br>& Chống Độc</th>
+									<th class="align-middle text-center">Khoa <br>phụ sản</th>
+									<th class="align-middle text-center">Khoa cấp cứu<br>HSTC <br>& Chống Độc</th>
 									<th class="align-middle text-center">Khoa Nội <br>tổng hợp</th>
 									<th class="align-middle text-center">Khoa nhi</th>
 									<th class="align-middle text-center">Khoa Y học <br> cổ truyền <br>& PHCN</th>
-									<th class="align-middle text-center">Khoa Gây mê <br> hồi sức</th>
 								</tr>
 								
 							</thead>
@@ -46,12 +45,11 @@
 									<th>{ROW.title_bc}</th>								
 									<td class='text-center'>{ROW.toanvien}</td>																
 									<td class='text-center'>{ROW.khoangoai}</td>	
-									<td class='text-center'>{ROW.csskss}</td>	
-									<td class='text-center'>{ROW.khoahstc}</td>	
+									<td class='text-center'>{ROW.khoaps}</td>	
+									<td class='text-center'>{ROW.capcuu}</td>	
 									<td class='text-center'>{ROW.khoanoi}</td>	
 									<td class='text-center'>{ROW.khoanhi}</td>	
 									<td class='text-center'>{ROW.yhct}</td>	
-									<td class='text-center'>{ROW.khoagayme}</td>	
 									<!-- BEGIN: chiso -->
 									<td class='text-center'>{chiso}</td>								
 									<!-- END: chiso -->								
