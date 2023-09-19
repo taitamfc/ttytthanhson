@@ -11,7 +11,11 @@
 if (! defined('NV_IS_MOD_QLNL')) {
     die('Stop!!!');
 }
-global $admin_info,$user_info;
+if (empty($user_info)){	
+    nv_redirect_location('index.php?language=vi&nv=users&op=login'); exit();
+}
+
+global $admin_info,$user_info,$module_info;
 $id = $nv_Request->get_int('id', 'post,get', 0);
 $layout = $nv_Request->get_title('layout', 'post,get', 'add');
 $OAThemeHelper = oa_load_model('OAThemeHelper');
@@ -19,6 +23,9 @@ $OABaoCaoGiaoBan = oa_load_model('OABaoCaoGiaoBan');
 $OABaoCaoKhamChuaBenh = oa_load_model('OABaoCaoKhamChuaBenh');
 $OAKhamChuaBenh = oa_load_model('OAKhamChuaBenh');
 
+if( $_REQUEST['is_ajax'] ){
+    
+}
 
 
 // CONTROLLER
@@ -153,7 +160,7 @@ if(!$admin_info){
     $admin_info = $user_info; 
 }
 
-
+$xtpl->assign('URL_THEMES', NV_BASE_SITEURL. 'themes/' . $module_info['template']);
 $xtpl->assign('currentGroupId', $admin_info['group_id']);
 $xtpl->assign('currentKhoa', $admin_info['username']);
 // $xtpl->assign('currentKhoa', 'khoakb');

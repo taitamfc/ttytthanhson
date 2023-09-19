@@ -11,7 +11,8 @@ class OAKhamChuaBenh extends OAModel{
         'khoa_nhi'      => 'khoanhi',
         'khu_yhct'      => 'yhct',
         0              => 'khoagayme',
-        'khoa_covid19'  => 0
+        'khoa_covid19'  => 0,
+        ''  => 'khoakb',
     ];
     public function __construct(){
         parent::__construct();

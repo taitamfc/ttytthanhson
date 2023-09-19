@@ -493,47 +493,38 @@ $.ajax({
     return !1
 	
 }
+	
+<!-- Bar Pie start -->
+<div class="col-md-12 col-lg-6">
+	<div class="card">
+		<div class="card-header">
+			<h5>Tỉ lệ Nam/Nữ cán bộ</h5>
+			<span>Số liệu cập nhật <strong>{thoigian}</strong></span>
+			<div class="card-header-right">                                                             
+			<i class="icofont icofont-spinner-alt-5"></i>                                                         
+		</div>
+		</div>
+		<div class="card-block">
+		<canvas id="pie-canvas1"></canvas>
+		</div>
+	</div>
+</div>
+<!-- Bar Pie Ends -->
 
-//alert(url);
-
-				
-				
-				
-				
-				<!-- Bar Chart Ends -->
-				  
-				  
-				  <!-- Bar Pie start -->
-                  <div class="col-md-12 col-lg-6">
-                      <div class="card">
-                          <div class="card-header">
-                              <h5>Tỉ lệ Nam/Nữ cán bộ</h5>
-                              <span>Số liệu cập nhật <strong>{thoigian}</strong></span>
-                              <div class="card-header-right">                                                             
-							  <i class="icofont icofont-spinner-alt-5"></i>                                                         
-						  </div>
-                          </div>
-                          <div class="card-block">
-							<canvas id="pie-canvas1"></canvas>
-                          </div>
-                      </div>
-                  </div>
-                  <!-- Bar Pie Ends -->
-				  
-				  <!-- Bar Chart Ends -->
-				  <!-- Bar Chart start -->
-                  <div class="col-md-12 col-lg-6">
-                      <div class="card">
-                          <div class="card-header">
-                              <h5>Thông tin điều động cán bộ Khoa/Phòng</h5>
-                              <span>Số liệu cập nhật <strong>{thoigian}</strong></span>
-                              <div class="card-header-right">                                                             
-							  <i class="icofont icofont-spinner-alt-5"></i>                                                         
-						  </div>
-                          </div>
-                          <div class="card-block">
-                              <div id="get_dieudong"></div>
-                          </div>
-                      </div>
-                  </div>
-                  <!-- Bar Chart Ends -->
+<!-- Bar Chart Ends -->
+<!-- Bar Chart start -->
+<div class="col-md-12 col-lg-6">
+	<div class="card">
+		<div class="card-header">
+			<h5>Thông tin điều động cán bộ Khoa/Phòng</h5>
+			<span>Số liệu cập nhật <strong>{thoigian}</strong></span>
+			<div class="card-header-right">                                                             
+			<i class="icofont icofont-spinner-alt-5"></i>                                                         
+		</div>
+		</div>
+		<div class="card-block">
+			<div id="get_dieudong"></div>
+		</div>
+	</div>
+</div>
+<!-- Bar Chart Ends -->

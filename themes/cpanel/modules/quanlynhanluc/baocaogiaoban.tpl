@@ -27,15 +27,6 @@
                                     <tr>
                                         <th>
                                             <div class="input-group">
-                                                <span class="input-group-addon" id="txt_find"
-                                                    style="width: auto;min-width:120px;">Tìm theo tên:</span>
-                                                <input name="txt_find" value="{F.txt_find}" type="text"
-                                                    class="form-control">
-                                            </div>
-                                        </th>
-
-                                        <th>
-                                            <div class="input-group">
                                                 <span class="input-group-addon" id="tg_tungay"
                                                     style="width: auto;min-width:120px;">Từ ngày:</span>
                                                 <input name="tg_tungay" value="{F.tg_tungay}" type="date"

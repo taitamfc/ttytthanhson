@@ -12,6 +12,8 @@ if (! defined('NV_IS_MOD_QLNL')) {
     die('Stop!!!');
 }
 
+if (empty($user_info)){	$url = MODULE_LINK . '&' . NV_OP_VARIABLE . '=login';nv_redirect_location($url); exit();}
+
 $OAThemeHelper = oa_load_model('OAThemeHelper');
 $OABaoCaoGiaoBan = oa_load_model('OABaoCaoGiaoBan');
 $page_title = 'Báo cáo giao ban';

@@ -15,16 +15,20 @@ class OABaoCaoGiaoBan extends OAModel{
             $search['title'] = "%$txt_find%";
             $operators['title'] = "LIKE";
         }
-        if( isset($_REQUEST['tg_tungay']) ){
+        if(isset($_REQUEST['tg_tungay'])  && isset($_REQUEST['tg_denngay']) ){
+            $search['created_date'] = [$_REQUEST['tg_tungay'],$_REQUEST['tg_denngay']];
+            $operators['created_date'] = "BETWEEN";
+        }
+        elseif( isset($_REQUEST['tg_tungay']) ){
             $search['created_date'] = $_REQUEST['tg_tungay'];
             $operators['created_date'] = ">=";
-        }
-        if( isset($_REQUEST['tg_denngay']) ){
+        }elseif( isset($_REQUEST['tg_denngay']) ){
             $search['created_date'] = $_REQUEST['tg_denngay'];
             $operators['created_date'] = "<=";
         }
         $options['search'] = $search;
         $options['operators'] = $operators;
+
         return parent::paginate($limit,$options);
     }
     public function format_items($items){

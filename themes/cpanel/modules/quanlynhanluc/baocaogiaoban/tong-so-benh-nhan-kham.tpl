@@ -101,6 +101,21 @@
             <td><input type="number" name="tinh_hinh_benh_nhan[tsbn][phong_kham_tmh_210][vao_vien]" class="form-control w80 has_f f_khoakb" value="{item.tinh_hinh_benh_nhan.tsbn.phong_kham_tmh_210.vao_vien}"></td>
             <td><input type="text" name="tinh_hinh_benh_nhan[tsbn][phong_kham_tmh_210][phantram_vao_vien]" class="form-control w80 has_f f_khoakb phantram_vao_vien" value="{item.tinh_hinh_benh_nhan.tsbn.phong_kham_tmh_210.phantram_vao_vien}"></td>
         </tr>
+        <tr>
+            <td><span style="font-weight: 400;">14</span></td>
+            <td><span style="font-weight: 400;">Phòng Khám Số 13</span></td>
+            <td><input type="number" name="tinh_hinh_benh_nhan[tsbn][phong_kham_so13][tong_so_kham]" class="form-control w80 has_f f_khoakb" value="{item.tinh_hinh_benh_nhan.tsbn.phong_kham_so13.tong_so_kham}"></td>
+            <td><input type="number" name="tinh_hinh_benh_nhan[tsbn][phong_kham_so13][vao_vien]" class="form-control w80 has_f f_khoakb" value="{item.tinh_hinh_benh_nhan.tsbn.phong_kham_so13.vao_vien}"></td>
+            <td><input type="text" name="tinh_hinh_benh_nhan[tsbn][phong_kham_so13][phantram_vao_vien]" class="form-control w80 has_f f_khoakb phantram_vao_vien" value="{item.tinh_hinh_benh_nhan.tsbn.phong_kham_so13.phantram_vao_vien}"></td>
+        </tr>
+        
+        <tr>
+            <td><span style="font-weight: 400;">15</span></td>
+            <td><span style="font-weight: 400;">Phòng Khám Đa Khoa Phú Thứ</span></td>
+            <td><input type="number" name="tinh_hinh_benh_nhan[tsbn][phong_kham_phuthu][tong_so_kham]" class="form-control w80 has_f f_khoakb" value="{item.tinh_hinh_benh_nhan.tsbn.phong_kham_phuthu.tong_so_kham}"></td>
+            <td><input type="number" name="tinh_hinh_benh_nhan[tsbn][phong_kham_phuthu][vao_vien]" class="form-control w80 has_f f_khoakb" value="{item.tinh_hinh_benh_nhan.tsbn.phong_kham_phuthu.vao_vien}"></td>
+            <td><input type="text" name="tinh_hinh_benh_nhan[tsbn][phong_kham_phuthu][phantram_vao_vien]" class="form-control w80 has_f f_khoakb phantram_vao_vien" value="{item.tinh_hinh_benh_nhan.tsbn.phong_kham_phuthu.phantram_vao_vien}"></td>
+        </tr>
         <tr class="td-text-danger">
             <td></td>
             <td><b>Tổng số</b></td>

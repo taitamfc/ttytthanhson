@@ -167,7 +167,7 @@
     console.log(currentKhoa);
     console.log(currentGroupId);
 
-    if( currentKhoa != 'admin' ){
+    if( currentGroupId != 1 ){
         if (currentKhoa != "") {
             jQuery('input.has_f').prop('readonly', true);
             jQuery('input.f_' + currentKhoa).prop('readonly', false);
@@ -197,6 +197,8 @@
     
 
     $(document).ready( function(){
+
+        $('input[type="number"]').attr('min',0);
 
         $('.tong_so_kham, .tong_so_vao_vien').on('change',function(){
             tong_so_phantram();
