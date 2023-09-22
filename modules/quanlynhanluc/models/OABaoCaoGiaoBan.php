@@ -3,6 +3,31 @@ class OABaoCaoGiaoBan extends OAModel{
     protected $table;
     protected $primaryKey = 'id';
     protected $fields = [];
+    protected $rooms = [
+        'phong_kham_mat'        => 'PK Mắt',
+        'phong_kham_so7'        => 'PK số 7',
+        'phong_kham_rhm'        => 'PK RHM',
+        'phong_cap_cuu_101'     => 'PK Cấp cứu 101',
+        'phong_kham_noi_106'    => 'PK nội 106',
+        'phong_kham_noi_107'    => 'PK nội 107',
+        'phong_kham_noi_108'    => 'PK nội 108',
+        'phong_kham_san_105'    => 'PK Sản 105',
+        'phong_kham_nhi_104'    => 'PK Nhi 104',
+        'phong_kham_ngoai_103'  => 'PK Ngoại 103',
+        'phong_kham_yeu_cau'    => 'PK Yêu cầu',
+        'phong_kham_dong_y'     => 'PK Đông Y',
+        'phong_kham_tmh_210'    => 'PK TMH 210',
+        'phong_kham_so13'       => 'Phòng Khám Số 13',
+        'phong_kham_phuthu'     => 'Phòng Khám Đa Khoa Phú Thứ',
+    ];
+    protected $khoas = [
+        'khoa_cc_hstc'  => 'Khoa CC-HSTC-CĐ',
+        'khoa_ngoai_th' => 'Khoa Ngoại-TH',
+        'khoa_phu_san'  => 'Khoa Phụ Sản',
+        'khoa_nhi'      => 'Khoa Nhi',
+        'khoa_noi_tn'   => 'Khoa Nội-Tn',
+        'khu_yhct'      => 'Khu YHCT&PHCN',
+    ];
     public function __construct(){
         parent::__construct();
         $this->table = $this->table_prefix . 'baocaogiaoban';
@@ -86,13 +111,138 @@ class OABaoCaoGiaoBan extends OAModel{
             case 'tong_benh_nhan_kham':
                 $this->chart_tong_benh_nhan_kham();
                 break;
+            case 'ti_le_vao_vien':
+                $this->chart_ti_le_vao_vien();
+                break;
+            case 'tong_benh_nhan_dieu_tri':
+                $this->chart_tong_benh_nhan_dieu_tri();
+                break;
+            case 'tong_benh_nhan_dieu_tri_yeu_cau':
+                $this->chart_tong_benh_nhan_dieu_tri_yeu_cau();
+                break;
             
             default:
                 # code...
                 break;
         }
     }
+    public function chart_tong_benh_nhan_dieu_tri(){
+        $endDate = strtotime('-1 month');
+        $currentDate = time();
 
+        $daysList = [];
+        while ($currentDate > $endDate) {
+            $daysList[] = date('Y-m-d', $currentDate);
+            $currentDate = strtotime('-1 day', $currentDate);
+        }
+        $data = [];
+        $ykeys = ['tong'];
+        $labels = ['Tổng'];
+        $lineColors = ['tong' => '#FF9F55'];
+        foreach($daysList as $key =>  $day){
+            $item = $this->findByField('DATE(created_date)',$day);
+            if(!$item){
+                continue;
+            }
+            $hddt = $item['hoat_dong_dieu_tri'] ? json_decode($item['hoat_dong_dieu_tri'],true) : [];
+            $data[$key] = [
+                'ngay' => $day,
+                'tong' => $hddt['tong_sobn'],
+            ];
+            foreach($this->khoas as $room => $room_name){
+                $lineColors[$room] = $this->generateRandomColor();
+                $ykeys[$room] = $room;
+                $labels[$room] = $room_name;
+                $data[$key][$room] = !empty($hddt[$room]['bn_tong']) ? (int)$hddt[$room]['bn_tong'] : 0;
+            }
+        }
+        $return = [
+            'data' => array_values($data),
+            'ykeys' => array_values($ykeys),
+            'labels' => array_values($labels),
+            'lineColors' => array_values($lineColors),
+        ];
+        echo json_encode($return);
+        die();
+    }
+    public function chart_tong_benh_nhan_dieu_tri_yeu_cau(){
+        $endDate = strtotime('-1 month');
+        $currentDate = time();
+
+        $daysList = [];
+        while ($currentDate > $endDate) {
+            $daysList[] = date('Y-m-d', $currentDate);
+            $currentDate = strtotime('-1 day', $currentDate);
+        }
+        $data = [];
+        $ykeys = ['tong'];
+        $labels = ['Tổng'];
+        $lineColors = ['tong' => '#FF9F55'];
+        foreach($daysList as $key =>  $day){
+            $item = $this->findByField('DATE(created_date)',$day);
+            if(!$item){
+                continue;
+            }
+            $hddt = $item['hoat_dong_dieu_tri'] ? json_decode($item['hoat_dong_dieu_tri'],true) : [];
+            $data[$key] = [
+                'ngay' => $day,
+                'tong' => $hddt['tong_ctyc'],
+            ];
+            foreach($this->khoas as $room => $room_name){
+                $lineColors[$room] = $this->generateRandomColor();
+                $ykeys[$room] = $room;
+                $labels[$room] = $room_name;
+                $data[$key][$room] = !empty($hddt[$room]['bn_namyc']) ? (int)$hddt[$room]['bn_namyc'] : 0;
+            }
+        }
+        $return = [
+            'data' => array_values($data),
+            'ykeys' => array_values($ykeys),
+            'labels' => array_values($labels),
+            'lineColors' => array_values($lineColors),
+        ];
+        echo json_encode($return);
+        die();
+    }
+    public function chart_ti_le_vao_vien(){
+        $endDate = strtotime('-1 month');
+        $currentDate = time();
+
+        $daysList = [];
+        while ($currentDate > $endDate) {
+            $daysList[] = date('Y-m-d', $currentDate);
+            $currentDate = strtotime('-1 day', $currentDate);
+        }
+        $data = [];
+        $ykeys = ['tong'];
+        $labels = ['Tổng'];
+        $lineColors = ['tong' => '#FF9F55'];
+        foreach($daysList as $key =>  $day){
+            $item = $this->findByField('DATE(created_date)',$day);
+            if(!$item){
+                continue;
+            }
+            $thbn = $item['tinh_hinh_benh_nhan'] ? json_decode($item['tinh_hinh_benh_nhan'],true) : [];
+            $data[$key] = [
+                'ngay' => $day,
+                'tong'   => !empty($thbn['tsbn']['tong_so_phantram']) ? (int)$thbn['tsbn']['tong_so_phantram'] : 0,
+            ];
+            foreach($this->rooms as $room => $room_name){
+                $lineColors[$room] = $this->generateRandomColor();
+                $ykeys[$room] = $room;
+                $labels[$room] = $room_name;
+                $data[$key][$room] = !empty($thbn['tsbn'][$room]['phantram_vao_vien']) ? (int)$thbn['tsbn'][$room]['phantram_vao_vien'] : 0;
+            }
+        }
+        $return = [
+            'data' => array_values($data),
+            'ykeys' => array_values($ykeys),
+            'labels' => array_values($labels),
+            'lineColors' => array_values($lineColors),
+        ];
+        echo json_encode($return);
+        die();
+    }
     public function chart_tong_benh_nhan_kham(){
         $endDate = strtotime('-1 month');
         $currentDate = time();
@@ -132,5 +282,17 @@ class OABaoCaoGiaoBan extends OAModel{
 
         echo json_encode($return);
         die();
+    }
+
+    function generateRandomColor() {
+        // Generate random RGB values
+        $red = rand(0, 255);
+        $green = rand(0, 255);
+        $blue = rand(0, 255);
+    
+        // Format the RGB values as a six-character hexadecimal color code
+        $colorCode = sprintf("#%02x%02x%02x", $red, $green, $blue);
+    
+        return strtoupper($colorCode);
     }
 }
