@@ -24,7 +24,9 @@ $OABaoCaoKhamChuaBenh = oa_load_model('OABaoCaoKhamChuaBenh');
 $OAKhamChuaBenh = oa_load_model('OAKhamChuaBenh');
 
 if( $_REQUEST['is_ajax'] ){
-    $action = isset($_REQUEST['action']) ? $_REQUEST['is_ajax'] : 'index';
+    $task = isset($_REQUEST['task']) ? $_REQUEST['task'] : 'index';
+    $OABaoCaoGiaoBan->handleAjax($task);
+    die();
 }
 
 

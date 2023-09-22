@@ -5,6 +5,9 @@
 <script src="{URL_THEMES}/assets/js/raphael/raphael.min.js"></script>
 <script src="{URL_THEMES}/assets/js/morris.js/morris.js"></script>
 <style>
+	.morris-hover {
+		width: 180px;
+	}
 	.carousel-control {
 		width: 25px;
 		height: 29px;
@@ -106,7 +109,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="item slide-2 chart" id="chart-1">
+		<div class="item slide-2 chart" id="chart-tong_benh_nhan_kham">
 			<div class="container-fluid">
 				<div class="mb-3">
 					<label class="form-label">
@@ -124,32 +127,51 @@
 					</div>
 
 					<div class="row">
-						<div class="col-6">
-							<div class="card">
-								<div class="card-header">
-									<h5>Tổng số bệnh nhân toàn viện</h5>
-									<span>Số liệu thống kê dựa vào các khoa phòng cung cấp</span>
-									<div class="card-header-right">
-										<div class="label-main">
-											<a title="Dữ liệu xem trong 7 ngày" onclick="get_bn(7);"
-												class="label label-primary">07 ngày</a>
-										</div>
-									</div>
+					<div class="col-12">
+						<div class="card">
+							<div class="card-header">
+								<!-- <h5>Tổng số bệnh nhân toàn viện</h5>
+								<span>Số liệu thống kê dựa vào các khoa phòng cung cấp</span> -->
+								<div class="card-header-right">
+									<!-- <div class="label-main">
+										<a title="Dữ liệu xem trong 7 ngày" onclick="get_bn(7);"
+											class="label label-primary">07 ngày</a>
+									</div> -->
 								</div>
-								<div class="card-block">
-									<div id="line-chart"></div>
-								</div>
+							</div>
+							<div class="card-block">
+								<div id="tong_benh_nhan_kham"></div>
 							</div>
 						</div>
 					</div>
+				</div>
 
 				</div>
 			</div>
 		</div>
-		<div class="item  slide-3">
+		<div class="item  slide-3 chart" id="chart-tong_benh_nhan_kham_cac_khoa">
 			<div class="container-fluid">
 				<div class="mb-3">
 					{FILE "baocaogiaoban/tong-so-benh-nhan-kham.tpl"}
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<div class="card">
+							<div class="card-header">
+								<!-- <h5>Tổng số bệnh nhân toàn viện</h5>
+								<span>Số liệu thống kê dựa vào các khoa phòng cung cấp</span> -->
+								<div class="card-header-right">
+									<!-- <div class="label-main">
+										<a title="Dữ liệu xem trong 7 ngày" onclick="get_bn(7);"
+											class="label label-primary">07 ngày</a>
+									</div> -->
+								</div>
+							</div>
+							<div class="card-block">
+								<div id="tong_benh_nhan_kham_cac_khoa"></div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -278,58 +300,31 @@
 
 		$('#myCarousel').on('slid.bs.carousel', function(e) {
 			var chart = $(this).find('.item.active .chart');
-			var id = chart.attr('id');
-			$('#line-chart').empty();
-			var data = [{
-					"ngay": "2023-08-29",
-					"tongbn": "2703",
-					"noitinh": "270",
-					"ngoaitinh": "273",
-					"vienphi": "703",
-				},
-				{
-					"ngay": "2023-08-25",
-					"tongbn": "9",
-					"noitinh": "273",
-					"ngoaitinh": "203",
-					"vienphi": "703",
-				},
-				{
-					"ngay": "2023-04-21",
-					"tongbn": "34",
-					"noitinh": "203",
-					"ngoaitinh": "273",
-					"vienphi": "270",
-				},
-				{
-					"ngay": "2023-04-19",
-					"tongbn": "59",
-					"noitinh": "703",
-					"ngoaitinh": "203",
-					"vienphi": "273",
-				},
-				{
-					"ngay": "2023-04-18",
-					"tongbn": "18",
-					"noitinh": "203",
-					"ngoaitinh": "70",
-					"vienphi": "23",
-				}
-			];
-			window.lineChart = Morris.Line({
-				element: 'line-chart',
-				data: data,
-				xkey: ['ngay'],
-				xLabelFormat: function (da) {return ("0" + da.getDate()).slice(-2) + '/' + ("0" + (da.getMonth() + 1)).slice(-2);},
-				redraw: true,
-				ykeys: ['tongbn','noitinh','ngoaitinh','vienphi'],
-				hideHover: 'auto',
-				labels: ['Tổng BN','Nội Tỉnh','Ngoại Tỉnh','Viện Phí'],
-				lineColors: ['#FF9F55','#5FBEAA', '#5D9CEC', '#cCcCcC'],
-				resize: true
-			});
-
+			var id = $(this).find('.item.active .chart');
 			console.log(id);
+			// Tổng số bệnh nhân khám
+			$.ajax({
+					type: 'post',
+					cache: !1,
+					url: 'index.php?nv=quanlynhanluc&op=baocaogiaoban_add&is_ajax=1&task=tong_benh_nhan_kham',
+					dataType: "json",
+					success: function(res) { //alert(d);
+						$('#tong_benh_nhan_kham').empty();
+						window.lineChart = Morris.Line({
+							element: 'tong_benh_nhan_kham',
+							data: res.data,
+							xkey: ['ngay'],
+							xLabelFormat: function (da) {return ("0" + da.getDate()).slice(-2) + '/' + ("0" + (da.getMonth() + 1)).slice(-2);},
+							redraw: true,
+							ykeys: res.ykeys,
+							hideHover: 'auto',
+							labels: res.labels,
+							lineColors: res.lineColors,
+							resize: true
+						});
+					}
+			}); 
+			
 		})
 		$('input[type="number"], input[type="text"]').each(function(key, val) {
 			let oldVal = $(val).val();

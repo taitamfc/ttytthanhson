@@ -80,4 +80,52 @@ class OABaoCaoGiaoBan extends OAModel{
         $item['link_view'] = str_replace('op=baocaogiaoban','op=baocaogiaoban_add&layout=show&id='.$item['id'],$this->home_url);
         return $item;
     }
+
+    public function handleAjax($action){
+        switch ($action) {
+            case 'tong_benh_nhan_kham':
+                $this->chart_tong_benh_nhan_kham();
+                break;
+            
+            default:
+                # code...
+                break;
+        }
+    }
+
+    public function chart_tong_benh_nhan_kham(){
+        $endDate = strtotime('-1 month');
+        $currentDate = time();
+
+        $daysList = [];
+        while ($currentDate > $endDate) {
+            $daysList[] = date('Y-m-d', $currentDate);
+            $currentDate = strtotime('-1 day', $currentDate);
+        }
+
+        $data = [];
+        foreach($daysList as $day){
+            $data[] = [
+                'ngay' => $day,
+                'tongbn' => random_int(80,100),
+                'noitinh' => random_int(80,100),
+                'ngoaitinh' => random_int(80,100),
+                'vienphi' => random_int(80,100),
+            ];
+        }
+
+        $ykeys = ['tongbn','noitinh','ngoaitinh','vienphi'];
+        $labels = ['Tổng BN','Nội Tỉnh','Ngoại Tỉnh','Viện Phí'];
+        $lineColors = ['#FF9F55','#5FBEAA', '#5D9CEC', '#cCcCcC'];
+
+        $return = [
+            'data' => $data,
+            'ykeys' => $ykeys,
+            'labels' => $labels,
+            'lineColors' => $lineColors,
+        ];
+
+        echo json_encode($return);
+        die();
+    }
 }

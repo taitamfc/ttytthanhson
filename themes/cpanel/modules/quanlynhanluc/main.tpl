@@ -242,7 +242,7 @@ $.ajax({
 				resize: true
 			});
         }
-    }); 
+}); 
 function printDiv(divName) {
      var printContents = document.getElementById(divName).innerHTML;
      var originalContents = document.body.innerHTML;
