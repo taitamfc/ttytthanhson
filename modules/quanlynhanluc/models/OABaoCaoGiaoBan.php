@@ -105,12 +105,17 @@ class OABaoCaoGiaoBan extends OAModel{
 
         $data = [];
         foreach($daysList as $day){
+            $item = $this->findByField('DATE(created_date)',$day);
+            if(!$item){
+                continue;
+            }
+            $thbn = $item['tinh_hinh_benh_nhan'] ? json_decode($item['tinh_hinh_benh_nhan'],true) : [];
             $data[] = [
                 'ngay' => $day,
-                'tongbn' => random_int(80,100),
-                'noitinh' => random_int(80,100),
-                'ngoaitinh' => random_int(80,100),
-                'vienphi' => random_int(80,100),
+                'tongbn'    => !empty($thbn['tongbn']) ? $thbn['tongbn'] : 0,
+                'noitinh'   => !empty($thbn['noitinh']) ? $thbn['noitinh'] : 0,
+                'ngoaitinh' => !empty($thbn['ngoaitinh']) ? $thbn['ngoaitinh'] : 0,
+                'vienphi' => !empty($thbn['bn_vienphi']) ? $thbn['bn_vienphi'] : 0,
             ];
         }
 
