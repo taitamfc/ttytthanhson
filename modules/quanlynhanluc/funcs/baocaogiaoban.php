@@ -18,6 +18,11 @@ $OAThemeHelper = oa_load_model('OAThemeHelper');
 $OABaoCaoGiaoBan = oa_load_model('OABaoCaoGiaoBan');
 $page_title = 'Báo cáo giao ban';
 
+if( $_REQUEST['is_ajax'] ){
+    $task = isset($_REQUEST['task']) ? $_REQUEST['task'] : 'index';
+    $OABaoCaoGiaoBan->handleAjax($task,$_REQUEST);
+    die();
+}
 
 $data = $OABaoCaoGiaoBan->paginate(10,[
     'layout' => 'admin_index',

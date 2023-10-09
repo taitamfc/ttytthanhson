@@ -57,14 +57,29 @@ class OABaoCaoGiaoBan extends OAModel{
         return parent::paginate($limit,$options);
     }
     public function format_items($items){
+        global $user_info;
+        $group_id = $user_info['group_id'];
+        $url = MODULE_LINK;
         foreach( $items as $k => $item ){
+            $id = $item['id'];
             $items[$k]['key'] = $k + 1;
             $items[$k]['title'] = date('d/m/Y',strtotime($item['title'])); 
             $items[$k]['created_date'] = date('d/m/Y H:i:s',strtotime($item['created_date'])); 
             $items[$k]['updated_date'] = date('d/m/Y H:i:s',strtotime($item['updated_date'])); 
-            $items[$k]['link_edit'] = str_replace('op=baocaogiaoban','op=baocaogiaoban_add&id='.$item['id'],$this->home_url);
-            $items[$k]['link_view'] = str_replace('op=baocaogiaoban','op=baocaogiaoban_add&layout=show&id='.$item['id'],$this->home_url);
-            $items[$k]['link_show'] = str_replace('op=baocaogiaoban','op=baocaogiaoban_add&layout=slide&id='.$item['id'],$this->home_url);
+            $items[$k]['link_edit'] = $url.'&op=baocaogiaoban_add&id='.$item['id'];
+            $items[$k]['link_view'] = $url.'&op=baocaogiaoban_add&layout=show&id='.$item['id'];
+            $items[$k]['link_show'] = $url.'&op=baocaogiaoban_add&layout=slide&id='.$item['id'];
+            if($item['block']){
+                $items[$k]['link_edit'] = '#';
+            }
+            if($group_id == 1){
+                if($item['block']){
+                    $link_block_html = '| <a href="javascript:;" onclick="blockBaoCaoGiaoBan('.$id.',0)">Mở khóa</a>';
+                }else{
+                    $link_block_html = '| <a href="javascript:;" onclick="blockBaoCaoGiaoBan('.$id.',1)">Khóa</a>';
+                }
+            }
+            $items[$k]['link_block_html'] = $link_block_html;
         }
         return $items;
     }
@@ -106,7 +121,7 @@ class OABaoCaoGiaoBan extends OAModel{
         return $item;
     }
 
-    public function handleAjax($action){
+    public function handleAjax($action,$data = []){
         switch ($action) {
             case 'tong_benh_nhan_kham':
                 $this->chart_tong_benh_nhan_kham();
@@ -120,12 +135,24 @@ class OABaoCaoGiaoBan extends OAModel{
             case 'tong_benh_nhan_dieu_tri_yeu_cau':
                 $this->chart_tong_benh_nhan_dieu_tri_yeu_cau();
                 break;
-            
+            case 'blockBaoCaoGiaoBan':
+                $this->blockBaoCaoGiaoBan($_REQUEST);
+                break;
             default:
                 # code...
                 break;
         }
     }
+
+    public function blockBaoCaoGiaoBan($data){
+        $status = $data['status'];
+        $id = $data['id'];
+        $item = $this->update($id,[
+            'block' => $status
+        ]);
+        return $item;
+    }
+
     public function chart_tong_benh_nhan_dieu_tri(){
         $endDate = strtotime('-1 month');
         $currentDate = time();

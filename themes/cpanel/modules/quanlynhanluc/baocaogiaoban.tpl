@@ -74,7 +74,12 @@
                                     <td>{item.created_date}</td>
                                     <td>{item.updated_date}</td>
                                     
-                                    <td><a href="{item.link_view}">Xem</a> | <a href="{item.link_edit}">Cập nhật</a> | <a href="{item.link_show}">Chiếu</a></td>
+                                    <td>
+                                        <a href="{item.link_view}">Xem</a> | 
+                                        <a href="{item.link_edit}">Cập nhật</a> | 
+                                        <a href="{item.link_show}">Chiếu</a>
+                                        {item.link_block_html}
+                                    </td>
                                 </tr>
                                 <!-- END: items -->
                                 <!-- BEGIN: generate_page -->
@@ -93,6 +98,24 @@
     </div>
 </div>
 <script type="text/javascript">
+    function blockBaoCaoGiaoBan(id,status){
+        let check = confirm('Bạn có chắc chắn thực hiện ?')
+        if(!check){
+            return false;
+        }
+        $.ajax({
+			type: 'post',
+			cache: !1,
+			url: 'index.php?nv=quanlynhanluc&op=baocaogiaoban_add&is_ajax=1&task=blockBaoCaoGiaoBan',
+			data: {
+                id: id,
+                status: status,
+            },
+			success: function(res) { //alert(d);
+				window.location.reload();
+			}
+		}); 
+    }
     $(document).ready(function() {
         $("#startDate,#endDate").datepicker({
             dateFormat: "dd/mm/yy",

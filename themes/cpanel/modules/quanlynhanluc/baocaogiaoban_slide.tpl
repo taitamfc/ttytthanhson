@@ -322,7 +322,7 @@
 <script>
 	$(document).ready(function() {
 		$('.carousel').carousel({
-			interval: 20000,
+			interval: false,
 			pause: 'hover',
 		});
 
@@ -406,7 +406,7 @@ function chart_ti_le_vao_vien(){
 					resize: true
 				});
 			}
-	}); 
+		}); 
 }
 function chart_tong_benh_nhan_dieu_tri(){
 	$.ajax({

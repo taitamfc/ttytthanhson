@@ -5,15 +5,15 @@
     <table class="table table-hover table-bordered">
         <tbody class="has_auto_total">
             <tr>
-                <th rowspan="2">KHOA PHÒNG</th>
-                <th rowspan="2">Cũ</th>
-                <th rowspan="2">Vào viện</th>
-                <th rowspan="2">Ra Viện</th>
-                <th rowspan="2">Chuyển Khoa</th>
-                <th rowspan="2">Chuyển Viện</th>
-                <th rowspan="2">Xin Về</th>
-                <th colspan="3">HIỆN CÓ</th>
-                <th rowspan="2">Yêu cầu</th>
+                <th class="text-center" rowspan="2">KHOA PHÒNG</th>
+                <th class="text-center" rowspan="2">Cũ</th>
+                <th class="text-center" rowspan="2">Vào viện</th>
+                <th class="text-center" rowspan="2">Ra Viện</th>
+                <th class="text-center" rowspan="2">Chuyển Khoa</th>
+                <th class="text-center" rowspan="2">Chuyển Viện</th>
+                <th class="text-center" rowspan="2">Xin Về</th>
+                <th class="text-center" colspan="3">HIỆN CÓ</th>
+                <th class="text-center" rowspan="2">Yêu cầu</th>
             </tr>
             <tr>
                 <td><b>Nội Trú</b></td>
