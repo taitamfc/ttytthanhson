@@ -168,7 +168,7 @@
     console.log(currentGroupId);
 
     if( currentGroupId != 1 ){
-        if (currentKhoa != "") {
+        if (currentKhoa != "" && currentKhoa != "khambenh") {
             jQuery('input.has_f').prop('readonly', true);
             jQuery('input.f_' + currentKhoa).prop('readonly', false);
 

@@ -85,6 +85,19 @@
 		width: 100%;
 		min-height: 250px;
 	}
+	.chart-wrapper * {
+		font-size: 12px !important;
+	}
+
+	.morris-hover .morris-hover-point {
+		min-width: 120px;
+		display: block;
+		float: left;
+	}
+	/* .cart-chart {
+		position: absolute;
+		opacity: 0;
+	} */
 </style>
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
 	<!-- Wrapper for slides -->
@@ -127,27 +140,16 @@
 							{FILE "baocaogiaoban_show/tinh_hinh_benh_nhan/phong-kham-da-khoa.tpl"}
 						</div>
 					</div>
-
 					<div class="row">
-					<div class="col-12">
-						<div class="card">
-							<div class="card-header">
-								<!-- <h5>Tổng số bệnh nhân toàn viện</h5>
-								<span>Số liệu thống kê dựa vào các khoa phòng cung cấp</span> -->
-								<div class="card-header-right">
-									<!-- <div class="label-main">
-										<a title="Dữ liệu xem trong 7 ngày" onclick="get_bn(7);"
-											class="label label-primary">07 ngày</a>
-									</div> -->
+						<div class="col-12">
+							<button class="btn btn-info btn-sm" onclick="chart_tong_benh_nhan_kham()">Xem biểu đồ</button>
+							<div class="card cart-chart">
+								<div class="card-block">
+									<div class="chart-wrapper" id="tong_benh_nhan_kham"></div>
 								</div>
-							</div>
-							<div class="card-block">
-								<div id="tong_benh_nhan_kham"></div>
 							</div>
 						</div>
 					</div>
-				</div>
-
 				</div>
 			</div>
 		</div>
@@ -158,7 +160,8 @@
 				</div>
 				<div class="row">
 					<div class="col-12">
-						<div class="card">
+						<button class="btn btn-info btn-sm" onclick="chart_ti_le_vao_vien()">Xem biểu đồ</button>
+						<div class="card cart-chart">
 							<div class="card-header">
 								<!-- <h5>Tổng số bệnh nhân toàn viện</h5>
 								<span>Số liệu thống kê dựa vào các khoa phòng cung cấp</span> -->
@@ -170,7 +173,7 @@
 								</div>
 							</div>
 							<div class="card-block">
-								<div id="ti_le_vao_vien"></div>
+								<div class="chart-wrapper" id="ti_le_vao_vien"></div>
 							</div>
 						</div>
 					</div>
@@ -180,21 +183,28 @@
 		<!-- Hoạt động điều trị -->
 		<div class="item slide-4 chart" id="chart-tong_benh_nhan_dieu_tri">
 			<div class="container-fluid">
-				<div class="mb-3">
+				<div class="mb-3 center-th">
 					{FILE "baocaogiaoban/hoat-dong-dieu-tri.tpl"}
 				</div>
 				<div class="row">
-					<div class="col-6">
-						<div class="card">
+					<div class="col-12">
+					<button class="btn btn-info btn-sm ml-3" onclick="chart_tong_benh_nhan_dieu_tri()">Xem biểu đồ</button>
+						<div class="card card-chart ml-3">
+							<div class="card-header">
+								<h5>Tổng số bệnh điều trị</h5>
+							</div>
 							<div class="card-block">
-								<div id="tong_benh_nhan_dieu_tri"></div>
+								<div class="chart-wrapper" id="tong_benh_nhan_dieu_tri"></div>
 							</div>
 						</div>
 					</div>
-					<div class="col-6">
-						<div class="card">
+					<div class="col-12">
+						<div class="card card-chart">
+							<div class="card-header">
+								<h5>Tổng số bệnh điều trị yêu cầu</h5>
+							</div>
 							<div class="card-block">
-								<div id="tong_benh_nhan_dieu_tri_yeu_cau"></div>
+								<div class="chart-wrapper" id="tong_benh_nhan_dieu_tri_yeu_cau"></div>
 							</div>
 						</div>
 					</div>
@@ -318,7 +328,7 @@
 
 		$('#myCarousel').on('slid.bs.carousel', function(e) {
 			var chart_id = e.relatedTarget.id;
-			switch (chart_id) {
+			switch (chart_id && false) {
 				case 'chart-tong_benh_nhan_kham':
 					chart_tong_benh_nhan_kham();
 					break;
@@ -349,100 +359,98 @@
 			}
 			$(val).remove();
 		});
-
-		function chart_tong_benh_nhan_kham(){
-			// Tổng số bệnh nhân khám
-				$.ajax({
-					type: 'post',
-					cache: !1,
-					url: 'index.php?nv=quanlynhanluc&op=baocaogiaoban_add&is_ajax=1&task=tong_benh_nhan_kham',
-					dataType: "json",
-					success: function(res) { //alert(d);
-						$('#tong_benh_nhan_kham').empty();
-						window.lineChart = Morris.Line({
-							element: 'tong_benh_nhan_kham',
-							data: res.data,
-							xkey: ['ngay'],
-							xLabelFormat: function (da) {return ("0" + da.getDate()).slice(-2) + '/' + ("0" + (da.getMonth() + 1)).slice(-2);},
-							redraw: true,
-							ykeys: res.ykeys,
-							hideHover: 'auto',
-							labels: res.labels,
-							lineColors: res.lineColors,
-							resize: true
-						});
-					}
-			}); 
+});
+function chart_tong_benh_nhan_kham(){
+	// Tổng số bệnh nhân khám
+		$.ajax({
+			type: 'post',
+			cache: !1,
+			url: 'index.php?nv=quanlynhanluc&op=baocaogiaoban_add&is_ajax=1&task=tong_benh_nhan_kham',
+			dataType: "json",
+			success: function(res) { //alert(d);
+				$('#tong_benh_nhan_kham').empty();
+				window.lineChart = Morris.Line({
+					element: 'tong_benh_nhan_kham',
+					data: res.data,
+					xkey: ['ngay'],
+					xLabelFormat: function (da) {return ("0" + da.getDate()).slice(-2) + '/' + ("0" + (da.getMonth() + 1)).slice(-2);},
+					redraw: true,
+					ykeys: res.ykeys,
+					hideHover: 'auto',
+					labels: res.labels,
+					lineColors: res.lineColors,
+					resize: true
+				});
+			}
+	}); 
+}
+function chart_ti_le_vao_vien(){
+	// Tổng số bệnh nhân khám
+		$.ajax({
+			type: 'post',
+			cache: !1,
+			url: 'index.php?nv=quanlynhanluc&op=baocaogiaoban_add&is_ajax=1&task=ti_le_vao_vien',
+			dataType: "json",
+			success: function(res) { //alert(d);
+				$('#ti_le_vao_vien').empty();
+				window.lineChart = Morris.Line({
+					element: 'ti_le_vao_vien',
+					data: res.data,
+					xkey: ['ngay'],
+					xLabelFormat: function (da) {return ("0" + da.getDate()).slice(-2) + '/' + ("0" + (da.getMonth() + 1)).slice(-2);},
+					redraw: true,
+					ykeys: res.ykeys,
+					hideHover: 'auto',
+					labels: res.labels,
+					lineColors: res.lineColors,
+					resize: true
+				});
+			}
+	}); 
+}
+function chart_tong_benh_nhan_dieu_tri(){
+	$.ajax({
+		type: 'post',
+		cache: !1,
+		url: 'index.php?nv=quanlynhanluc&op=baocaogiaoban_add&is_ajax=1&task=tong_benh_nhan_dieu_tri',
+		dataType: "json",
+		success: function(res) { //alert(d);
+			$('#tong_benh_nhan_dieu_tri').empty();
+			window.lineChart = Morris.Line({
+				element: 'tong_benh_nhan_dieu_tri',
+				data: res.data,
+				xkey: ['ngay'],
+				xLabelFormat: function (da) {return ("0" + da.getDate()).slice(-2) + '/' + ("0" + (da.getMonth() + 1)).slice(-2);},
+				redraw: true,
+				ykeys: res.ykeys,
+				hideHover: 'auto',
+				labels: res.labels,
+				lineColors: res.lineColors,
+				resize: true
+			});
 		}
-		function chart_ti_le_vao_vien(){
-			// Tổng số bệnh nhân khám
-				$.ajax({
-					type: 'post',
-					cache: !1,
-					url: 'index.php?nv=quanlynhanluc&op=baocaogiaoban_add&is_ajax=1&task=ti_le_vao_vien',
-					dataType: "json",
-					success: function(res) { //alert(d);
-						$('#ti_le_vao_vien').empty();
-						window.lineChart = Morris.Line({
-							element: 'ti_le_vao_vien',
-							data: res.data,
-							xkey: ['ngay'],
-							xLabelFormat: function (da) {return ("0" + da.getDate()).slice(-2) + '/' + ("0" + (da.getMonth() + 1)).slice(-2);},
-							redraw: true,
-							ykeys: res.ykeys,
-							hideHover: 'auto',
-							labels: res.labels,
-							lineColors: res.lineColors,
-							resize: true
-						});
-					}
-			}); 
+	}); 
+	$.ajax({
+		type: 'post',
+		cache: !1,
+		url: 'index.php?nv=quanlynhanluc&op=baocaogiaoban_add&is_ajax=1&task=tong_benh_nhan_dieu_tri_yeu_cau',
+		dataType: "json",
+		success: function(res) { //alert(d);
+			$('#tong_benh_nhan_dieu_tri_yeu_cau').empty();
+			window.lineChart = Morris.Line({
+				element: 'tong_benh_nhan_dieu_tri_yeu_cau',
+				data: res.data,
+				xkey: ['ngay'],
+				xLabelFormat: function (da) {return ("0" + da.getDate()).slice(-2) + '/' + ("0" + (da.getMonth() + 1)).slice(-2);},
+				redraw: true,
+				ykeys: res.ykeys,
+				hideHover: 'auto',
+				labels: res.labels,
+				lineColors: res.lineColors,
+				resize: true
+			});
 		}
-		function chart_tong_benh_nhan_dieu_tri(){
-			$.ajax({
-				type: 'post',
-				cache: !1,
-				url: 'index.php?nv=quanlynhanluc&op=baocaogiaoban_add&is_ajax=1&task=tong_benh_nhan_dieu_tri',
-				dataType: "json",
-				success: function(res) { //alert(d);
-					$('#tong_benh_nhan_dieu_tri').empty();
-					window.lineChart = Morris.Line({
-						element: 'tong_benh_nhan_dieu_tri',
-						data: res.data,
-						xkey: ['ngay'],
-						xLabelFormat: function (da) {return ("0" + da.getDate()).slice(-2) + '/' + ("0" + (da.getMonth() + 1)).slice(-2);},
-						redraw: true,
-						ykeys: res.ykeys,
-						hideHover: 'auto',
-						labels: res.labels,
-						lineColors: res.lineColors,
-						resize: true
-					});
-				}
-			}); 
-			$.ajax({
-				type: 'post',
-				cache: !1,
-				url: 'index.php?nv=quanlynhanluc&op=baocaogiaoban_add&is_ajax=1&task=tong_benh_nhan_dieu_tri_yeu_cau',
-				dataType: "json",
-				success: function(res) { //alert(d);
-					$('#tong_benh_nhan_dieu_tri_yeu_cau').empty();
-					window.lineChart = Morris.Line({
-						element: 'tong_benh_nhan_dieu_tri_yeu_cau',
-						data: res.data,
-						xkey: ['ngay'],
-						xLabelFormat: function (da) {return ("0" + da.getDate()).slice(-2) + '/' + ("0" + (da.getMonth() + 1)).slice(-2);},
-						redraw: true,
-						ykeys: res.ykeys,
-						hideHover: 'auto',
-						labels: res.labels,
-						lineColors: res.lineColors,
-						resize: true
-					});
-				}
-			}); 
-		}
-
-	});
+	}); 
+}
 </script>
 <!-- END: main -->
