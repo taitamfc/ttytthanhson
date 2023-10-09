@@ -164,11 +164,14 @@
     var currentGroupId = '{currentGroupId}';
     var layout = '{layout}';
 
+    currentGroupId = 2;
+    currentKhoa = 'khambenh';
+
     console.log(currentKhoa);
     console.log(currentGroupId);
 
     if( currentGroupId != 1 ){
-        if (currentKhoa != "" && currentKhoa != "khambenh") {
+        if (currentKhoa != "") {
             jQuery('input.has_f').prop('readonly', true);
             jQuery('input.f_' + currentKhoa).prop('readonly', false);
 
@@ -358,7 +361,11 @@
                     })
                     col_auto.attr('data-values',total_value.join(','))
                     let percent = (total_value[1] / total_value[0]) * 100;
-                    col_auto.val(percent.toFixed(2));
+                    if( isNaN(percent) ){
+                        col_auto.val(0);
+                    }else{
+                        col_auto.val(percent.toFixed(2));
+                    }
 
                     tong_so_phantram();
                 })
