@@ -146,6 +146,12 @@
                             {FILE "baocaogiaoban/benh_nhan_theo_doi/khoa-yhct.tpl"}
                         </div>
                         <div class="mb-3">
+                            <label class="form-label">
+                                SỔ GIAO BAN
+                            </label>
+                            {FILE "baocaogiaoban/so-giao-ban.tpl"}
+                        </div>
+                        <div class="mb-3">
                             <button type="submit" class="btn btn-success">
                                 <i class="ti-save"></i><strong>Lưu văn bản</strong></button>
                             <a href="index.php?{NV_LANG_VARIABLE}={NV_LANG_DATA}&{NV_NAME_VARIABLE}={MODULE_NAME}&{NV_OP_VARIABLE}=baocaogiaoban"
@@ -164,11 +170,6 @@
     var currentGroupId = '{currentGroupId}';
     var layout = '{layout}';
 
-    currentGroupId = 2;
-    currentKhoa = 'khambenh';
-
-    console.log(currentKhoa);
-    console.log(currentGroupId);
 
     if( currentGroupId != 1 ){
         if (currentKhoa != "") {

@@ -191,7 +191,7 @@
 					<button class="btn btn-info btn-sm ml-3" onclick="chart_tong_benh_nhan_dieu_tri()">Xem biểu đồ</button>
 						<div class="card card-chart ml-3">
 							<div class="card-header">
-								<h5>Tổng số bệnh điều trị</h5>
+								<h5>Tổng số bệnh nhân điều trị</h5>
 							</div>
 							<div class="card-block">
 								<div class="chart-wrapper" id="tong_benh_nhan_dieu_tri"></div>
@@ -201,7 +201,7 @@
 					<div class="col-12">
 						<div class="card card-chart">
 							<div class="card-header">
-								<h5>Tổng số bệnh điều trị yêu cầu</h5>
+								<h5>Tổng số bệnh nhân điều trị theo yêu cầu</h5>
 							</div>
 							<div class="card-block">
 								<div class="chart-wrapper" id="tong_benh_nhan_dieu_tri_yeu_cau"></div>
