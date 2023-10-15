@@ -61,6 +61,10 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ){
     if( isset($_REQUEST['benh_nhan_chuyen_tuyen']) ){
         $data['benh_nhan_chuyen_tuyen'] = json_encode($_REQUEST['benh_nhan_chuyen_tuyen']);
     }
+    if( isset($_REQUEST['sgb']) ){
+        $data['sgb'] = json_encode($_REQUEST['sgb']);
+    }
+
     
     $tinh_hinh_benh_nhan = $_REQUEST['tinh_hinh_benh_nhan'];
     $dataBaocaoKCB = [
@@ -98,7 +102,6 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ){
             }
         }
     }
-
 
     if($id){
         $saved = $OABaoCaoGiaoBan->update($id,$data);

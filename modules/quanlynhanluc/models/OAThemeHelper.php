@@ -235,7 +235,9 @@ class OAThemeHelper extends OAModel{
 
     public function redirectOp( $op ){
         global $module_name;
-        nv_redirect_location('index.php?' . NV_NAME_VARIABLE . '=' . $module_name . '&' . NV_OP_VARIABLE . '=' . $op);
+        $url = 'index.php?language=vi&' . NV_NAME_VARIABLE . '=' . $module_name . '&' . NV_OP_VARIABLE . '=' . $op;
+        echo '<script> window.location.href = "'.$url.'" </script>';
+        // nv_redirect_location($url);
         exit;
     }
 

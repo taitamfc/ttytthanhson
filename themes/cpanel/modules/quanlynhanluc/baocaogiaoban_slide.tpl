@@ -94,6 +94,14 @@
 		display: block;
 		float: left;
 	}
+	.legen-wrapper span {
+		display: inline-block;
+		margin: 10px;
+		border: 1px solid #dfdddd;
+		border-radius: 10px;
+		padding: 6px;
+		background-color: #f9f9f9;
+	}
 	/* .cart-chart {
 		position: absolute;
 		opacity: 0;
@@ -146,6 +154,7 @@
 							<div class="card cart-chart">
 								<div class="card-block">
 									<div class="chart-wrapper" id="tong_benh_nhan_kham"></div>
+									<div class="legen-wrapper" id="tong_benh_nhan_kham_legen"></div>
 								</div>
 							</div>
 						</div>
@@ -174,6 +183,8 @@
 							</div>
 							<div class="card-block">
 								<div class="chart-wrapper" id="ti_le_vao_vien"></div>
+								<div class="legen-wrapper" id="ti_le_vao_vien_legen"></div>
+
 							</div>
 						</div>
 					</div>
@@ -195,16 +206,18 @@
 							</div>
 							<div class="card-block">
 								<div class="chart-wrapper" id="tong_benh_nhan_dieu_tri"></div>
+								<div class="legen-wrapper" id="tong_benh_nhan_dieu_tri_legen"></div>
 							</div>
 						</div>
 					</div>
 					<div class="col-12">
-						<div class="card card-chart">
+						<div class="card card-chart ml-3">
 							<div class="card-header">
 								<h5>Tổng số bệnh nhân điều trị theo yêu cầu</h5>
 							</div>
 							<div class="card-block">
 								<div class="chart-wrapper" id="tong_benh_nhan_dieu_tri_yeu_cau"></div>
+								<div class="legen-wrapper" id="tong_benh_nhan_dieu_tri_yeu_cau_legen"></div>
 							</div>
 						</div>
 					</div>
@@ -369,7 +382,7 @@ function chart_tong_benh_nhan_kham(){
 			dataType: "json",
 			success: function(res) { //alert(d);
 				$('#tong_benh_nhan_kham').empty();
-				window.lineChart = Morris.Line({
+				let the_chart = Morris.Line({
 					element: 'tong_benh_nhan_kham',
 					data: res.data,
 					xkey: ['ngay'],
@@ -381,6 +394,13 @@ function chart_tong_benh_nhan_kham(){
 					lineColors: res.lineColors,
 					resize: true
 				});
+
+				$('#tong_benh_nhan_kham_legen').empty();
+				the_chart.options.labels.forEach(function(label, i){
+					var legendItem = $('<span></span>').text(label).css('color', the_chart.options.lineColors[i])
+					$('#tong_benh_nhan_kham_legen').append(legendItem)
+				})
+
 			}
 	}); 
 }
@@ -393,7 +413,7 @@ function chart_ti_le_vao_vien(){
 			dataType: "json",
 			success: function(res) { //alert(d);
 				$('#ti_le_vao_vien').empty();
-				window.lineChart = Morris.Line({
+				let the_chart = Morris.Line({
 					element: 'ti_le_vao_vien',
 					data: res.data,
 					xkey: ['ngay'],
@@ -405,6 +425,11 @@ function chart_ti_le_vao_vien(){
 					lineColors: res.lineColors,
 					resize: true
 				});
+				$('#ti_le_vao_vien_legen').empty();
+				the_chart.options.labels.forEach(function(label, i){
+					let legendItem = $('<span></span>').text(label).css('color', the_chart.options.lineColors[i])
+					$('#ti_le_vao_vien_legen').append(legendItem)
+				})
 			}
 		}); 
 }
@@ -416,7 +441,7 @@ function chart_tong_benh_nhan_dieu_tri(){
 		dataType: "json",
 		success: function(res) { //alert(d);
 			$('#tong_benh_nhan_dieu_tri').empty();
-			window.lineChart = Morris.Line({
+			let the_chart = Morris.Line({
 				element: 'tong_benh_nhan_dieu_tri',
 				data: res.data,
 				xkey: ['ngay'],
@@ -428,6 +453,11 @@ function chart_tong_benh_nhan_dieu_tri(){
 				lineColors: res.lineColors,
 				resize: true
 			});
+			$('#tong_benh_nhan_dieu_tri_legen').empty();
+			the_chart.options.labels.forEach(function(label, i){
+				var legendItem = $('<span></span>').text(label).css('color', the_chart.options.lineColors[i])
+				$('#tong_benh_nhan_dieu_tri_legen').append(legendItem)
+			})
 		}
 	}); 
 	$.ajax({
@@ -437,7 +467,7 @@ function chart_tong_benh_nhan_dieu_tri(){
 		dataType: "json",
 		success: function(res) { //alert(d);
 			$('#tong_benh_nhan_dieu_tri_yeu_cau').empty();
-			window.lineChart = Morris.Line({
+			let the_chart = Morris.Line({
 				element: 'tong_benh_nhan_dieu_tri_yeu_cau',
 				data: res.data,
 				xkey: ['ngay'],
@@ -449,6 +479,11 @@ function chart_tong_benh_nhan_dieu_tri(){
 				lineColors: res.lineColors,
 				resize: true
 			});
+			$('#tong_benh_nhan_dieu_tri_yeu_cau_legen').empty();
+			the_chart.options.labels.forEach(function(label, i){
+				var legendItem = $('<span></span>').text(label).css('color', the_chart.options.lineColors[i])
+				$('#tong_benh_nhan_dieu_tri_yeu_cau_legen').append(legendItem)
+			})
 		}
 	}); 
 }
