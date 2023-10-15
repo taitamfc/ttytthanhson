@@ -77,7 +77,8 @@
                                     <td>
                                         <a href="{item.link_view}">Xem</a> | 
                                         <a href="{item.link_edit}">Cập nhật</a> | 
-                                        <a href="{item.link_show}">Chiếu</a>
+                                        <a href="{item.link_show}">Chiếu</a> |
+                                        <a href="{item.link_export}">Xuất sổ</a>
                                         {item.link_block_html}
                                     </td>
                                 </tr>

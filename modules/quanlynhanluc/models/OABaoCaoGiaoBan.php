@@ -72,12 +72,17 @@ class OABaoCaoGiaoBan extends OAModel{
             if($item['block']){
                 $items[$k]['link_edit'] = '#';
             }
+            
+            $items[$k]['link_export'] = '#';
             if($group_id == 1){
                 if($item['block']){
                     $link_block_html = '| <a href="javascript:;" onclick="blockBaoCaoGiaoBan('.$id.',0)">Mở khóa</a>';
                 }else{
                     $link_block_html = '| <a href="javascript:;" onclick="blockBaoCaoGiaoBan('.$id.',1)">Khóa</a>';
                 }
+
+                $link_export =  $url.'&op=baocaogiaoban_add&task=export&id='.$item['id'];
+                $items[$k]['link_export'] = $link_export;
             }
             $items[$k]['link_block_html'] = $link_block_html;
         }
