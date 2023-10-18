@@ -10,6 +10,7 @@
 		/* display: flex; */
 		/* gap: 10px; */
 	}
+
 	.carousel-control {
 		width: 25px;
 		height: 29px;
@@ -85,6 +86,7 @@
 		width: 100%;
 		min-height: 250px;
 	}
+
 	.chart-wrapper * {
 		font-size: 12px !important;
 	}
@@ -94,6 +96,7 @@
 		display: block;
 		float: left;
 	}
+
 	.legen-wrapper span {
 		display: inline-block;
 		margin: 10px;
@@ -101,6 +104,14 @@
 		border-radius: 10px;
 		padding: 6px;
 		background-color: #f9f9f9;
+	}
+
+	.modal-content.modal-lg {
+		width: 800px;
+		left: -116px;
+	}
+	.modal-backdrop {
+		display: none !important;
 	}
 	/* .cart-chart {
 		position: absolute;
@@ -150,13 +161,9 @@
 					</div>
 					<div class="row">
 						<div class="col-12">
-							<button class="btn btn-info btn-sm" onclick="chart_tong_benh_nhan_kham()">Xem biểu đồ</button>
-							<div class="card cart-chart">
-								<div class="card-block">
-									<div class="chart-wrapper" id="tong_benh_nhan_kham"></div>
-									<div class="legen-wrapper" id="tong_benh_nhan_kham_legen"></div>
-								</div>
-							</div>
+							<button class="btn btn-info btn-sm" onclick="chart_tong_benh_nhan_kham()">Xem biểu
+								đồ</button>
+							{FILE "baocaogiaoban_slide/modal-chart_tong_benh_nhan_kham.tpl"}
 						</div>
 					</div>
 				</div>
@@ -170,23 +177,7 @@
 				<div class="row">
 					<div class="col-12">
 						<button class="btn btn-info btn-sm" onclick="chart_ti_le_vao_vien()">Xem biểu đồ</button>
-						<div class="card cart-chart">
-							<div class="card-header">
-								<!-- <h5>Tổng số bệnh nhân toàn viện</h5>
-								<span>Số liệu thống kê dựa vào các khoa phòng cung cấp</span> -->
-								<div class="card-header-right">
-									<!-- <div class="label-main">
-										<a title="Dữ liệu xem trong 7 ngày" onclick="get_bn(7);"
-											class="label label-primary">07 ngày</a>
-									</div> -->
-								</div>
-							</div>
-							<div class="card-block">
-								<div class="chart-wrapper" id="ti_le_vao_vien"></div>
-								<div class="legen-wrapper" id="ti_le_vao_vien_legen"></div>
-
-							</div>
-						</div>
+						{FILE "baocaogiaoban_slide/modal-chart_ti_le_vao_vien.tpl"}
 					</div>
 				</div>
 			</div>
@@ -199,7 +190,8 @@
 				</div>
 				<div class="row">
 					<div class="col-12">
-					<button class="btn btn-info btn-sm ml-3" onclick="chart_tong_benh_nhan_dieu_tri()">Xem biểu đồ</button>
+						<button class="btn btn-info btn-sm ml-3" onclick="chart_tong_benh_nhan_dieu_tri()">Xem biểu
+							đồ</button>
 						<div class="card card-chart ml-3">
 							<div class="card-header">
 								<h5>Tổng số bệnh nhân điều trị</h5>
@@ -338,26 +330,6 @@
 			interval: false,
 			pause: 'hover',
 		});
-
-		$('#myCarousel').on('slid.bs.carousel', function(e) {
-			var chart_id = e.relatedTarget.id;
-			switch (chart_id && false) {
-				case 'chart-tong_benh_nhan_kham':
-					chart_tong_benh_nhan_kham();
-					break;
-				case 'chart-ti_le_vao_vien':
-					chart_ti_le_vao_vien();
-					break;
-				case 'chart-tong_benh_nhan_dieu_tri':
-					chart_tong_benh_nhan_dieu_tri();
-					break;
-			
-				default:
-					break;
-			}
-			
-			
-		})
 		$('input[type="number"], input[type="text"]').each(function(key, val) {
 			let oldVal = $(val).val();
 
@@ -372,18 +344,22 @@
 			}
 			$(val).remove();
 		});
-});
-function chart_tong_benh_nhan_kham(){
-	// Tổng số bệnh nhân khám
+	});
+
+	
+
+	
+
+	function chart_tong_benh_nhan_dieu_tri() {
 		$.ajax({
 			type: 'post',
 			cache: !1,
-			url: 'index.php?nv=quanlynhanluc&op=baocaogiaoban_add&is_ajax=1&task=tong_benh_nhan_kham',
+			url: 'index.php?nv=quanlynhanluc&op=baocaogiaoban_add&is_ajax=1&task=tong_benh_nhan_dieu_tri',
 			dataType: "json",
 			success: function(res) { //alert(d);
-				$('#tong_benh_nhan_kham').empty();
+				$('#tong_benh_nhan_dieu_tri').empty();
 				let the_chart = Morris.Line({
-					element: 'tong_benh_nhan_kham',
+					element: 'tong_benh_nhan_dieu_tri',
 					data: res.data,
 					xkey: ['ngay'],
 					xLabelFormat: function (da) {return ("0" + da.getDate()).slice(-2) + '/' + ("0" + (da.getMonth() + 1)).slice(-2);},
@@ -394,27 +370,23 @@ function chart_tong_benh_nhan_kham(){
 					lineColors: res.lineColors,
 					resize: true
 				});
-
-				$('#tong_benh_nhan_kham_legen').empty();
-				the_chart.options.labels.forEach(function(label, i){
-					var legendItem = $('<span></span>').text(label).css('color', the_chart.options.lineColors[i])
-					$('#tong_benh_nhan_kham_legen').append(legendItem)
+				$('#tong_benh_nhan_dieu_tri_legen').empty();
+				the_chart.options.labels.forEach(function(label, i) {
+					var legendItem = $('<span></span>').text(label).css('color', the_chart.options
+						.lineColors[i])
+					$('#tong_benh_nhan_dieu_tri_legen').append(legendItem)
 				})
-
 			}
-	}); 
-}
-function chart_ti_le_vao_vien(){
-	// Tổng số bệnh nhân khám
+		});
 		$.ajax({
 			type: 'post',
 			cache: !1,
-			url: 'index.php?nv=quanlynhanluc&op=baocaogiaoban_add&is_ajax=1&task=ti_le_vao_vien',
+			url: 'index.php?nv=quanlynhanluc&op=baocaogiaoban_add&is_ajax=1&task=tong_benh_nhan_dieu_tri_yeu_cau',
 			dataType: "json",
 			success: function(res) { //alert(d);
-				$('#ti_le_vao_vien').empty();
+				$('#tong_benh_nhan_dieu_tri_yeu_cau').empty();
 				let the_chart = Morris.Line({
-					element: 'ti_le_vao_vien',
+					element: 'tong_benh_nhan_dieu_tri_yeu_cau',
 					data: res.data,
 					xkey: ['ngay'],
 					xLabelFormat: function (da) {return ("0" + da.getDate()).slice(-2) + '/' + ("0" + (da.getMonth() + 1)).slice(-2);},
@@ -425,67 +397,14 @@ function chart_ti_le_vao_vien(){
 					lineColors: res.lineColors,
 					resize: true
 				});
-				$('#ti_le_vao_vien_legen').empty();
-				the_chart.options.labels.forEach(function(label, i){
-					let legendItem = $('<span></span>').text(label).css('color', the_chart.options.lineColors[i])
-					$('#ti_le_vao_vien_legen').append(legendItem)
+				$('#tong_benh_nhan_dieu_tri_yeu_cau_legen').empty();
+				the_chart.options.labels.forEach(function(label, i) {
+					var legendItem = $('<span></span>').text(label).css('color', the_chart.options
+						.lineColors[i])
+					$('#tong_benh_nhan_dieu_tri_yeu_cau_legen').append(legendItem)
 				})
 			}
-		}); 
-}
-function chart_tong_benh_nhan_dieu_tri(){
-	$.ajax({
-		type: 'post',
-		cache: !1,
-		url: 'index.php?nv=quanlynhanluc&op=baocaogiaoban_add&is_ajax=1&task=tong_benh_nhan_dieu_tri',
-		dataType: "json",
-		success: function(res) { //alert(d);
-			$('#tong_benh_nhan_dieu_tri').empty();
-			let the_chart = Morris.Line({
-				element: 'tong_benh_nhan_dieu_tri',
-				data: res.data,
-				xkey: ['ngay'],
-				xLabelFormat: function (da) {return ("0" + da.getDate()).slice(-2) + '/' + ("0" + (da.getMonth() + 1)).slice(-2);},
-				redraw: true,
-				ykeys: res.ykeys,
-				hideHover: 'auto',
-				labels: res.labels,
-				lineColors: res.lineColors,
-				resize: true
-			});
-			$('#tong_benh_nhan_dieu_tri_legen').empty();
-			the_chart.options.labels.forEach(function(label, i){
-				var legendItem = $('<span></span>').text(label).css('color', the_chart.options.lineColors[i])
-				$('#tong_benh_nhan_dieu_tri_legen').append(legendItem)
-			})
-		}
-	}); 
-	$.ajax({
-		type: 'post',
-		cache: !1,
-		url: 'index.php?nv=quanlynhanluc&op=baocaogiaoban_add&is_ajax=1&task=tong_benh_nhan_dieu_tri_yeu_cau',
-		dataType: "json",
-		success: function(res) { //alert(d);
-			$('#tong_benh_nhan_dieu_tri_yeu_cau').empty();
-			let the_chart = Morris.Line({
-				element: 'tong_benh_nhan_dieu_tri_yeu_cau',
-				data: res.data,
-				xkey: ['ngay'],
-				xLabelFormat: function (da) {return ("0" + da.getDate()).slice(-2) + '/' + ("0" + (da.getMonth() + 1)).slice(-2);},
-				redraw: true,
-				ykeys: res.ykeys,
-				hideHover: 'auto',
-				labels: res.labels,
-				lineColors: res.lineColors,
-				resize: true
-			});
-			$('#tong_benh_nhan_dieu_tri_yeu_cau_legen').empty();
-			the_chart.options.labels.forEach(function(label, i){
-				var legendItem = $('<span></span>').text(label).css('color', the_chart.options.lineColors[i])
-				$('#tong_benh_nhan_dieu_tri_yeu_cau_legen').append(legendItem)
-			})
-		}
-	}); 
-}
+		});
+	}
 </script>
 <!-- END: main -->

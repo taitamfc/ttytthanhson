@@ -302,21 +302,23 @@
             }, 500);
         }
         
-        $('.bhyt_ngoaitinh, .bhyt_noitinh').on('change keyup',function(){
+        $('.bhyt_ngoaitinh, .noitinh_ngoaitinh').on('change keyup',function(){
             bhyt_ngoaitinh_noitinh();
         });
         function bhyt_ngoaitinh_noitinh(){
-            let bhyt_noitinh = $('.bhyt_noitinh').val();
+            // let bhyt_noitinh = $('.bhyt_noitinh').val();
+            let bhyt_noitinh = $('.noitinh_ngoaitinh').val();
             let bhyt_ngoaitinh = $('.bhyt_ngoaitinh').val();
-            $('.noitinh_ngoaitinh').val( parseInt(bhyt_noitinh) + parseInt(bhyt_ngoaitinh) );
+            $('.bhyt_noitinh').val( parseInt(bhyt_noitinh) - parseInt(bhyt_ngoaitinh) );
         }
-        $('.pkdk_bhyt_ngoaitinh, .pkdk_bhyt_noitinh').on('change keyup',function(){
+        $('.pkdk_bhyt_ngoaitinh, .pkdk_noitinh_ngoaitinh').on('change keyup',function(){
             pkdk_bhyt_ngoaitinh_noitinh();
         });
         function pkdk_bhyt_ngoaitinh_noitinh(){
-            let pkdk_bhyt_noitinh = $('.pkdk_bhyt_noitinh').val();
+            // let pkdk_bhyt_noitinh = $('.pkdk_bhyt_noitinh').val();
+            let pkdk_bhyt_noitinh = $('.pkdk_noitinh_ngoaitinh').val();
             let pkdk_bhyt_ngoaitinh = $('.pkdk_bhyt_ngoaitinh').val();
-            $('.pkdk_noitinh_ngoaitinh').val( parseInt(pkdk_bhyt_noitinh) + parseInt(pkdk_bhyt_ngoaitinh) );
+            $('.pkdk_bhyt_noitinh').val( parseInt(pkdk_bhyt_noitinh) - parseInt(pkdk_bhyt_ngoaitinh) );
         }
         $('.benh_nhan_kham').on('change keyup',function(){
             tong_benh_nhan_kham();

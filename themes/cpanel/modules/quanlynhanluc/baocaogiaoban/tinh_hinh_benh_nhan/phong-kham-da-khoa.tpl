@@ -42,14 +42,14 @@
         <td rowspan="2">
         <div  style="display: flex;">
             <span>Bệnh nhân BHYT</span> 
-            <input readonly style="width:70px; margin-left:20px;" class="form-control pkdk_noitinh_ngoaitinh" name="tinh_hinh_benh_nhan[pkdk][bhyt][noitinh_ngoaitinh]" value="{item.tinh_hinh_benh_nhan.pkdk.bhyt.noitinh_ngoaitinh}" > </td>
+            <input  style="width:70px; margin-left:20px;" class="form-control pkdk_noitinh_ngoaitinh" name="tinh_hinh_benh_nhan[pkdk][bhyt][noitinh_ngoaitinh]" value="{item.tinh_hinh_benh_nhan.pkdk.bhyt.noitinh_ngoaitinh}" > </td>
         </div>
         <td>Ngoại tỉnh</td>
         <td><input type="number" class="form-control w80 has_f f_khoakb f_khambenh benh_nhan_kham_phuthu pkdk_bhyt_ngoaitinh" name="tinh_hinh_benh_nhan[pkdk][bhyt][ngoaitinh]" value="{item.tinh_hinh_benh_nhan.pkdk.bhyt.ngoaitinh}">  </td>
     </tr>
     <tr>
         <td>Nội tỉnh</td>
-        <td><input type="number" name="tinh_hinh_benh_nhan[pkdk][bhyt][noitinh]" class="form-control w80 has_f f_khoakb f_khambenh benh_nhan_kham_phuthu pkdk_bhyt_noitinh" value="{item.tinh_hinh_benh_nhan.pkdk.bhyt.noitinh}"></td>
+        <td><input readonly type="number" name="tinh_hinh_benh_nhan[pkdk][bhyt][noitinh]" class="form-control w80 has_f f_khoakb f_khambenh benh_nhan_kham_phuthu pkdk_bhyt_noitinh" value="{item.tinh_hinh_benh_nhan.pkdk.bhyt.noitinh}"></td>
     </tr>
     <tr>
         <td colspan="2">Bệnh nhân Viện phí</td>
