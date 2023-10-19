@@ -19,7 +19,7 @@
 	}
 
 	.carousel-inner .item {
-		min-height: 600px;
+		min-height: 100vh;
 		background: white;
 		border-radius: 10px;
 		padding: 15px;
@@ -99,19 +99,30 @@
 
 	.legen-wrapper span {
 		display: inline-block;
-		margin: 10px;
+		margin: 2px;
 		border: 1px solid #dfdddd;
 		border-radius: 10px;
 		padding: 6px;
 		background-color: #f9f9f9;
+		font-size: 12px;
+		cursor: pointer;
 	}
-
+	.modal-dialog {
+		top: 15%;
+	}
 	.modal-content.modal-lg {
-		width: 800px;
-		left: -116px;
+		width: 1000px;
+		max-width: 1000px;
+		left: -56%;
 	}
 	.modal-backdrop {
 		display: none !important;
+	}
+	[style="color: undefined"] {
+		display: none !important;
+	}
+	span.removed {
+		text-decoration: line-through;
 	}
 	/* .cart-chart {
 		position: absolute;
@@ -161,8 +172,7 @@
 					</div>
 					<div class="row">
 						<div class="col-12">
-							<button class="btn btn-info btn-sm" onclick="chart_tong_benh_nhan_kham()">Xem biểu
-								đồ</button>
+							<button class="btn btn-info btn-sm" onclick="chart_tong_benh_nhan_kham()">Xem biểu đồ</button>
 							{FILE "baocaogiaoban_slide/modal-chart_tong_benh_nhan_kham.tpl"}
 						</div>
 					</div>
@@ -190,28 +200,10 @@
 				</div>
 				<div class="row">
 					<div class="col-12">
-						<button class="btn btn-info btn-sm ml-3" onclick="chart_tong_benh_nhan_dieu_tri()">Xem biểu
-							đồ</button>
-						<div class="card card-chart ml-3">
-							<div class="card-header">
-								<h5>Tổng số bệnh nhân điều trị</h5>
-							</div>
-							<div class="card-block">
-								<div class="chart-wrapper" id="tong_benh_nhan_dieu_tri"></div>
-								<div class="legen-wrapper" id="tong_benh_nhan_dieu_tri_legen"></div>
-							</div>
-						</div>
-					</div>
-					<div class="col-12">
-						<div class="card card-chart ml-3">
-							<div class="card-header">
-								<h5>Tổng số bệnh nhân điều trị theo yêu cầu</h5>
-							</div>
-							<div class="card-block">
-								<div class="chart-wrapper" id="tong_benh_nhan_dieu_tri_yeu_cau"></div>
-								<div class="legen-wrapper" id="tong_benh_nhan_dieu_tri_yeu_cau_legen"></div>
-							</div>
-						</div>
+						<button class="btn btn-info btn-sm ml-3" onclick="chart_tong_benh_nhan_dieu_tri()">Xem biểu đồ bệnh nhân điều trị</button>
+						<button class="btn btn-info btn-sm ml-3" onclick="chart_tong_benh_nhan_dieu_tri_yeu_cau()">Xem biểu đồ bệnh nhân điều trị yêu cầu</button>
+						{FILE "baocaogiaoban_slide/modal-chart_tong_benh_nhan_dieu_tri.tpl"}
+						{FILE "baocaogiaoban_slide/modal-chart_tong_benh_nhan_dieu_tri_yeu_cau.tpl"}
 					</div>
 				</div>
 			</div>
@@ -347,64 +339,5 @@
 	});
 
 	
-
-	
-
-	function chart_tong_benh_nhan_dieu_tri() {
-		$.ajax({
-			type: 'post',
-			cache: !1,
-			url: 'index.php?nv=quanlynhanluc&op=baocaogiaoban_add&is_ajax=1&task=tong_benh_nhan_dieu_tri',
-			dataType: "json",
-			success: function(res) { //alert(d);
-				$('#tong_benh_nhan_dieu_tri').empty();
-				let the_chart = Morris.Line({
-					element: 'tong_benh_nhan_dieu_tri',
-					data: res.data,
-					xkey: ['ngay'],
-					xLabelFormat: function (da) {return ("0" + da.getDate()).slice(-2) + '/' + ("0" + (da.getMonth() + 1)).slice(-2);},
-					redraw: true,
-					ykeys: res.ykeys,
-					hideHover: 'auto',
-					labels: res.labels,
-					lineColors: res.lineColors,
-					resize: true
-				});
-				$('#tong_benh_nhan_dieu_tri_legen').empty();
-				the_chart.options.labels.forEach(function(label, i) {
-					var legendItem = $('<span></span>').text(label).css('color', the_chart.options
-						.lineColors[i])
-					$('#tong_benh_nhan_dieu_tri_legen').append(legendItem)
-				})
-			}
-		});
-		$.ajax({
-			type: 'post',
-			cache: !1,
-			url: 'index.php?nv=quanlynhanluc&op=baocaogiaoban_add&is_ajax=1&task=tong_benh_nhan_dieu_tri_yeu_cau',
-			dataType: "json",
-			success: function(res) { //alert(d);
-				$('#tong_benh_nhan_dieu_tri_yeu_cau').empty();
-				let the_chart = Morris.Line({
-					element: 'tong_benh_nhan_dieu_tri_yeu_cau',
-					data: res.data,
-					xkey: ['ngay'],
-					xLabelFormat: function (da) {return ("0" + da.getDate()).slice(-2) + '/' + ("0" + (da.getMonth() + 1)).slice(-2);},
-					redraw: true,
-					ykeys: res.ykeys,
-					hideHover: 'auto',
-					labels: res.labels,
-					lineColors: res.lineColors,
-					resize: true
-				});
-				$('#tong_benh_nhan_dieu_tri_yeu_cau_legen').empty();
-				the_chart.options.labels.forEach(function(label, i) {
-					var legendItem = $('<span></span>').text(label).css('color', the_chart.options
-						.lineColors[i])
-					$('#tong_benh_nhan_dieu_tri_yeu_cau_legen').append(legendItem)
-				})
-			}
-		});
-	}
 </script>
 <!-- END: main -->

@@ -168,7 +168,10 @@
                 </td>
             </tr>
             <tr>
-                <td><b>Khoa Covid 19</b></td>
+                <td>
+                <input style="width:100%" type="text" name="hoat_dong_dieu_tri[khoa_covid19][ten_khoa]" class="hoat_dong_dieu_tri form-control w80 has_f f_khoanoi f_col_not_auto"
+                        value="{item.hoat_dong_dieu_tri.khoa_covid19.ten_khoa}" placeholder="Nhập tên khoa">
+                </td>
                 <td><input type="number" name="hoat_dong_dieu_tri[khoa_covid19][bn_cu]" class="hoat_dong_dieu_tri form-control w80 has_f f_khoanoi f_col_not_auto"
                         value="{item.hoat_dong_dieu_tri.khoa_covid19.bn_cu}"></td>
                 <td><input type="number" name="hoat_dong_dieu_tri[khoa_covid19][bn_vaovien]" class="hoat_dong_dieu_tri form-control w80 has_f f_khoanoi hoat_dong_dieu_tri_bn_vaovien f_col_not_auto"
