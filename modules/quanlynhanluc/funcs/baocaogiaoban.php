@@ -23,6 +23,10 @@ if( $_REQUEST['is_ajax'] ){
     $OABaoCaoGiaoBan->handleAjax($task,$_REQUEST);
     die();
 }
+if( !empty($_REQUEST['task']) && $_REQUEST['task'] == 'export' ){
+    $OABaoCaoGiaoBan->export($_REQUEST['id']);
+    die();
+}
 
 $data = $OABaoCaoGiaoBan->paginate(10,[
     'layout' => 'admin_index',

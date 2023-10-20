@@ -81,7 +81,7 @@ class OABaoCaoGiaoBan extends OAModel{
                     $link_block_html = '| <a href="javascript:;" onclick="blockBaoCaoGiaoBan('.$id.',1)">Khóa</a>';
                 }
 
-                $link_export =  $url.'&op=baocaogiaoban_add&task=export&id='.$item['id'];
+                $link_export =  $url.'&op=baocaogiaoban&task=export&id='.$item['id'];
                 $items[$k]['link_export'] = $link_export;
             }
             $items[$k]['link_block_html'] = $link_block_html;
@@ -328,17 +328,41 @@ class OABaoCaoGiaoBan extends OAModel{
         return strtoupper($colorCode);
     }
 
-    public function export(){
+    public function export($id){
         global $module_info;
         $libs_path = NV_ROOTDIR . '/modules/' . $module_info['module_file'].'/libs/';
         $templates_path = NV_ROOTDIR . '/modules/' . $module_info['module_file'].'/export_templates/';
         include_once $libs_path.'/tbs_plugin_opentbs/tbs_class.php';
         include_once $libs_path.'/tbs_plugin_opentbs/tbs_plugin_opentbs.php';
-        
+        $item = $this->find($id);
+        $item = $this->format_item($item);
         $TBS = new clsTinyButStrong;
         $TBS->Plugin(TBS_INSTALL, OPENTBS_PLUGIN);
 
-        $GLOBALS['ryear'] = date('Y',$item['addtime']);
+        $type = 'mau-bien-ban-bao-cao-giao-ban';
+
+        $params = [
+            'bat_dau_ngay'              => $item['sgb']['bat_dau']['ngay'],
+            'bat_dau_thang'             => $item['sgb']['bat_dau']['thang'],
+            'bat_dau_nam'               => $item['sgb']['bat_dau']['nam'],
+            'bat_dau_gio'               => $item['sgb']['bat_dau']['gio'],
+            'bat_dau_phut'              => $item['sgb']['bat_dau']['phut'],
+            'tham_du_chu_tri'           => $item['sgb']['tham_du']['chu_tri'],
+            'tham_du_thu_ky'            => $item['sgb']['tham_du']['thu_ky'],
+            'tham_du_thanh_phan_khac'   => $item['sgb']['tham_du']['thanh_phan_khac'],
+            'noi_dung_khac'             => implode("\n",$item['sgb']['noi_dung_khac']),
+            'ket_thuc_ngay'             => $item['sgb']['ket_thuc']['ngay'],
+            'ket_thuc_thang'            => $item['sgb']['ket_thuc']['thang'],
+            'ket_thuc_nam'              => $item['sgb']['ket_thuc']['nam'],
+            'ket_thuc_gio'              => $item['sgb']['ket_thuc']['gio'],
+            'ket_thuc_phut'             => $item['sgb']['ket_thuc']['phut'],
+            'tham_du_chu_tri_sign'      => trim( current( explode(',',$item['sgb']['tham_du']['chu_tri']) ) ),
+            'tham_du_thu_ky_sign'      => trim( current( explode(',',$item['sgb']['tham_du']['thu_ky']) ) )
+        ];
+        foreach( $params as $p_key => $p_value ){
+            $GLOBALS[$p_key] = $p_value;
+        }
+
         $template = $templates_path.$type.'.docx';
         $TBS->LoadTemplate($template, OPENTBS_ALREADY_UTF8);
 

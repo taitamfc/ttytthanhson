@@ -68,6 +68,3 @@
         </tr>
     </table>
 </div>
-<div class="mb-3">
-    <a style="text-decoration: underline;" href="">Xuất số giao ban</a>
-</div>
