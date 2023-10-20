@@ -16,6 +16,37 @@
 </div>
 
 <script>
+let the_chart_bnvv;
+var prefix = 'bnvv_';
+let bnvv_ykeys = bnvv_labels = bnvv_lineColors = []
+function bnvv_hideLabel(key){
+    if( $('.'+ prefix+'lengen_'+key).hasClass('removed') ){
+        the_chart_bnvv.options.ykeys[key] = bnvv_ykeys[key]
+        the_chart_bnvv.options.labels[key] = bnvv_labels[key]
+        the_chart_bnvv.options.lineColors[key] = bnvv_lineColors[key]
+        $('.'+ prefix+'lengen_'+key).removeClass('removed');
+    }else{
+        delete the_chart_bnvv.options.ykeys[key];
+        delete the_chart_bnvv.options.labels[key];
+        delete the_chart_bnvv.options.lineColors[key];
+        $('.'+ prefix+'lengen_'+key).addClass('removed');
+    }
+   
+    $('#ti_le_vao_vien').empty();
+    the_chart_bnvv = Morris.Line({
+        element: 'ti_le_vao_vien',
+        data: the_chart_bnvv.options.data,
+        xkey: ['ngay'],
+        xLabelFormat: function (da) {return ("0" + da.getDate()).slice(-2) + '/' + ("0" + (da.getMonth() + 1)).slice(-2);},
+        redraw: true,
+        ykeys: the_chart_bnvv.options.ykeys,
+        hideHover: 'auto',
+        labels: the_chart_bnvv.options.labels,
+        lineColors: the_chart_bnvv.options.lineColors,
+        resize: true
+    });
+}
+
     function chart_ti_le_vao_vien() {
         $('#chart_ti_le_vao_vien').modal('show');
         $('#chart_ti_le_vao_vien').on('shown.bs.modal', function(e) {
@@ -25,8 +56,9 @@
                 url: 'index.php?nv=quanlynhanluc&op=baocaogiaoban_add&is_ajax=1&task=ti_le_vao_vien',
                 dataType: "json",
                 success: function(res) { //alert(d);
+                    $(window).scrollTop(0);
                     $('#ti_le_vao_vien').empty();
-                    let the_chart = Morris.Line({
+                    the_chart_bnvv = Morris.Line({
                         element: 'ti_le_vao_vien',
                         data: res.data,
                         xkey: ['ngay'],
@@ -38,13 +70,17 @@
                         lineColors: res.lineColors,
                         resize: true
                     });
+                    bnvv_ykeys = [...the_chart_bnvv.options.ykeys]
+                    bnvv_labels = [...the_chart_bnvv.options.labels]
+                    bnvv_lineColors = [...the_chart_bnvv.options.lineColors]
+
                     $('#ti_le_vao_vien_legen').empty();
-                    the_chart.options.labels.forEach(function(label, i) {
-                        let legendItem = $('<span></span>').text(label).css('color',
-                            the_chart.options
-                            .lineColors[i])
+                    the_chart_bnvv.options.labels.forEach(function(label, i) {
+                        var legendItem = $('<span class="'+prefix+'lengen_'+i+'" onclick="bnvv_hideLabel('+i+')"></span>').text(label).css('color', the_chart_bnvv
+                            .options.lineColors[i])
                         $('#ti_le_vao_vien_legen').append(legendItem)
                     })
+
                 }
             });
         });
