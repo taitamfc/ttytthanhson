@@ -384,6 +384,14 @@
                 });
             }
         }
+
+        $('select').each( function(key,val){
+            let attValue = $(this).attr('value');
+            if(attValue){
+                console.log($(this).find('option[value="'+attValue+'"]'));
+                $(this).find('option[value="'+attValue+'"]').attr('selected',true)
+            }
+        })
     });
 </script>
 <!-- END: main -->

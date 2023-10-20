@@ -89,7 +89,7 @@ class OABaoCaoGiaoBan extends OAModel{
         return $items;
     }
     public function format_item($item){
-        
+        $item['sgb'] = json_decode($item['sgb'],true);
         $item['tinh_hinh_benh_nhan'] = json_decode($item['tinh_hinh_benh_nhan'],true);
         $item['hoat_dong_dieu_tri'] = json_decode($item['hoat_dong_dieu_tri'],true);
         $item['benh_nhan_theo_doi'] = json_decode($item['benh_nhan_theo_doi'],true);
@@ -326,5 +326,25 @@ class OABaoCaoGiaoBan extends OAModel{
         $colorCode = sprintf("#%02x%02x%02x", $red, $green, $blue);
     
         return strtoupper($colorCode);
+    }
+
+    public function export(){
+        global $module_info;
+        $libs_path = NV_ROOTDIR . '/modules/' . $module_info['module_file'].'/libs/';
+        $templates_path = NV_ROOTDIR . '/modules/' . $module_info['module_file'].'/export_templates/';
+        include_once $libs_path.'/tbs_plugin_opentbs/tbs_class.php';
+        include_once $libs_path.'/tbs_plugin_opentbs/tbs_plugin_opentbs.php';
+        
+        $TBS = new clsTinyButStrong;
+        $TBS->Plugin(TBS_INSTALL, OPENTBS_PLUGIN);
+
+        $GLOBALS['ryear'] = date('Y',$item['addtime']);
+        $template = $templates_path.$type.'.docx';
+        $TBS->LoadTemplate($template, OPENTBS_ALREADY_UTF8);
+
+        $save_as = '';
+        $output_file_name = $type.'.docx';
+        $TBS->Show(OPENTBS_DOWNLOAD, $output_file_name);
+        exit();
     }
 }
