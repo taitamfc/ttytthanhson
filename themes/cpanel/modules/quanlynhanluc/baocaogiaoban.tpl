@@ -75,7 +75,6 @@
                                     <td>{item.updated_date}</td>
                                     
                                     <td>
-                                        <a href="{item.link_view}">Xem</a> | 
                                         <a href="{item.link_edit}">Cập nhật</a> | 
                                         <a href="{item.link_show}">Chiếu</a> |
                                         <a href="{item.link_export}">Xuất sổ</a>

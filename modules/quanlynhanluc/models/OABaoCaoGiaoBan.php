@@ -59,6 +59,8 @@ class OABaoCaoGiaoBan extends OAModel{
     public function format_items($items){
         global $user_info;
         $group_id = $user_info['group_id'];
+        $username = $user_info['username'];
+        
         $url = MODULE_LINK;
         foreach( $items as $k => $item ){
             $id = $item['id'];
@@ -74,7 +76,7 @@ class OABaoCaoGiaoBan extends OAModel{
             }
             
             $items[$k]['link_export'] = '#';
-            if($group_id == 1){
+            if($group_id == 1 || $username == 'khambenh' || $username == 'admin'){
                 if($item['block']){
                     $link_block_html = '| <a href="javascript:;" onclick="blockBaoCaoGiaoBan('.$id.',0)">Mở khóa</a>';
                 }else{
@@ -336,10 +338,13 @@ class OABaoCaoGiaoBan extends OAModel{
         include_once $libs_path.'/tbs_plugin_opentbs/tbs_plugin_opentbs.php';
         $item = $this->find($id);
         $item = $this->format_item($item);
+        
         $TBS = new clsTinyButStrong;
         $TBS->Plugin(TBS_INSTALL, OPENTBS_PLUGIN);
 
         $type = 'mau-bien-ban-bao-cao-giao-ban';
+
+        $item['sgb']['noi_dung_khac'] = explode("\n",$item['sgb']['noi_dung_khac']);
 
         $params = [
             'bat_dau_ngay'              => $item['sgb']['bat_dau']['ngay'],
@@ -350,7 +355,7 @@ class OABaoCaoGiaoBan extends OAModel{
             'tham_du_chu_tri'           => $item['sgb']['tham_du']['chu_tri'],
             'tham_du_thu_ky'            => $item['sgb']['tham_du']['thu_ky'],
             'tham_du_thanh_phan_khac'   => $item['sgb']['tham_du']['thanh_phan_khac'],
-            'noi_dung_khac'             => implode("\n",$item['sgb']['noi_dung_khac']),
+            'noi_dung_khac'             => $item['sgb']['noi_dung_khac'] ? implode("\n",$item['sgb']['noi_dung_khac']) : '.',
             'ket_thuc_ngay'             => $item['sgb']['ket_thuc']['ngay'],
             'ket_thuc_thang'            => $item['sgb']['ket_thuc']['thang'],
             'ket_thuc_nam'              => $item['sgb']['ket_thuc']['nam'],
@@ -362,6 +367,7 @@ class OABaoCaoGiaoBan extends OAModel{
         foreach( $params as $p_key => $p_value ){
             $GLOBALS[$p_key] = $p_value;
         }
+
 
         $template = $templates_path.$type.'.docx';
         $TBS->LoadTemplate($template, OPENTBS_ALREADY_UTF8);

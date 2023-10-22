@@ -8,7 +8,8 @@
  * @License GNU/GPL version 2 or any later version
  * @Createdate 31/05/2010, 00:36
  */
-
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 define('NV_SYSTEM', true);
 
 // Xac dinh thu muc goc cua site

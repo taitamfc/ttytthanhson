@@ -70,7 +70,7 @@
                                 BÁO CÁO TRỰC NGÀY 
                                 </div>
                                 <div class="col-lg-6">
-                                <input name='title' value='{item.title}' type='date' class='has_f f_khoakb form-control'>
+                                <input name='title' value='{item.title}' type='date' class='has_f f_khoakb f_khambenh form-control'>
                                 </div>
                             </div>
                             
@@ -81,12 +81,12 @@
                                 <div class="col-lg-6">
                                     <label class="form-label">Trực lãnh đạo:</label>
                                     <input name='truc_lanh_dao' value='{item.truc_lanh_dao}' type='text'
-                                        class='form-control has_f f_khoakb'>
+                                        class='form-control has_f f_khoakb f_khambenh'>
                                 </div>
                                 <div class="col-lg-6">
                                     <label class="form-label">Trực bác sĩ:</label>
                                     <input name='truc_bac_sy' value='{item.truc_bac_sy}' type='text'
-                                        class='form-control has_f f_khoakb'>
+                                        class='form-control has_f f_khoakb f_khambenh'>
                                 </div>
                             </div>
                         </div>
@@ -170,8 +170,13 @@
     var currentGroupId = '{currentGroupId}';
     var layout = '{layout}';
 
+    console.log(currentKhoa);
+    let isAdmin = false;
+    if( currentKhoa == 'admin' || currentGroupId == 1 ){
+        isAdmin = true;
+    }
 
-    if( currentGroupId != 1 ){
+    if( !isAdmin ){
         if (currentKhoa != "") {
             jQuery('input.has_f').prop('readonly', true);
             jQuery('input.f_' + currentKhoa).prop('readonly', false);

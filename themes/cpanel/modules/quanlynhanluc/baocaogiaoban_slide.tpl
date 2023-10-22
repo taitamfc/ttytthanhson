@@ -104,7 +104,7 @@
 		border-radius: 10px;
 		padding: 6px;
 		background-color: #f9f9f9;
-		font-size: 12px;
+		font-size: 12px !important;
 		cursor: pointer;
 	}
 	.modal-dialog {

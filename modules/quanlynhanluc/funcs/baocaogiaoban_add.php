@@ -80,8 +80,9 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ){
         'status' => 1,
         'ghichu' => ''
     ];
+    
     $OABaoCaoKhamChuaBenh->saveOrUpdate($dataBaocaoKCB);
-
+    
     // Luu vao bang kham chua benh cua cac khoa
     $hoat_dong_dieu_tri = $_REQUEST['hoat_dong_dieu_tri'];
     foreach($hoat_dong_dieu_tri as $khoa => $dataKCB){
@@ -98,7 +99,7 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST' ){
             $dataKCB['bn_tuvong'] = 0;
             $dataKCB['ghichu'] = '';
             if($dataKCB){
-                $OAKhamChuaBenh->saveOrUpdate($dataKCB);
+                //$OAKhamChuaBenh->saveOrUpdate($dataKCB);
             }
         }
     }
